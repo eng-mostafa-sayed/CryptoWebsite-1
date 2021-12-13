@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 mt-3">
+      <!-- <div class="col-md-12 my-5">
+        <a class="logo" routerLink="/"> LOGO </a>
+      </div> -->
+      <div id="signin-form">
+        <mat-card *ngIf="!loading">
+          <h1 class="text-center mb-5">LOGIN</h1>
+          <form (ngSubmit)="onLogin()" [formGroup]="loginForm">
+            <mat-form-field class="mb-4">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                placeholder="name@example.com"
+                formControlName="email"
+                type="email"
+              />
+              <mat-error *ngIf="loginForm.get('email')?.invalid"
+                >Invalid Email</mat-error
+              >
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                placeholder="use combination of nums and @#$%"
+                formControlName="password"
+                type="password"
+              />
+              <mat-error *ngIf="loginForm.get('password')?.invalid"
+                >Week password</mat-error
+              >
+            </mat-form-field>
+            <br />
+            <a
+              routerLink="/"
+              class="d-block mb-3 text-end"
+              style="font-size: 14px; margin-top: -10px"
+              >Forgot password?</a
+            >
+            <button
+              mat-raised-button
+              type="submit"
+              [disabled]="loginForm.invalid"
+              class="my-3"
+            >
+              Login
+            </button>
+            <p routerLink="/" class="d-block text-center">
+              Don't have account? <a routerLink="/signup">Signup</a>
+            </p>
+          </form>
+        </mat-card>
+      </div>
+    </div>
+    <div class="col-md-6" style="background-color: #eef3fb">
+      <app-slider></app-slider>
+    </div>
+  </div>
+</div>

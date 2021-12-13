@@ -1,0 +1,42 @@
+.logo {
+  font-family: "Nunito Sans", sans-serif;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 33px;
+  color: #032f4a;
+  letter-spacing: 7%;
+}
+#signup-form h1 {
+  font-family: "Roboto", sans-serif;
+  cursor: default;
+  color: #032f4a;
+  width: 120px;
+}
+
+mat-card {
+  width: 100%;
+  padding: 50px;
+}
+mat-form-field {
+  width: 100%;
+}
+mat-spinner {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+}
+@media only screen and (max-width: 768px) {
+  mat-card {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+button {
+  background-color: #154ed5;
+  color: #fff;
+  font-size: 18px;
+  width: 100%;
+  padding: 17px 24px 17px 24px;
+}
