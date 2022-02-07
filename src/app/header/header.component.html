@@ -5,7 +5,7 @@
     </h1>
 
     <nav>
-      <!-- <button
+      <button
         mat-button
         [matMenuTriggerFor]="beforeMenu"
         style="color: #fff; opacity: 0.9"
@@ -19,7 +19,11 @@
         <button (click)="onLogout()" mat-menu-item>
           <mat-icon>logout</mat-icon>Logout
         </button>
-      </mat-menu> -->
+        <button (click)="onLogout()" mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <a routerLink="/dashboard/overview" style="color: #000">Dashboard</a>
+        </button>
+      </mat-menu>
 
       <a routerLink="/signin" routerLinkActive="selected">Login</a>
       <a routerLink="/signup" routerLinkActive="selected">Sign up</a>

@@ -16,6 +16,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { ConfirmationComponent } from './Auth/confirmation/confirmation.component';
 import { SliderComponent } from './Auth/slider/slider.component';
+import { OverviewComponent } from './overview/overview.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { PlansComponent } from './plans/plans.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { MiningDevicesComponent } from './mining-devices/mining-devices.component';
+import { WithdrawComponent } from './withdraw/withdraw.component';
+import { ReferralComponent } from './referral/referral.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +32,13 @@ import { SliderComponent } from './Auth/slider/slider.component';
     HeaderComponent,
     ConfirmationComponent,
     SliderComponent,
+    OverviewComponent,
+    SidenavComponent,
+    PlansComponent,
+    DashboardComponent,
+    MiningDevicesComponent,
+    WithdrawComponent,
+    ReferralComponent,
   ],
   imports: [
     BrowserModule,

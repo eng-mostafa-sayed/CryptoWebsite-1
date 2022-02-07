@@ -1,0 +1,40 @@
+* {
+  color: rgba(255, 255, 255, 0.603);
+}
+h2 {
+  text-align: center;
+  padding: 36px 0px;
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.603);
+}
+ul {
+  padding: 40px 10px 0px 10px;
+  a {
+    text-decoration: none;
+    vertical-align: text-bottom;
+  }
+  li {
+    padding: 10px;
+  }
+  li:hover,
+  .highlight {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    a,
+    mat-icon {
+      color: #fff;
+      transition: all ease-out 0.3s;
+    }
+  }
+  mat-icon {
+    margin-right: 12px;
+  }
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+// @media only screen and (max-width: 768px) {
+//   /* For mobile phones: */
+// }
