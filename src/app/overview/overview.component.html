@@ -1,108 +1,201 @@
-<div class="top">
-  <h2>Welcome back, Ahmed 👋</h2>
-  <p class="text-muted">Here’s your progress</p>
-  <h5>Balance Overview</h5>
-  <div class="row">
-    <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
-      <div class="box">
-        <div class="row">
-          <div class="col-12 col-lg-3">
-            <mat-icon>currency_bitcoin</mat-icon>
+<div id="overview">
+  <div class="top">
+    <header>
+      <h2>Welcome back, Ahmed 👋</h2>
+      <p class="text-muted">Here’s your progress</p>
+      <h4>Balance Overview</h4>
+    </header>
+    <main class="row">
+      <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
+        <div class="box">
+          <div class="row">
+            <div class="col-12 col-lg-3">
+              <i class="fab fa-btc lg"></i>
+            </div>
+            <div class="col-lg-9">
+              <p
+                class="text-muted"
+                style="font-weight: bold; margin-bottom: 1px"
+              >
+                BTC Balance
+              </p>
+              <p style="font-weight: bold">0.000002130 BTC</p>
+            </div>
           </div>
-          <div class="col-lg-9">
-            <p class="text-muted" style="font-weight: bold; margin-bottom: 1px">
-              BTC Balance
-            </p>
-            <p style="font-weight: bold">0.000002130 BTC</p>
+          <p>
+            <span style="color: #154ed5; font-weight: bold">
+              2 active plans
+            </span>
+            • <span style="color: #154ed5; font-weight: bold"> 1 Device</span>
+          </p>
+          <p class="text-muted">Current Price</p>
+          <p style="font-weight: bold">$ 47,990.00</p>
+          <button mat-stroked-button color="primary" style="width: 100%">
+            Withdraw
+          </button>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
+        <div class="box">
+          <div class="row">
+            <div class="col-12 col-lg-3">
+              <i class="fab fa-ethereum lg"></i>
+            </div>
+            <div class="col-lg-9">
+              <p
+                class="text-muted"
+                style="font-weight: bold; margin-bottom: 1px"
+              >
+                ETH Balance
+              </p>
+              <p style="font-weight: bold">0.000002130 ETH</p>
+            </div>
+          </div>
+          <p>
+            <span style="color: #154ed5; font-weight: bold">
+              2 active plans
+            </span>
+          </p>
+          <p class="text-muted">Current Price</p>
+          <p style="font-weight: bold">$ 47,990.00</p>
+          <button mat-stroked-button color="primary" style="width: 100%">
+            Withdraw
+          </button>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
+        <div class="box">
+          <div class="row">
+            <div class="col-12 col-lg-3">
+              <i class="fab fa-btc lg"></i>
+            </div>
+            <div class="col-lg-9">
+              <p
+                class="text-muted"
+                style="font-weight: bold; margin-bottom: 1px"
+              >
+                RVN Balance
+              </p>
+              <p style="font-weight: bold">0.000000000 RVN</p>
+            </div>
+          </div>
+          <p style="visibility: hidden">
+            <span style="color: #154ed5; font-weight: bold">
+              2 active plans
+            </span>
+          </p>
+          <p class="text-muted">Current Price</p>
+          <p style="font-weight: bold">$ 0.08826</p>
+          <button mat-raised-button color="primary" style="width: 100%">
+            Buy Mining plan
+          </button>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
+        <div class="box">
+          <div class="row">
+            <div class="col-12 col-lg-3">
+              <i class="fab fa-ethereum lg"></i>
+            </div>
+            <div class="col-lg-9">
+              <p
+                class="text-muted"
+                style="font-weight: bold; margin-bottom: 1px"
+              >
+                STX Balance
+              </p>
+              <p style="font-weight: bold">0.000000000 STX</p>
+            </div>
+          </div>
+          <p style="visibility: hidden">
+            <span style="color: #154ed5; font-weight: bold">
+              2 active plans
+            </span>
+          </p>
+          <p class="text-muted">Current Price</p>
+          <p style="font-weight: bold">$ 2.13</p>
+          <button mat-raised-button color="primary" style="width: 100%">
+            Buy Mining plan
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="details">
+    <h4 id="details-header">Currency Mining Details</h4>
+    <mat-tab-group mat-align-tabs="end">
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <i class="fab fa-btc sm"></i> BTC
+        </ng-template>
+        <div class="btc-details row g-0">
+          <div class="col-12 col-md-4 btc-item-1">
+            <i class="fas fa-rocket"></i>
+            <span class="text-muted">Mining speed </span>
+            <div>
+              <h4>3,230 H/s</h4>
+              <i class="fas fa-plus"></i>
+            </div>
+          </div>
+          <div class="col-12 col-md-4 btc-item-2">
+            <i class="fas fa-hammer"></i>
+            <span class="text-muted">Today Mined </span>
+            <h4>0.000000030 BTC</h4>
+          </div>
+          <div class="col-12 col-md-4 btc-item-3">
+            <i class="fas fa-poo-storm"></i>
+            <span class="text-muted">Running plans </span>
+            <h4>2 active plans</h4>
           </div>
         </div>
-        <p>
-          <span style="color: #154ed5; font-weight: bold">
-            2 active plans
-          </span>
-          • <span style="color: #154ed5; font-weight: bold"> 1 Device</span>
-        </p>
-        <p class="text-muted">Current Price</p>
-        <p style="font-weight: bold">$ 47,990.00</p>
-        <button mat-stroked-button color="primary" style="width: 100%">
-          Withdraw
+        <div class="center">
+          <i class="fab fa-btc lg"></i>
+          <h2>0.000002130 BTC</h2>
+        </div>
+        <strong class="d-block text-muted text-center"
+          >Min Withdraw: 0.0001 BTC</strong
+        >
+        <button mat-stroked-button color="primary">
+          <i class="fab fa-btc sm"></i> <span> Withdraw </span>
         </button>
-      </div>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <i class="fab fa-ethereum sm"></i> ETH
+        </ng-template>
+        Content 2
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <i class="fab fa-btc sm"></i> <span>RVN</span>
+        </ng-template>
+
+        Content 3
+      </mat-tab>
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <i class="fab fa-ethereum sm"></i>STX
+        </ng-template>
+
+        Content 4
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+
+  <div class="last-section row mt-5">
+    <div class="gains col-12 col-md-7">
+      <h4>Daily Gains</h4>
     </div>
-    <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
-      <div class="box">
-        <div class="row">
-          <div class="col-12 col-lg-3">
-            <mat-icon>currency_bitcoin</mat-icon>
-          </div>
-          <div class="col-lg-9">
-            <p class="text-muted" style="font-weight: bold; margin-bottom: 1px">
-              ETH Balance
-            </p>
-            <p style="font-weight: bold">0.000002130 ETH</p>
-          </div>
-        </div>
-        <p>
-          <span style="color: #154ed5; font-weight: bold">
-            2 active plans
-          </span>
-        </p>
-        <p class="text-muted">Current Price</p>
-        <p style="font-weight: bold">$ 47,990.00</p>
-        <button mat-stroked-button color="primary" style="width: 100%">
-          Withdraw
-        </button>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
-      <div class="box">
-        <div class="row">
-          <div class="col-12 col-lg-3">
-            <mat-icon>currency_bitcoin</mat-icon>
-          </div>
-          <div class="col-lg-9">
-            <p class="text-muted" style="font-weight: bold; margin-bottom: 1px">
-              RVN Balance
-            </p>
-            <p style="font-weight: bold">0.000000000 RVN</p>
-          </div>
-        </div>
-        <p style="visibility: hidden">
-          <span style="color: #154ed5; font-weight: bold">
-            2 active plans
-          </span>
-        </p>
-        <p class="text-muted">Current Price</p>
-        <p style="font-weight: bold">$ 0.08826</p>
-        <button mat-raised-button color="primary" style="width: 100%">
-          Buy Mining plan
-        </button>
-      </div>
-    </div>
-    <div class="col-12 col-md-6 col-lg-3 mb-3 mb-lg-0">
-      <div class="box">
-        <div class="row">
-          <div class="col-12 col-lg-3">
-            <mat-icon>currency_bitcoin</mat-icon>
-          </div>
-          <div class="col-lg-9">
-            <p class="text-muted" style="font-weight: bold; margin-bottom: 1px">
-              STX Balance
-            </p>
-            <p style="font-weight: bold">0.000000000 STX</p>
-          </div>
-        </div>
-        <p style="visibility: hidden">
-          <span style="color: #154ed5; font-weight: bold">
-            2 active plans
-          </span>
-        </p>
-        <p class="text-muted">Current Price</p>
-        <p style="font-weight: bold">$ 2.13</p>
-        <button mat-raised-button color="primary" style="width: 100%">
-          Buy Mining plan
-        </button>
-      </div>
+    <div class="banner col-md-5">
+      <i class="fas fa-rocket"></i>
+      <h4 class="my-3">Boost Your Hashrate With Private Mining Devices</h4>
+      <p>Up to 10 TH/s</p>
+      <button mat-stroked-button color="primary">
+        <span>Learn more</span>
+      </button>
     </div>
   </div>
 </div>

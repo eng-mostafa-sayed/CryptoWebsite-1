@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -51,6 +52,7 @@ import { ReferralComponent } from './referral/referral.component';
     MatFormFieldModule,
     MatIconModule,
     MatMenuModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
