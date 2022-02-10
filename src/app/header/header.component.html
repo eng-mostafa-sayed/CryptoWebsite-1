@@ -16,12 +16,16 @@
         <mat-icon *ngIf="opend">arrow_drop_up</mat-icon>
       </button>
       <mat-menu #beforeMenu="matMenu" xPosition="before">
-        <button (click)="onLogout()" mat-menu-item>
-          <mat-icon>logout</mat-icon>Logout
+        <button
+          routerLink="/dashboard/overview"
+          (click)="onLogout()"
+          mat-menu-item
+        >
+          <mat-icon>settings</mat-icon>
+          <a style="color: #000">Dashboard</a>
         </button>
         <button (click)="onLogout()" mat-menu-item>
-          <mat-icon>settings</mat-icon>
-          <a routerLink="/dashboard/overview" style="color: #000">Dashboard</a>
+          <mat-icon>logout</mat-icon>Logout
         </button>
       </mat-menu>
 
