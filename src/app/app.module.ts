@@ -24,6 +24,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MiningDevicesComponent } from './mining-devices/mining-devices.component';
 import { WithdrawComponent } from './withdraw/withdraw.component';
 import { ReferralComponent } from './referral/referral.component';
+import { SignupOrsigninComponent } from './Auth/signup-orsignin/signup-orsignin.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ReferralComponent } from './referral/referral.component';
     MiningDevicesComponent,
     WithdrawComponent,
     ReferralComponent,
+    SignupOrsigninComponent,
   ],
   imports: [
     BrowserModule,

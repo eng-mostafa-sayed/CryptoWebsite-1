@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ConfirmationComponent } from './Auth/confirmation/confirmation.component';
 import { SigninComponent } from './Auth/signin/signin.component';
+import { SignupOrsigninComponent } from './Auth/signup-orsignin/signup-orsignin.component';
 import { SignupComponent } from './Auth/signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MiningDevicesComponent } from './mining-devices/mining-devices.component';
@@ -12,6 +13,7 @@ import { WithdrawComponent } from './withdraw/withdraw.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signin', pathMatch: 'full' },
+  { path: 'signupOrsignin', component: SignupOrsigninComponent },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signup/confirmation', component: ConfirmationComponent },
