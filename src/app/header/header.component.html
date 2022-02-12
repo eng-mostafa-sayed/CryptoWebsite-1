@@ -5,7 +5,7 @@
     </h1>
 
     <nav>
-      <button
+      <!-- <button
         mat-button
         [matMenuTriggerFor]="beforeMenu"
         style="color: #fff; opacity: 0.9"
@@ -27,11 +27,23 @@
         <button (click)="onLogout()" mat-menu-item>
           <mat-icon>logout</mat-icon>Logout
         </button>
-      </mat-menu>
+      </mat-menu> -->
 
       <!-- <a routerLink="/signin" routerLinkActive="selected">Login</a>
       <a routerLink="/signup" routerLinkActive="selected">Sign up</a> -->
-      <a routerLink="/signupOrsignin" routerLinkActive="selected">Signup</a>
+      <a
+        routerLink="/dashboard/overivew"
+        routerLinkActive="selected"
+        *ngIf="isAuthenticated"
+        >Dashboard</a
+      >
+
+      <a
+        routerLink="/signupOrsignin"
+        routerLinkActive="selected"
+        *ngIf="!isAuthenticated"
+        >Signup</a
+      >
     </nav>
   </div>
 </header>

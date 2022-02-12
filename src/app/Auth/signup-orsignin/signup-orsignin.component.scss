@@ -92,6 +92,10 @@ input:focus-visible {
   outline: none;
   border: 1px solid #673c98;
 }
+input.ng-invalid.ng-dirty {
+  outline: none;
+  border: 1px solid #ff0d0d;
+}
 
 .container {
   background-color: #fff;

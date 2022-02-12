@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './Auth/auth.guard';
 import { ConfirmationComponent } from './Auth/confirmation/confirmation.component';
 import { SigninComponent } from './Auth/signin/signin.component';
 import { SignupOrsigninComponent } from './Auth/signup-orsignin/signup-orsignin.component';
@@ -12,14 +13,12 @@ import { ReferralComponent } from './referral/referral.component';
 import { WithdrawComponent } from './withdraw/withdraw.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'signin', pathMatch: 'full' },
+  { path: '', redirectTo: 'signupOrsignin', pathMatch: 'full' },
   { path: 'signupOrsignin', component: SignupOrsigninComponent },
-  { path: 'signin', component: SigninComponent },
-  { path: 'signup', component: SignupComponent },
-  { path: 'signup/confirmation', component: ConfirmationComponent },
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'overview', component: OverviewComponent },
       { path: 'hashrate-plans', component: PlansComponent },
