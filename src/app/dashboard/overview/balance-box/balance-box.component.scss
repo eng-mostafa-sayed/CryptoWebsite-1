@@ -1,0 +1,37 @@
+.box {
+  background-color: rgba(29, 26, 39, 0.6);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0px 4px rgba(41, 61, 99, 0.1);
+  button {
+    background: linear-gradient(#292141, #292141) padding-box,
+      linear-gradient(to right, rgba(79, 86, 255, 1), rgba(255, 73, 128, 1))
+        border-box !important;
+    margin: 0px !important;
+
+    &.buy {
+      background: linear-gradient(to right, #5056ff, #fe4980) border-box !important;
+    }
+  }
+}
+
+//format icons
+.fab.lg {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fa-btc {
+  background-color: #f7931a;
+  color: #fff;
+  float: left;
+  transform: rotate(15deg);
+}
+.fa-ethereum {
+  background-color: #eef3fb;
+  color: #393939;
+}

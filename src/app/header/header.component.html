@@ -1,4 +1,4 @@
-<header class="header-fixed">
+<header class="header-fixed" *ngIf="isAuthenticated">
   <div class="header-limiter">
     <h1>
       <a routerLink="/">WEBSITE <span>LOGO</span></a>
@@ -44,6 +44,7 @@
         *ngIf="!isAuthenticated"
         >Signup</a
       >
+      <a *ngIf="isAuthenticated"> Signedin </a>
     </nav>
   </div>
 </header>

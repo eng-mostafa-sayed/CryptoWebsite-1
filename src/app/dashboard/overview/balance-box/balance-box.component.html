@@ -1,0 +1,69 @@
+<div class="box">
+  <div class="row">
+    <div class="col-12 col-lg-3">
+      <i
+        class="fab fa-btc lg"
+        *ngIf="currency == 'BTC' || currency == 'RVN'"
+      ></i>
+      <i
+        class="fab fa-ethereum lg"
+        *ngIf="currency == 'ETH' || currency == 'STX'"
+      ></i>
+    </div>
+    <div class="col-lg-9">
+      <span
+        style="
+          font-weight: bold;
+          margin-bottom: 1px;
+          color: rgba(183, 180, 199, 1);
+        "
+      >
+        {{ currency }} Balance
+      </span>
+      <h6 style="font-weight: bold; color: #fff">
+        {{ currencyBalance }} {{ currency }}
+      </h6>
+    </div>
+  </div>
+  <br *ngIf="plans == 0 && devices == 0" />
+  <p>
+    <span
+      style="color: rgba(255, 73, 128, 1); font-weight: bold"
+      *ngIf="plans > 0"
+    >
+      {{ plans }} active plans
+    </span>
+    <span
+      style="color: #fff; vertical-align: bottom"
+      *ngIf="plans > 0 && devices > 0"
+    >
+      •
+    </span>
+    <span
+      style="color: rgba(255, 73, 128, 1); font-weight: bold"
+      *ngIf="devices > 0"
+    >
+      {{ devices }} Device</span
+    >
+  </p>
+  <span style="color: rgba(183, 180, 199, 1)">Current Price</span>
+  <h6 style="font-weight: bold; color: #fff">$ {{ price }}</h6>
+  <button
+    mat-stroked-button
+    color="primary"
+    style="width: 100%"
+    *ngIf="currencyBalance > 0"
+  >
+    Withdraw
+  </button>
+  <button
+    mat-stroked-button
+    color="primary"
+    style="width: 100%"
+    class="buy"
+    *ngIf="!(currencyBalance > 0)"
+  >
+    Buy Mining plan
+  </button>
+</div>
+<!-- [ngClass]="{ buy: !(currencyBalance > 0) }" -->

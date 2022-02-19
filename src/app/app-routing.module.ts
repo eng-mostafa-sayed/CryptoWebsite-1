@@ -6,11 +6,11 @@ import { SigninComponent } from './Auth/signin/signin.component';
 import { SignupOrsigninComponent } from './Auth/signup-orsignin/signup-orsignin.component';
 import { SignupComponent } from './Auth/signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { MiningDevicesComponent } from './mining-devices/mining-devices.component';
-import { OverviewComponent } from './overview/overview.component';
-import { PlansComponent } from './plans/plans.component';
-import { ReferralComponent } from './referral/referral.component';
-import { WithdrawComponent } from './withdraw/withdraw.component';
+import { MiningDevicesComponent } from './dashboard/mining-devices/mining-devices.component';
+import { OverviewComponent } from './dashboard/overview/overview.component';
+import { PlansComponent } from './dashboard/plans/plans.component';
+import { ReferralComponent } from './dashboard/referral/referral.component';
+import { WithdrawComponent } from './dashboard/withdraw/withdraw.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signupOrsignin', pathMatch: 'full' },
@@ -18,7 +18,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     children: [
       { path: 'overview', component: OverviewComponent },
       { path: 'hashrate-plans', component: PlansComponent },

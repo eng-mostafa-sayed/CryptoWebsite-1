@@ -1,0 +1,31 @@
+#dashboard {
+  background: radial-gradient(
+    circle,
+    rgb(192, 166, 183) 0%,
+    rgba(224, 182, 249, 1) 0%,
+    rgba(186, 90, 241, 1) 0%,
+    rgba(182, 89, 237, 1) 8%,
+    rgba(148, 76, 200, 1) 21%,
+    rgba(103, 60, 152, 1) 42%,
+    rgba(19, 17, 27, 1) 87%
+  );
+  color: #fff;
+  display: grid;
+  grid-template-columns: 248px 1192px;
+  #logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 72px;
+    box-shadow: 0px -1px 0px 0px rgba(255, 255, 255, 0.12) inset;
+    span {
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+}
+@media only screen and (max-width: 1439px) {
+  #dashboard {
+    grid-template-columns: 88px auto;
+  }
+}

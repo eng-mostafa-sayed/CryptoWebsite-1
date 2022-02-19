@@ -14,13 +14,13 @@ a {
 }
 
 .header-fixed {
-  background-color: rgba(13, 23, 66, 1);
+  background-color: rgba(19, 17, 26, 0.5);
   box-shadow: 0 1px 1px #ccc;
   padding: 20px 40px;
   height: 80px;
   color: #ffffff;
   box-sizing: border-box;
-  top: -100px;
+  // top: -100px;
 
   -webkit-transition: top 0.3s;
   transition: top 0.3s;

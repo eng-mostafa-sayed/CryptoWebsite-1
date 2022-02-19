@@ -9,6 +9,7 @@ import { AuthService } from '../auth.service';
 })
 export class SignupOrsigninComponent implements OnInit {
   statusValue: boolean = false;
+  loading: boolean = false;
   signupForm: FormGroup;
   signinForm: FormGroup;
   constructor(public authService: AuthService) {}
@@ -51,10 +52,12 @@ export class SignupOrsigninComponent implements OnInit {
     this.signupForm.reset();
   }
   onSignin() {
-    this.authService.login(
-      this.signinForm.value.email,
-      this.signinForm.value.password
-    );
+    if (this.signinForm.value.email && this.signinForm.value.password)
+      this.authService.login(
+        this.signinForm.value.email,
+        this.signinForm.value.password
+      );
+    this.loading = true;
   }
   changeToSignup() {
     this.statusValue = true;
