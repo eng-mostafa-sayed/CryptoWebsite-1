@@ -11,7 +11,7 @@
   );
   color: #fff;
   display: grid;
-  grid-template-columns: 248px 1192px;
+  grid-template-columns: 248px auto;
   #logo {
     display: flex;
     justify-content: center;
