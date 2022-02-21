@@ -10,11 +10,14 @@ import { MiningDevicesComponent } from './dashboard/mining-devices/mining-device
 import { OverviewComponent } from './dashboard/overview/overview.component';
 import { PlansComponent } from './dashboard/plans/plans.component';
 import { ReferralComponent } from './dashboard/referral/referral.component';
+import { TimelineChartComponent } from './dashboard/timeline-chart/timeline-chart.component';
 import { WithdrawComponent } from './dashboard/withdraw/withdraw.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'signupOrsignin', pathMatch: 'full' },
   { path: 'signupOrsignin', component: SignupOrsigninComponent },
+  { path: 'test', component: TimelineChartComponent },
+
   {
     path: 'dashboard',
     component: DashboardComponent,

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Balance } from '../balance.model';
-import { multi } from '../data';
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
@@ -74,9 +73,7 @@ export class OverviewComponent implements OnInit {
     domain: ['#A10A28'],
   };
 
-  constructor() {
-    Object.assign(this, { multi });
-  }
+  constructor() {}
 
   ngOnInit(): void {
     console.log(this.BTC, this.ETH, this.RVN, this.STX);

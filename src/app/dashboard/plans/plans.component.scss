@@ -20,7 +20,7 @@ header {
 section#hashrate {
   display: grid;
   grid-template-columns: 360px 748px;
-  grid-template-rows: 416px 416px;
+  grid-template-rows: 416px;
   column-gap: 24px;
   .power {
     display: grid;
@@ -41,5 +41,73 @@ section#hashrate {
   .plans-chart {
     background: rgba(29, 26, 39, 0.6);
     border-radius: 12px;
+  }
+}
+button {
+  margin: 56px 0px 24px auto !important;
+  padding: 17px 24px !important;
+  width: 218px;
+  i {
+    background-color: transparent;
+  }
+}
+.table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: #1d1a27;
+  border-radius: 12px 12px 0px 0px;
+  h2 {
+    font-size: 1.2rem;
+  }
+  .input-group {
+    position: relative;
+    margin-left: auto;
+    width: auto;
+    input {
+      padding: 11px 40px;
+      background: #302c3f;
+      border-radius: 8px;
+      border: none;
+      width: 334px;
+      color: rgb(255, 255, 255);
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.3s ease-in-out;
+      // &:focus {
+      //   border-color: #a8a8a8;
+      //   box-shadow: 0 0 8px 0 #a8a8a8;
+      // }
+      &:focus ~ i.fa-search {
+        filter: drop-shadow(5px 5px 10px #fff);
+      }
+    }
+    i {
+      position: absolute;
+      left: 18px;
+      top: 10px;
+    }
+  }
+}
+::placeholder {
+  color: #b7b4c7;
+}
+table[mat-table] {
+  background: #1d1a27;
+  height: auto;
+  width: 100%;
+}
+th.mat-sort-header-sorted {
+  color: black;
+}
+mat-paginator {
+  background: #1d1a27;
+  color: #fff;
+  border-radius: 0px 0px 8px 8px;
+  position: relative;
+  mat-form-field {
+    color: #fff;
+    background: rgb(128, 70, 70);
   }
 }

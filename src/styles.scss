@@ -27,7 +27,7 @@ li {
 button {
   display: flex !important;
   justify-content: center !important;
-  align-content: center !important;
+  align-items: center !important;
   font-size: 1rem !important;
   padding: 5px !important;
   background-color: transparent !important;
@@ -39,6 +39,36 @@ button {
     background: linear-gradient(to right, #5056ff, #fe4980) border-box !important;
   }
 }
+button.mat-paginator-navigation-next {
+  padding: 0px !important;
+  margin: 12px !important;
+  margin-left: 373px !important;
+}
+button.mat-paginator-navigation-previous {
+  padding: 0px !important;
+  margin: 10px !important;
+  position: absolute;
+  left: 12px;
+}
+button.mat-button-disabled {
+  background: #4d4d4e !important;
+}
+.mat-select-arrow,
+.mat-select-value,
+.mat-option-text {
+  color: #fff !important;
+}
+.mat-select-panel {
+  background: #1d1a27;
+}
+
+th[mat-header-cell] {
+  color: #b7b4c7;
+}
+td[mat-cell] {
+  color: #fff;
+}
+
 @media only screen and (max-width: 1439px) {
   .dashboard-container {
     margin-left: auto;

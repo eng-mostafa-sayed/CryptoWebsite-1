@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { HttpClientModule } from '@angular/common/http';
 
 import { MatInputModule } from '@angular/material/input';
@@ -10,12 +12,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './Auth/signup/signup.component';
 import { SigninComponent } from './Auth/signin/signin.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { ConfirmationComponent } from './Auth/confirmation/confirmation.component';
 import { SliderComponent } from './Auth/slider/slider.component';
@@ -33,8 +37,14 @@ import { DashHeaderComponent } from './dashboard/dash-header/dash-header.compone
 import { MiningDetailsComponent } from './dashboard/overview/mining-details/mining-details.component';
 import { TabsComponent } from './dashboard/tabs/tabs.component';
 import { CommonModule } from '@angular/common';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { MatSortModule } from '@angular/material/sort';
+import { TimelineChartComponent } from './dashboard/timeline-chart/timeline-chart.component';
 
+import { ChartModule } from 'primeng/chart';
+
+///////////////////////////////
+
+/////////////////////////////////////
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +66,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     DashHeaderComponent,
     MiningDetailsComponent,
     TabsComponent,
+    TimelineChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,8 +81,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatMenuModule,
     MatTabsModule,
     HttpClientModule,
+    MatTableModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
     CommonModule,
-    NgxChartsModule,
+    MatSortModule,
+    ChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
