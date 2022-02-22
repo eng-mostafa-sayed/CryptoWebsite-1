@@ -41,6 +41,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { TimelineChartComponent } from './dashboard/timeline-chart/timeline-chart.component';
 
 import { ChartModule } from 'primeng/chart';
+import { ChoosePlanComponent } from './dashboard/plans/choose-plan/choose-plan.component';
 
 ///////////////////////////////
 
@@ -67,6 +68,7 @@ import { ChartModule } from 'primeng/chart';
     MiningDetailsComponent,
     TabsComponent,
     TimelineChartComponent,
+    ChoosePlanComponent,
   ],
   imports: [
     BrowserModule,

@@ -160,8 +160,7 @@
 
       <div class="mined-chart">
         <app-tabs leftTitle="Daily mined">
-          <div BTC>
-            <!-- <ngx-charts-line-chart
+          <!-- <ngx-charts-line-chart
               [view]="view"
               [scheme]="colorScheme"
               [legend]="legend"
@@ -179,6 +178,16 @@
               (deactivate)="onDeactivate($event)"
             >
             </ngx-charts-line-chart> -->
+          <div BTC>
+            <app-timeline-chart></app-timeline-chart>
+          </div>
+          <div ETH>
+            <app-timeline-chart></app-timeline-chart>
+          </div>
+          <div RVN>
+            <app-timeline-chart></app-timeline-chart>
+          </div>
+          <div STX>
             <app-timeline-chart></app-timeline-chart>
           </div>
         </app-tabs>

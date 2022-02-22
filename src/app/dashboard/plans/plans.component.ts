@@ -4,121 +4,121 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
 export interface Plan {
-  date: string;
+  date: Date;
   name: string;
   total: number;
   current: number;
   average: number;
-  expire: string;
+  expire: Date;
 }
 
 const activePlanData: Plan[] = [
   {
-    date: '30 Dec 2021',
+    date: new Date('30 Dec 2021'),
     name: 'Bitcoin — Starter  ',
     total: 4.0026,
     current: 4.0026,
     average: 4.0026,
-    expire: '30 Dec 2022',
+    expire: new Date('30 Dec 2022'),
   },
   {
-    date: '14 March 2021',
+    date: new Date('14 March 2021'),
     name: 'Ethereum — Starter  ',
     total: 6.941,
     current: 6.941,
     average: 6.941,
-    expire: '14 March 2022',
+    expire: new Date('14 March 2022'),
   },
   {
-    date: '5 Nov 2021',
+    date: new Date('5 Nov 2021'),
     name: 'Ethereum — Starter',
     total: 9.0122,
     current: 9.0122,
     average: 9.0122,
-    expire: '5 Nov 2022',
+    expire: new Date('5 Nov 2022'),
   },
   {
-    date: '5 Sep 2021',
+    date: new Date('5 Sep 2021'),
     name: 'Ethereum — Starter',
     total: 10.811,
     current: 10.811,
     average: 10.811,
-    expire: '5 Sep 2022',
+    expire: new Date('5 Sep 2022'),
   },
   {
-    date: '1 Oct 2021',
+    date: new Date('1 Oct 2021'),
     name: 'Ethereum — Starter',
     total: 12.0107,
     current: 12.0107,
     average: 12.0107,
-    expire: '1 Oct 2022',
+    expire: new Date('1 Oct 2022'),
   },
   {
-    date: '6 Feb 2021',
+    date: new Date('6 Feb 2021'),
     name: 'Bitcoin — Starter',
     total: 14.0067,
     current: 14.0067,
     average: 14.0067,
-    expire: '6 Feb 2022',
+    expire: new Date('6 Feb 2022'),
   },
   {
-    date: '8 Jul 2021',
+    date: new Date('8 Jul 2021'),
     name: 'Ethereum — Starter',
     total: 15.9994,
     current: 15.9994,
     average: 15.9994,
-    expire: '8 Jul 2022',
+    expire: new Date('8 Jul 2022'),
   },
   {
-    date: '18 Oct 2021',
+    date: new Date('18 Oct 2021'),
     name: 'Bitcoin — Starter',
     total: 18.9984,
     current: 18.9984,
     average: 18.9984,
-    expire: '12 Jan 2022',
+    expire: new Date('12 Jan 2022'),
   },
 ];
 
 const expiredPlanData: Plan[] = [
   {
-    date: '10 Jan 2021',
+    date: new Date('10 Jan 2021'),
     name: 'Bitcoin — Starter',
     total: 1.0079,
     current: 1.0079,
     average: 1.0079,
-    expire: '10 Jan 2022',
+    expire: new Date('10 Jan 2022'),
   },
   {
-    date: '30 Dec 2021',
+    date: new Date('30 Dec 2021'),
     name: 'Bitcoin — Starter  ',
     total: 4.0026,
     current: 4.0026,
     average: 4.0026,
-    expire: '30 Dec 2022',
+    expire: new Date('30 Dec 2022'),
   },
   {
-    date: '14 March 2021',
+    date: new Date('14 March 2021'),
     name: 'Ethereum — Starter  ',
     total: 6.941,
     current: 6.941,
     average: 6.941,
-    expire: '14 March 2022',
+    expire: new Date('14 March 2022'),
   },
   {
-    date: '5 Nov 2021',
+    date: new Date('5 Nov 2021'),
     name: 'Ethereum — Starter',
     total: 9.0122,
     current: 9.0122,
     average: 9.0122,
-    expire: '5 Nov 2022',
+    expire: new Date('5 Nov 2022'),
   },
   {
-    date: '5 Sep 2021',
+    date: new Date('5 Sep 2021'),
     name: 'Ethereum — Starter',
     total: 10.811,
     current: 10.811,
     average: 10.811,
-    expire: '5 Sep 2022',
+    expire: new Date('5 Sep 2022'),
   },
 ];
 @Component({
@@ -160,6 +160,7 @@ export class PlansComponent implements AfterViewInit, OnInit {
     ): boolean {
       return data.name.toLowerCase().includes(filter);
     };
+
     this.dataSourceActive.paginator = this.activePaginator;
     this.dataSourceActive.sort = this.activeSort;
     this.dataSourceExpired.paginator = this.expiredPaginator;
@@ -167,10 +168,26 @@ export class PlansComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
+    this.dataSourceActive.sortingDataAccessor = (item: any, property: any) => {
+      switch (property) {
+        case 'date':
+          return new Date(item.date);
+        default:
+          return item[property];
+      }
+    };
     this.dataSourceActive.paginator = this.activePaginator;
     this.dataSourceActive.sort = this.activeSort;
     this.dataSourceExpired.paginator = this.expiredPaginator;
     this.dataSourceExpired.sort = this.expiredSort;
+    this.dataSourceActive.sortingDataAccessor = (item: any, property: any) => {
+      switch (property) {
+        case 'fromDate':
+          return new Date(item.fromDate);
+        default:
+          return item[property];
+      }
+    };
   }
 
   applyFilterOnActive(event: Event) {

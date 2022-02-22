@@ -8,6 +8,7 @@ import { SignupComponent } from './Auth/signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MiningDevicesComponent } from './dashboard/mining-devices/mining-devices.component';
 import { OverviewComponent } from './dashboard/overview/overview.component';
+import { ChoosePlanComponent } from './dashboard/plans/choose-plan/choose-plan.component';
 import { PlansComponent } from './dashboard/plans/plans.component';
 import { ReferralComponent } from './dashboard/referral/referral.component';
 import { TimelineChartComponent } from './dashboard/timeline-chart/timeline-chart.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
     children: [
       { path: 'overview', component: OverviewComponent },
       { path: 'hashrate-plans', component: PlansComponent },
+      { path: 'choose-plan', component: ChoosePlanComponent },
       { path: 'mining-devices', component: MiningDevicesComponent },
       { path: 'withdraw', component: WithdrawComponent },
       { path: 'referral-program', component: ReferralComponent },
