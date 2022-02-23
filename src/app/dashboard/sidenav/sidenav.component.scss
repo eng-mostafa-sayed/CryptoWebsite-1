@@ -4,9 +4,11 @@
 
 .sideContainer {
   background-color: rgba(19, 17, 26, 0.5);
-  height: 100%;
   box-shadow: -1px 0px 0px 0px rgba(48, 44, 63, 1) inset;
-
+  position: sticky;
+  top: 0px;
+  width: 248px;
+  height: 100vh;
   ul {
     padding: 38px 10px 0px 8px;
     li {
@@ -46,7 +48,9 @@
   .sideContainer {
     transition: width 0.3s ease-out;
     width: 88px;
-    height: 100%;
+    position: sticky;
+    top: 0px;
+    height: 100vh;
 
     ul {
       padding: 38px 18px;
@@ -63,12 +67,11 @@
     }
   }
   .sideContainer:hover {
-    position: absolute;
-    left: 0;
-    top: 72;
+    position: sticky;
+    top: 0px;
+    height: 100vh;
     z-index: 9;
     width: 248px;
-    height: 150%;
     backdrop-filter: blur(3px);
     ul {
       padding: 38px 10px 0px 8px;
