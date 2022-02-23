@@ -42,6 +42,10 @@ import { TimelineChartComponent } from './dashboard/timeline-chart/timeline-char
 
 import { ChartModule } from 'primeng/chart';
 import { ChoosePlanComponent } from './dashboard/plans/choose-plan/choose-plan.component';
+import { MonthComponent } from './dashboard/plans/month/month.component';
+import { Cperiod1Component } from './dashboard/plans/cperiod1/cperiod1.component';
+import { Cperiod2Component } from './dashboard/plans/cperiod2/cperiod2.component';
+import { Cperiod3Component } from './dashboard/plans/cperiod3/cperiod3.component';
 
 ///////////////////////////////
 
@@ -69,6 +73,10 @@ import { ChoosePlanComponent } from './dashboard/plans/choose-plan/choose-plan.c
     TabsComponent,
     TimelineChartComponent,
     ChoosePlanComponent,
+    MonthComponent,
+    Cperiod1Component,
+    Cperiod2Component,
+    Cperiod3Component,
   ],
   imports: [
     BrowserModule,

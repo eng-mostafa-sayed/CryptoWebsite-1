@@ -35,6 +35,10 @@ button {
   padding: 6px !important;
   border-radius: 50em !important;
   border: 2px solid transparent !important;
+  background: linear-gradient(#292141, #292141) padding-box,
+    linear-gradient(to right, rgba(79, 86, 255, 1), rgba(255, 73, 128, 1))
+      border-box !important;
+  margin: 0px !important;
   &.buy {
     background: linear-gradient(to right, #5056ff, #fe4980) border-box !important;
   }

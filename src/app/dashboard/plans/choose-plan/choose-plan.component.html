@@ -2,3 +2,12 @@
   <i class="fas fa-angle-left" [routerLink]="['../hashrate-plans']"></i>
   <h2>Choose hashrate plan</h2>
 </header>
+<div class="dashboard-container">
+  <h3>Select desired Plan</h3>
+  <p>Contract period</p>
+  <button mat-stroked-button [routerLink]="['./month']">30 days</button>
+  <button mat-stroked-button [routerLink]="['./year']">360 days days</button>
+  <button mat-stroked-button [routerLink]="['./3years']">3 Years</button>
+  <div class="line"></div>
+  <router-outlet></router-outlet>
+</div>
