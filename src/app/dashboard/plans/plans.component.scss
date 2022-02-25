@@ -1,21 +1,7 @@
-header {
-  background: rgba(19, 17, 26, 0.5);
-  box-shadow: inset 0px -1px 0px #302c3f;
-  min-width: 1192px;
-  height: 131px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 32px 30px;
-  box-shadow: -1px 0px 0px 0px rgba(48, 44, 63, 1) inset;
-
-  h2 {
-    margin-bottom: 4px;
-    font-size: 2rem;
-  }
-  p {
-    color: rgba(183, 180, 199, 1);
-  }
+header.dashboard-secondry-header {
+  margin-top: -24px;
+  padding-top: 128px;
+  height: 227px;
 }
 section#hashrate {
   display: grid;
@@ -33,9 +19,27 @@ section#hashrate {
       font-size: 1.2rem;
       padding: 24px;
     }
-    div {
+    div.item {
       box-shadow: inset 0px -1px 0px #302c3f;
       padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      div:first-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span:first-child {
+          font-size: 1rem;
+        }
+        span:last-child {
+          font-size: 0.9rem;
+          color: rgba(255, 73, 128, 1);
+        }
+      }
+      span:first-child {
+        font-size: 1rem;
+      }
     }
   }
   .plans-chart {
@@ -43,71 +47,75 @@ section#hashrate {
     border-radius: 12px;
   }
 }
-button {
-  margin: 56px 0px 24px auto !important;
-  padding: 17px 24px !important;
-  width: 218px;
-  i {
-    background-color: transparent;
+section#table {
+  width: 1128px;
+
+  button {
+    margin: 56px 0px 24px auto !important;
+    padding: 17px 24px !important;
+    width: 218px;
+    i {
+      background-color: transparent;
+    }
   }
-}
-.table-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 24px;
-  background: #1d1a27;
-  border-radius: 12px 12px 0px 0px;
-  h2 {
-    font-size: 1.2rem;
-  }
-  .input-group {
-    position: relative;
-    margin-left: auto;
-    width: auto;
-    input {
-      padding: 11px 40px;
-      background: #302c3f;
-      border-radius: 8px;
-      border: none;
-      width: 334px;
-      color: rgb(255, 255, 255);
-      font-size: 0.9rem;
-      outline: none;
-      transition: all 0.3s ease-in-out;
-      // &:focus {
-      //   border-color: #a8a8a8;
-      //   box-shadow: 0 0 8px 0 #a8a8a8;
-      // }
-      &:focus ~ i.fa-search {
-        filter: drop-shadow(5px 5px 10px #fff);
+  .table-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    background: #1d1a27;
+    border-radius: 12px 12px 0px 0px;
+    h2 {
+      font-size: 1.2rem;
+    }
+    .input-group {
+      position: relative;
+      margin-left: auto;
+      width: auto;
+      input {
+        padding: 11px 40px;
+        background: #302c3f;
+        border-radius: 8px;
+        border: none;
+        width: 334px;
+        color: rgb(255, 255, 255);
+        font-size: 0.9rem;
+        outline: none;
+        transition: all 0.3s ease-in-out;
+        // &:focus {
+        //   border-color: #a8a8a8;
+        //   box-shadow: 0 0 8px 0 #a8a8a8;
+        // }
+        &:focus ~ i.fa-search {
+          filter: drop-shadow(5px 5px 10px #fff);
+        }
+      }
+      i {
+        position: absolute;
+        left: 18px;
+        top: 10px;
       }
     }
-    i {
-      position: absolute;
-      left: 18px;
-      top: 10px;
-    }
   }
-}
-::placeholder {
-  color: #b7b4c7;
-}
-table[mat-table] {
-  background: #1d1a27;
-  height: auto;
-  width: 100%;
-}
-th.mat-sort-header-sorted {
-  color: black;
-}
-mat-paginator {
-  background: #1d1a27;
-  color: #fff;
-  border-radius: 0px 0px 8px 8px;
-  position: relative;
-  mat-form-field {
+  ::placeholder {
+    color: #b7b4c7;
+  }
+  table[mat-table] {
+    background: #1d1a27;
+    height: auto;
+    width: 100%;
+  }
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  mat-paginator {
+    background: #1d1a27;
     color: #fff;
-    background: rgb(128, 70, 70);
+    border-radius: 0px 0px 8px 8px;
+    position: relative;
+    mat-form-field {
+      color: #fff;
+      background: rgb(128, 70, 70);
+    }
   }
 }

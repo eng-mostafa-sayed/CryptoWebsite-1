@@ -1,14 +1,33 @@
 * {
   color: rgba(255, 255, 255, 0.603) !important;
 }
-
+div#logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #13111a;
+  box-shadow: inset -1px -1px 0px rgba(255, 255, 255, 0.12);
+  padding: 0px 32px;
+  width: 248px;
+  height: 72px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  span {
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
 .sideContainer {
   background-color: rgba(19, 17, 26, 0.5);
   box-shadow: -1px 0px 0px 0px rgba(48, 44, 63, 1) inset;
-  position: sticky;
-  top: 0px;
+  position: fixed;
+  top: 72px;
+  left: 0px;
   width: 248px;
-  height: 100vh;
+  height: calc(100% - 72px);
+  z-index: 9;
+
   ul {
     padding: 38px 10px 0px 8px;
     li {
@@ -45,11 +64,17 @@
 }
 
 @media only screen and (max-width: 1439px) {
+  div#logo {
+    width: 88px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
   .sideContainer {
     transition: width 0.3s ease-out;
     width: 88px;
-    position: sticky;
-    top: 0px;
+    position: fixed;
+    top: 72px;
     height: 100vh;
 
     ul {
@@ -67,8 +92,8 @@
     }
   }
   .sideContainer:hover {
-    position: sticky;
-    top: 0px;
+    position: fixed;
+    top: 72px;
     height: 100vh;
     z-index: 9;
     width: 248px;

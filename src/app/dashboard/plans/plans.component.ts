@@ -121,6 +121,28 @@ const expiredPlanData: Plan[] = [
     expire: new Date('5 Sep 2022'),
   },
 ];
+const activeHashPower = [
+  {
+    crypto: 'BTC (Bitcoin)',
+    plans: '2 active plans',
+    speed: '23 580',
+  },
+  {
+    crypto: 'ETH (Ethereum)',
+    plans: '2 active plans',
+    speed: '23 580',
+  },
+  {
+    crypto: 'RVN (Ravencoin)',
+    plans: 'No active plan',
+    speed: '0',
+  },
+  {
+    crypto: 'STX (Stacks)',
+    plans: 'No active plan',
+    speed: '0',
+  },
+];
 @Component({
   selector: 'app-plans',
   templateUrl: './plans.component.html',
@@ -135,6 +157,7 @@ export class PlansComponent implements AfterViewInit, OnInit {
     'average',
     'expire',
   ];
+  activeHash: { crypto: string; plans: string; speed: string }[];
   activePlanDataLength: number = activePlanData.length;
   expiredPlanDataLength: number = expiredPlanData.length;
 
@@ -161,10 +184,11 @@ export class PlansComponent implements AfterViewInit, OnInit {
       return data.name.toLowerCase().includes(filter);
     };
 
-    this.dataSourceActive.paginator = this.activePaginator;
-    this.dataSourceActive.sort = this.activeSort;
-    this.dataSourceExpired.paginator = this.expiredPaginator;
-    this.dataSourceExpired.sort = this.expiredSort;
+    // this.dataSourceActive.paginator = this.activePaginator;
+    // this.dataSourceActive.sort = this.activeSort;
+    // this.dataSourceExpired.paginator = this.expiredPaginator;
+    // this.dataSourceExpired.sort = this.expiredSort;
+    this.activeHash = activeHashPower;
   }
 
   ngAfterViewInit() {
