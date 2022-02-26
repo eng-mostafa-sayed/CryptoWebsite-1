@@ -66,6 +66,9 @@ section#miners-list {
       }
     }
   }
+  ul.miners.noItems {
+    justify-content: center;
+  }
   ul.miners {
     width: 100%;
     height: auto;
@@ -141,5 +144,10 @@ section#miners-list {
       border-radius: 12px;
       cursor: pointer;
     }
+  }
+}
+@media only screen and (max-width: 1439px) {
+  ul.miners {
+    justify-content: space-around;
   }
 }
