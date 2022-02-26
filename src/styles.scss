@@ -59,8 +59,22 @@ button {
     linear-gradient(to right, rgba(79, 86, 255, 1), rgba(255, 73, 128, 1))
       border-box !important;
   margin: 0px !important;
+  transition: all 0.2s ease-in-out;
   &.buy {
     background: linear-gradient(to right, #5056ff, #fe4980) border-box !important;
+  }
+  &:hover,
+  &.buy:hover {
+    // box-shadow: 0 0.5em 0.5em -0.4em #fe4980 !important;
+    // transform: translateY(-0.25em);
+    animation: pulse 1s;
+    box-shadow: 0 0 0 2em rgba(#fe4980, 0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #fe4980;
   }
 }
 button.mat-paginator-navigation-next {

@@ -19,7 +19,7 @@
     <h4>Choose Currency</h4>
     <app-tabs id="shortPlans" *ngIf="short">
       <div class="plans" BTC>
-        <div class="plan" *ngFor="let plan of plans">
+        <div class="plan" *ngFor="let plan of shortPlans">
           <h4>{{ plan.type }}</h4>
           <img src="../../../../assets/Miners.svg" alt="Miners image" />
           <div>
@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="plans" ETH>
-        <div class="plan" *ngFor="let plan of plans">
+        <div class="plan" *ngFor="let plan of shortPlans">
           <h4>{{ plan.type }}</h4>
           <img src="../../../../assets/Miners.svg" alt="Miners image" />
           <div>
@@ -73,7 +73,7 @@
         </div>
       </div>
       <div class="plans" RVN>
-        <div class="plan" *ngFor="let plan of plans">
+        <div class="plan" *ngFor="let plan of shortPlans">
           <h4>{{ plan.type }}</h4>
           <img src="../../../../assets/Miners.svg" alt="Miners image" />
           <div>
@@ -100,7 +100,7 @@
         </div>
       </div>
       <div class="plans" STX>
-        <div class="plan" *ngFor="let plan of plans">
+        <div class="plan" *ngFor="let plan of shortPlans">
           <h4>{{ plan.type }}</h4>
           <img src="../../../../assets/Miners.svg" alt="Miners image" />
           <div>
@@ -129,7 +129,7 @@
     </app-tabs>
     <app-tabs id="longPlans" *ngIf="!short">
       <div class="plans" BTC>
-        <div class="plan" *ngFor="let plan of plans">
+        <div class="plan" *ngFor="let plan of longPlans">
           <h4>{{ plan.type }}</h4>
           <img src="../../../../assets/Miners.svg" alt="Miners image" />
           <div>
@@ -156,7 +156,7 @@
         </div>
       </div>
       <div class="plans" ETH>
-        <div class="plan" *ngFor="let plan of plans">
+        <div class="plan" *ngFor="let plan of longPlans">
           <h4>{{ plan.type }}</h4>
           <img src="../../../../assets/Miners.svg" alt="Miners image" />
           <div>
@@ -183,7 +183,7 @@
         </div>
       </div>
       <div class="plans" RVN>
-        <div class="plan" *ngFor="let plan of plans">
+        <div class="plan" *ngFor="let plan of longPlans">
           <h4>{{ plan.type }}</h4>
           <img src="../../../../assets/Miners.svg" alt="Miners image" />
           <div>
@@ -210,7 +210,7 @@
         </div>
       </div>
       <div class="plans" STX>
-        <div class="plan" *ngFor="let plan of plans">
+        <div class="plan" *ngFor="let plan of longPlans">
           <h4>{{ plan.type }}</h4>
           <img src="../../../../assets/Miners.svg" alt="Miners image" />
           <div>

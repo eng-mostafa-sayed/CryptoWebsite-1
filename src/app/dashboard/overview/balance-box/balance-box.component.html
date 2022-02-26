@@ -48,21 +48,10 @@
   </p>
   <span style="color: rgba(183, 180, 199, 1)">Current Price</span>
   <h6 style="font-weight: bold; color: #fff">$ {{ price }}</h6>
-  <button
-    mat-stroked-button
-    color="primary"
-    style="width: 100%"
-    *ngIf="currencyBalance > 0"
-  >
+  <button color="primary" style="width: 100%" *ngIf="currencyBalance > 0">
     Withdraw
   </button>
-  <button
-    mat-stroked-button
-    color="primary"
-    style="width: 100%"
-    class="buy"
-    *ngIf="!(currencyBalance > 0)"
-  >
+  <button style="width: 100%" class="buy" *ngIf="!(currencyBalance > 0)">
     Buy Mining plan
   </button>
 </div>
