@@ -3,40 +3,36 @@
   <h2>Choose hashrate plan</h2>
 </header>
 <div class="dashboard-container">
-  <div>
-    <section>
-      <h3>Select desired plan</h3>
-      <p>Contract period</p>
-      <div>
-        <button (click)="short = true" [ngClass]="{ active: short }">
-          <span> Short Plans</span> <span class="off">10% off</span>
-        </button>
-        <button (click)="short = false" [ngClass]="{ active: !short }">
-          <span>Long Plans</span> <span class="off">30% off</span>
-        </button>
-      </div>
-    </section>
+  <section>
+    <h3>Select desired plan</h3>
+    <p>Contract period</p>
+    <div>
+      <button (click)="short = true" [ngClass]="{ active: short }">
+        <span> Short Plans</span> <span class="off">10% off</span>
+      </button>
+      <button (click)="short = false" [ngClass]="{ active: !short }">
+        <span>Long Plans</span> <span class="off">30% off</span>
+      </button>
+    </div>
+  </section>
+  <section>
     <h4>Choose Currency</h4>
-    <section id="shortPlans" *ngIf="short">
-      <app-tabs>
-        <div class="plans" BTC>
-          <div class="plan"></div>
-          <div class="plan"></div>
-          <div class="plan"></div>
-          <div class="plan"></div>
-        </div>
-        <div ETH>ETH content for short plans</div>
-        <div RVN>RVN content for short plans</div>
-        <div STX>STX content for short plans</div>
-      </app-tabs>
-    </section>
-    <section id="longPlans" *ngIf="!short">
-      <app-tabs>
-        <div BTC>BTC content for long plans</div>
-        <div ETH>ETH content for long plans</div>
-        <div RVN>RVN content for long plans</div>
-        <div STX>STX content for long plans</div>
-      </app-tabs>
-    </section>
-  </div>
+    <app-tabs id="shortPlans" *ngIf="short">
+      <div class="plans" BTC>
+        <div class="plan"></div>
+        <div class="plan"></div>
+        <div class="plan"></div>
+        <div class="plan"></div>
+      </div>
+      <div ETH>ETH content for short plans</div>
+      <div RVN>RVN content for short plans</div>
+      <div STX>STX content for short plans</div>
+    </app-tabs>
+    <app-tabs id="longPlans" *ngIf="!short">
+      <div BTC>BTC content for long plans</div>
+      <div ETH>ETH content for long plans</div>
+      <div RVN>RVN content for long plans</div>
+      <div STX>STX content for long plans</div>
+    </app-tabs>
+  </section>
 </div>
