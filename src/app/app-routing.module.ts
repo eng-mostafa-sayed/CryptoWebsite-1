@@ -6,6 +6,7 @@ import { SigninComponent } from './Auth/signin/signin.component';
 import { SignupOrsigninComponent } from './Auth/signup-orsignin/signup-orsignin.component';
 import { SignupComponent } from './Auth/signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ChooseMinerComponent } from './dashboard/mining-devices/choose-miner/choose-miner.component';
 import { MiningDevicesComponent } from './dashboard/mining-devices/mining-devices.component';
 import { OverviewComponent } from './dashboard/overview/overview.component';
 import { ChoosePlanComponent } from './dashboard/plans/choose-plan/choose-plan.component';
@@ -32,13 +33,12 @@ const routes: Routes = [
       {
         path: 'choose-plan',
         component: ChoosePlanComponent,
-        children: [
-          { path: 'month', component: Cperiod1Component },
-          { path: 'year', component: Cperiod2Component },
-          { path: '3year', component: Cperiod3Component },
-        ],
       },
       { path: 'mining-devices', component: MiningDevicesComponent },
+      {
+        path: 'choose-miner',
+        component: ChooseMinerComponent,
+      },
       { path: 'withdraw', component: WithdrawComponent },
       { path: 'referral-program', component: ReferralComponent },
     ],

@@ -28,9 +28,17 @@ export class MiningDevicesComponent implements OnInit {
       speed: '0',
     },
   ];
-  miners = [
+  miners: {
+    name: string;
+    encrypt: string;
+    img: string;
+    start: string;
+    end: string;
+    price: string;
+    profit: string;
+  }[] = [
     {
-      name: 'Antminer E9',
+      name: 'Antminer S19 Pro ',
       encrypt: 'Bitcoin — SHA-256',
       img: '',
       start: '',
@@ -39,7 +47,7 @@ export class MiningDevicesComponent implements OnInit {
       profit: '',
     },
     {
-      name: 'Antminer E9',
+      name: 'Antminer T9+',
       encrypt: 'Bitcoin — SHA-256',
       img: '',
       start: '',
@@ -48,7 +56,7 @@ export class MiningDevicesComponent implements OnInit {
       profit: '',
     },
     {
-      name: 'Antminer E9',
+      name: 'WhatsMiner M32-62T',
       encrypt: 'Bitcoin — SHA-256',
       img: '',
       start: '',
@@ -57,7 +65,7 @@ export class MiningDevicesComponent implements OnInit {
       profit: '',
     },
     {
-      name: 'Antminer E9',
+      name: 'PangolinMiner M3X',
       encrypt: 'Bitcoin — SHA-256',
       img: '',
       start: '',
@@ -69,4 +77,7 @@ export class MiningDevicesComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+  checkLength(): boolean {
+    return this.miners.length >= 1;
+  }
 }

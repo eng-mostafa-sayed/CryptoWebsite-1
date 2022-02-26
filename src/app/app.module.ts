@@ -45,6 +45,7 @@ import { ChoosePlanComponent } from './dashboard/plans/choose-plan/choose-plan.c
 import { Cperiod1Component } from './dashboard/plans/cperiod1/cperiod1.component';
 import { Cperiod2Component } from './dashboard/plans/cperiod2/cperiod2.component';
 import { Cperiod3Component } from './dashboard/plans/cperiod3/cperiod3.component';
+import { ChooseMinerComponent } from './dashboard/mining-devices/choose-miner/choose-miner.component';
 
 ///////////////////////////////
 
@@ -75,6 +76,7 @@ import { Cperiod3Component } from './dashboard/plans/cperiod3/cperiod3.component
     Cperiod1Component,
     Cperiod2Component,
     Cperiod3Component,
+    ChooseMinerComponent,
   ],
   imports: [
     BrowserModule,

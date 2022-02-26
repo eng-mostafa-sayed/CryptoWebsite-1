@@ -3,7 +3,7 @@
   <p>Manage & subscribe hashrate power plans</p>
 </header>
 <div class="dashboard-container">
-  <section id="hashrate">
+  <section id="hashrate" *ngIf="checkLength()">
     <div class="power">
       <h3>Active Hashrate Power</h3>
       <div class="item" *ngFor="let power of activeHash">
@@ -29,10 +29,44 @@
   </section>
 
   <section id="miners-list">
-    <h2>Your Miners (1)</h2>
+    <div class="list-header">
+      <h2>Your Miners ({{ miners.length }})</h2>
+      <button class="buy" [routerLink]="['../choose-miner']">
+        <i class="fas fa-plus"></i>New Miner
+      </button>
+    </div>
     <ul class="miners">
-      <li class="miner" *ngFor="let miner of miners">
-        {{ miner.name }}
+      <ng-container *ngIf="checkLength()">
+        <li class="miner" *ngFor="let miner of miners">
+          <h5>{{ miner.name }}</h5>
+          <div class="icon">
+            <i class="fab fa-btc md" style="margin-right: 8px"></i>
+            Bitcoin — SHA-256
+          </div>
+          <img src="../../../assets/miner.svg" alt="" />
+          <div class="grid-container">
+            <div class="box">
+              <h6>Contract Start</h6>
+              <p>18 Jan 2022</p>
+            </div>
+            <div class="box">
+              <h6>Contract End</h6>
+              <p>18 Jan 2023</p>
+            </div>
+            <div class="box">
+              <h6>Maintenance Price</h6>
+              <p>$112.69 /month</p>
+            </div>
+            <div class="box">
+              <h6>Profit</h6>
+              <p>$112.69/day</p>
+            </div>
+          </div>
+        </li>
+      </ng-container>
+      <li class="add-miner">
+        <img src="../../../assets/plus.svg" alt="" />
+        <span>Add New Miner </span>
       </li>
     </ul>
   </section>
