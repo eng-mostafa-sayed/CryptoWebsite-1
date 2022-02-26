@@ -121,7 +121,7 @@ const expiredPlanData: Plan[] = [
     expire: new Date('5 Sep 2022'),
   },
 ];
-const activeHashPower = [
+export const activeHashPower = [
   {
     crypto: 'BTC (Bitcoin)',
     plans: '2 active plans',

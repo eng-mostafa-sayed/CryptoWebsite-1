@@ -2,4 +2,38 @@
   <h2>Mining devices</h2>
   <p>Manage & subscribe hashrate power plans</p>
 </header>
-<div class="dashboard-container" style="height: 68vh"></div>
+<div class="dashboard-container">
+  <section id="hashrate">
+    <div class="power">
+      <h3>Active Hashrate Power</h3>
+      <div class="item" *ngFor="let power of activeHash">
+        <div>
+          <div>
+            <i class="fab fa-btc md" style="margin-right: 8px"></i>
+          </div>
+          <div style="display: flex; flex-direction: column">
+            <span>{{ power.crypto }}</span>
+            <span>{{ power.plans }}</span>
+          </div>
+        </div>
+        <span>{{ power.speed }} GH/S </span>
+      </div>
+    </div>
+    <div class="plans-chart">
+      <app-tabs
+        leftTitle="Hashrate plans gains
+      "
+      >
+      </app-tabs>
+    </div>
+  </section>
+
+  <section id="miners-list">
+    <h2>Your Miners (1)</h2>
+    <ul class="miners">
+      <li class="miner" *ngFor="let miner of miners">
+        {{ miner.name }}
+      </li>
+    </ul>
+  </section>
+</div>

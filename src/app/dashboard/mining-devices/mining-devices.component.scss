@@ -3,3 +3,67 @@ header {
   padding-top: 128px;
   height: 227px;
 }
+.dashboard-container {
+  padding: 32px 28px;
+}
+section#hashrate {
+  display: grid;
+  grid-template-columns: 360px 748px;
+  grid-template-rows: 416px;
+  column-gap: 24px;
+  .power {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 72px 86px 86px 86px 86px;
+    background: rgba(29, 26, 39, 0.6);
+    border-radius: 12px;
+    h3 {
+      box-shadow: inset 0px -1px 0px #302c3f;
+      font-size: 1.2rem;
+      padding: 24px;
+    }
+    div.item {
+      box-shadow: inset 0px -1px 0px #302c3f;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      div:first-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span:first-child {
+          font-size: 1rem;
+        }
+        span:last-child {
+          font-size: 0.9rem;
+          color: rgba(255, 73, 128, 1);
+        }
+      }
+      span:first-child {
+        font-size: 1rem;
+      }
+    }
+  }
+  .plans-chart {
+    background: rgba(29, 26, 39, 0.6);
+    border-radius: 12px;
+  }
+}
+section#miners-list {
+  ul.miners {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    gap: 32px;
+    li.miner {
+      width: 357px;
+      height: 400px;
+      background: rgba(29, 26, 39, 0.6);
+      border: 1px solid rgba(13, 23, 66, 0.2);
+      border-radius: 8px;
+    }
+  }
+}
