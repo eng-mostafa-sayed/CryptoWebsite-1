@@ -12,6 +12,24 @@ export class DashHeaderComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
+    //to survive a reload
+    if (this.router.url == '/dashboard/overview') {
+      this.currentRoute = 'Overview';
+    }
+    if (this.router.url == '/dashboard/hashrate-plans') {
+      this.currentRoute = 'Hashrate plans';
+    }
+    if (this.router.url == '/dashboard/mining-devices') {
+      this.currentRoute = 'Mining devices';
+    }
+    if (this.router.url == '/dashboard/withdraw') {
+      this.currentRoute = 'Withdraw';
+    }
+    if (this.router.url == '/dashboard/referral-program') {
+      this.currentRoute = 'Referral Program';
+    }
+
+    //to update whenever the user navigate to another route
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
