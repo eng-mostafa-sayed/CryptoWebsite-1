@@ -1,0 +1,56 @@
+<div class="main-nav fixed-top">
+  <h3 class="main-nav__title">{{ currentRoute }}</h3>
+  <!-- <div class="wallet">
+    <button
+      mat-button
+      [matMenuTriggerFor]="belowMenu"
+      class="btn-left"
+      (click)="collapse = !collapse"
+    >
+      00000000000000
+      <i
+        class="fas fa-caret-down"
+        style="margin-left: 5px"
+        *ngIf="!collapse"
+      ></i>
+      <i class="fas fa-caret-up" style="margin-left: 5px" *ngIf="collapse"></i>
+    </button>
+    <mat-form-field appearance="fill" style="color: #fff">
+      <mat-select [(value)]="selected">
+        <mat-option *ngFor="let coin of coins" [value]="coin.value">
+          <span class="balance" *ngIf="!displayFiat">{{ coin.value }}</span>
+          <span class="balance" *ngIf="displayFiat">${{ coin.fiatValue }}</span>
+          <span class="cypto">{{ coin.crypto }}</span>
+        </mat-option>
+        <mat-slide-toggle
+          [(ngModel)]="displayFiat"
+          (click)="$event.stopPropagation()"
+        >
+          Display in Fiat</mat-slide-toggle
+        >
+      </mat-select>
+    </mat-form-field>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <ul>
+        <li mat-menu-item *ngFor="let coin of coins">
+          <span class="balance" *ngIf="!displayFiat">{{ coin.value }}</span>
+          <span class="balance" *ngIf="displayFiat">${{ coin.fiatValue }}</span>
+          <span class="cypto">{{ coin.crypto }}</span>
+        </li>
+        <mat-slide-toggle
+          [(ngModel)]="displayFiat"
+          (click)="$event.stopPropagation()"
+        >
+          Display in Fiat</mat-slide-toggle
+        >
+      </ul>
+    </mat-menu>
+    <button (click)="openDialog()" class="btn-right btn btn--light">
+      Wallet
+    </button>
+  </div> -->
+  <div id="user" class="main-nav__user">
+    <i class="far fa-user-circle"></i>
+    <span>Ahmed Khalil</span>
+  </div>
+</div>
