@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -9,11 +9,12 @@ import { Router } from '@angular/router';
 })
 export class SigninComponent implements OnInit {
   loading = false;
-  loginForm!: FormGroup;
-  constructor(private router: Router) {}
+  signinForm!: FormGroup;
+  passwordShown = false;
+  constructor(public authService: AuthService) {}
 
   ngOnInit(): void {
-    this.loginForm = new FormGroup({
+    this.signinForm = new FormGroup({
       email: new FormControl(null, {
         validators: [Validators.required, Validators.email],
       }),
@@ -22,10 +23,16 @@ export class SigninComponent implements OnInit {
       }),
     });
   }
-  onLogin() {
-    if (this.loginForm.invalid) {
-      return;
-    } else {
-    }
+  onSignin() {
+    if (this.signinForm.value.email && this.signinForm.value.password)
+      this.authService.login(
+        this.signinForm.value.email,
+        this.signinForm.value.password
+      );
+    this.loading = true;
+  }
+  changeInput(input: any): any {
+    input.type = input.type === 'password' ? 'text' : 'password';
+    this.passwordShown = !this.passwordShown;
   }
 }

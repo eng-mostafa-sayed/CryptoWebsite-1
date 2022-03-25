@@ -1,17 +1,38 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ResetPasswordComponent } from './Auth/reset-password/reset-password.component';
+import { SigninComponent } from './Auth/signin/signin.component';
 import { SignupOrsigninComponent } from './Auth/signup-orsignin/signup-orsignin.component';
+import { SignupComponent } from './Auth/signup/signup.component';
+import { UserComponent } from './Auth/user/user.component';
 
 const routes: Routes = [
   {
-    path: 'dashboard',
+    path: 'user-dashboard',
     loadChildren: () =>
       import('./user-dashboard/user-dashboard.module').then(
         (m) => m.UserDashboardModule
       ),
   },
-  { path: 'signupOrsignin', component: SignupOrsigninComponent },
-  { path: '', redirectTo: 'signupOrsignin', pathMatch: 'full' },
+  {
+    path: 'admin-dashboard',
+    loadChildren: () =>
+      import('./admin-dashboard/admin-dashboard.module').then(
+        (m) => m.AdminDashboardModule
+      ),
+  },
+  // { path: 'signupOrsignin', component: SignupOrsigninComponent },
+  {
+    path: 'user',
+    component: UserComponent,
+    children: [
+      { path: 'signin', component: SigninComponent },
+      { path: 'signup', component: SignupComponent },
+      { path: 'reset-your-password', component: ResetPasswordComponent },
+    ],
+  },
+  { path: '', redirectTo: 'user/signin', pathMatch: 'full' },
+  { path: '**', redirectTo: 'user/signin' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

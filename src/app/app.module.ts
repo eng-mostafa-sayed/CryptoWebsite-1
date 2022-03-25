@@ -44,6 +44,11 @@ import { ChoosePlanComponent } from './user-dashboard/plans/choose-plan/choose-p
 import { ChooseMinerComponent } from './user-dashboard/mining-devices/choose-miner/choose-miner.component';
 import { DiagloComponent } from './user-dashboard/diaglo/diaglo.component';
 import { SharedModule } from './shared/shared.module';
+import { ResetPasswordComponent } from './Auth/reset-password/reset-password.component';
+import { UserComponent } from './Auth/user/user.component';
+import { AdminComponent } from './Auth/admin/admin.component';
+import { RecoveryMessageComponent } from './Auth/reset-password/recovery-message/recovery-message.component';
+import { NewPasswordComponent } from './Auth/reset-password/new-password/new-password.component';
 
 ///////////////////////////////
 
@@ -56,6 +61,11 @@ import { SharedModule } from './shared/shared.module';
     ConfirmationComponent,
     SliderComponent,
     SignupOrsigninComponent,
+    ResetPasswordComponent,
+    UserComponent,
+    AdminComponent,
+    RecoveryMessageComponent,
+    NewPasswordComponent,
   ],
   imports: [
     BrowserModule,

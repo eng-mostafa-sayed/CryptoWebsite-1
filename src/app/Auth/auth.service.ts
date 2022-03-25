@@ -43,10 +43,13 @@ export class AuthService {
   }
   login(email: String, password: String) {
     this.http
-      .post('https://expertminer.herokuapp.com/api/login', {
-        email: email,
-        password: password,
-      })
+      .post(
+        'https://cominer.herokuapp.com/api/login?key=c3fe929c35dd0cbcc8f062bb60e9d2ce7d14be21513d07c53e370d81ba9de4a4 ',
+        {
+          email: email,
+          password: password,
+        }
+      )
       .subscribe(
         (res) => {
           //log me out after the expire date
