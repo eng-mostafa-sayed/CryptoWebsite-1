@@ -7,8 +7,9 @@ import { DashHeaderComponent } from './dash-header/dash-header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { OverviewComponent } from './overview/overview.component';
 import { PlansComponent } from './plans/plans.component';
-import { MiningDevicesComponent } from './mining-devices/mining-devices.component';
 import { SubUsersComponent } from './sub-users/sub-users.component';
+import { MinersComponent } from './miners/miners.component';
+import { RequestComponent } from './request/request.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +18,9 @@ import { SubUsersComponent } from './sub-users/sub-users.component';
     SidenavComponent,
     OverviewComponent,
     PlansComponent,
-    MiningDevicesComponent,
     SubUsersComponent,
+    MinersComponent,
+    RequestComponent,
   ],
   imports: [CommonModule, AdminDashboardRoutingModule],
 })

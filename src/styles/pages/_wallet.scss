@@ -89,20 +89,25 @@
       padding-top: 5rem;
       margin-top: 1.6rem;
       &__content {
-        display: flex;
-        flex-direction: column;
-        gap: 2.4rem;
         &__note {
           background: #302c3f;
           border: 2px solid rgba(255, 255, 255, 0.27);
           border-radius: 8px;
           padding: 8px 16px;
+          margin-bottom: 2.4rem;
           color: $color-white;
           display: flex;
           justify-content: start;
           align-items: baseline;
           gap: 1.4rem;
           cursor: default;
+          &--copy {
+            cursor: text;
+            justify-content: space-between;
+            i {
+              cursor: pointer;
+            }
+          }
         }
       }
     }

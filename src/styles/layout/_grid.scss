@@ -21,6 +21,9 @@
   box-shadow: -1px 0px 0px 0px rgba(48, 44, 63, 1) inset;
   padding-top: calc($top-nav-height + 3.2rem);
   padding-left: calc($sidenav-width + 3rem);
+  &--trans {
+    background: transparent;
+  }
   @include respond(xl) {
     padding-left: calc($sidenav-width-collapsed + 3rem);
   }

@@ -8,14 +8,14 @@ import { UserComponent } from './Auth/user/user.component';
 
 const routes: Routes = [
   {
-    path: 'user-dashboard',
+    path: 'user/dashboard',
     loadChildren: () =>
       import('./user-dashboard/user-dashboard.module').then(
         (m) => m.UserDashboardModule
       ),
   },
   {
-    path: 'admin-dashboard',
+    path: 'admin/dashboard',
     loadChildren: () =>
       import('./admin-dashboard/admin-dashboard.module').then(
         (m) => m.AdminDashboardModule

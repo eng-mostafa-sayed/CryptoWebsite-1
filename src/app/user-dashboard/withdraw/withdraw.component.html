@@ -131,10 +131,185 @@
                   wallet</span
                 >
               </div>
-              <form (ngSubmit)="onWithdraw()">
+              <form (ngSubmit)="onWithdraw()" [formGroup]="withdrawForm">
                 <div class="input-field-group">
                   <label class="input-field-group__label" for="address"
                     >Bitcoin address</label
+                  >
+                  <input
+                    class="input-field-group__input"
+                    placeholder="example: 1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2"
+                    id="address"
+                    name="address"
+                    type="text"
+                    formControlName="address"
+                    [ngClass]="{
+                      'input-field-group__input--invalid':
+                        withdrawForm.get('address')?.invalid &&
+                        withdrawForm.get('address')?.dirty
+                    }"
+                  />
+                </div>
+                <div class="input-field-group">
+                  <label class="input-field-group__label" for="amount"
+                    >Amount</label
+                  >
+                  <input
+                    class="input-field-group__input"
+                    placeholder="Enter your amount"
+                    id="amount"
+                    name="amount"
+                    type="number"
+                    formControlName="amount"
+                    [ngClass]="{
+                      'input-field-group__input--invalid':
+                        withdrawForm.get('amount')?.invalid &&
+                        withdrawForm.get('amount')?.dirty
+                    }"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  class="login-box__btn btn btn--light btn--animated"
+                  routerLink=""
+                >
+                  Withdraw Funds
+                </button>
+              </form>
+            </div>
+          </div>
+          <div
+            class="custom-taps__body custom-taps__body--small"
+            *ngIf="cryptoTapOpend == 'tap2'"
+          >
+            <div class="wallet__funds__body__content">
+              <div class="wallet__funds__body__content__note">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>
+                  You can only withdraw from Etherum balance to Etherum
+                  wallet</span
+                >
+              </div>
+              <form (ngSubmit)="onWithdraw()">
+                <div class="input-field-group">
+                  <label class="input-field-group__label" for="address"
+                    >Etherum address</label
+                  >
+                  <input
+                    class="input-field-group__input"
+                    placeholder="example: 1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2"
+                    id="address"
+                    name="address"
+                    type="text"
+                    formControlName="address"
+                    [ngClass]="{
+                      'input-field-group__input--invalid':
+                        withdrawForm.get('address')?.invalid &&
+                        withdrawForm.get('address')?.dirty
+                    }"
+                  />
+                </div>
+                <div class="input-field-group">
+                  <label class="input-field-group__label" for="amount"
+                    >Amount</label
+                  >
+                  <input
+                    class="input-field-group__input"
+                    placeholder="Enter your amount"
+                    id="amount"
+                    name="amount"
+                    type="type"
+                    formControlName="amount"
+                    [ngClass]="{
+                      'input-field-group__input--invalid':
+                        withdrawForm.get('amount')?.invalid &&
+                        withdrawForm.get('amount')?.dirty
+                    }"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  class="login-box__btn btn btn--light btn--animated"
+                  routerLink=""
+                >
+                  Withdraw Funds
+                </button>
+              </form>
+            </div>
+          </div>
+          <div
+            class="custom-taps__body custom-taps__body--small"
+            *ngIf="cryptoTapOpend == 'tap3'"
+          >
+            <div class="wallet__funds__body__content">
+              <div class="wallet__funds__body__content__note">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>
+                  You can only withdraw from RVN balance to RVN wallet</span
+                >
+              </div>
+              <form (ngSubmit)="onWithdraw()">
+                <div class="input-field-group">
+                  <label class="input-field-group__label" for="address"
+                    >RVN address</label
+                  >
+                  <input
+                    class="input-field-group__input"
+                    placeholder="example: 1BvBMSEYstWetqTFn5Au4m4GFg7xJaNVN2"
+                    id="address"
+                    name="address"
+                    type="text"
+                    formControlName="address"
+                    [ngClass]="{
+                      'input-field-group__input--invalid':
+                        withdrawForm.get('address')?.invalid &&
+                        withdrawForm.get('address')?.dirty
+                    }"
+                  />
+                </div>
+                <div class="input-field-group">
+                  <label class="input-field-group__label" for="amount"
+                    >Amount</label
+                  >
+                  <input
+                    class="input-field-group__input"
+                    placeholder="Enter your amount"
+                    id="amount"
+                    name="amount"
+                    type="type"
+                    formControlName="amount"
+                    [ngClass]="{
+                      'input-field-group__input--invalid':
+                        withdrawForm.get('amount')?.invalid &&
+                        withdrawForm.get('amount')?.dirty
+                    }"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  class="login-box__btn btn btn--light btn--animated"
+                  routerLink=""
+                >
+                  Withdraw Funds
+                </button>
+              </form>
+            </div>
+          </div>
+          <div
+            class="custom-taps__body custom-taps__body--small"
+            *ngIf="cryptoTapOpend == 'tap4'"
+          >
+            <div class="wallet__funds__body__content">
+              <div class="wallet__funds__body__content__note">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>
+                  You can only withdraw from STX balance to STX wallet</span
+                >
+              </div>
+              <form (ngSubmit)="onWithdraw()">
+                <div class="input-field-group">
+                  <label class="input-field-group__label" for="address"
+                    >STX address</label
                   >
                   <input
                     class="input-field-group__input"

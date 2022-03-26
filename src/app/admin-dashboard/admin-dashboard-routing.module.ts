@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminDashboardComponent } from './admin-dashboard.component';
-import { MiningDevicesComponent } from './mining-devices/mining-devices.component';
+import { MinersComponent } from './miners/miners.component';
 import { OverviewComponent } from './overview/overview.component';
 import { PlansComponent } from './plans/plans.component';
+import { RequestComponent } from './request/request.component';
+import { SubUsersComponent } from './sub-users/sub-users.component';
 
 const routes: Routes = [
   {
@@ -13,7 +15,9 @@ const routes: Routes = [
     children: [
       { path: 'overview', component: OverviewComponent },
       { path: 'hashrate-plans', component: PlansComponent },
-      { path: 'mining-devices', component: MiningDevicesComponent },
+      { path: 'subscribed-users', component: SubUsersComponent },
+      { path: 'miners', component: MinersComponent },
+      { path: 'request', component: RequestComponent },
     ],
   },
 ];

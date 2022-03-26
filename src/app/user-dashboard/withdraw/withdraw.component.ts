@@ -39,8 +39,8 @@ export class WithdrawComponent implements OnInit {
           Validators.maxLength(32),
         ],
       }),
-      value: new FormControl(null, {
-        validators: [Validators.required],
+      amount: new FormControl(null, {
+        validators: [Validators.required, Validators.pattern(/^[0-9]+$/)],
       }),
     });
   }

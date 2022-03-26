@@ -78,13 +78,4 @@ export class DashHeaderComponent implements OnInit {
         }
       });
   }
-  openDialog() {
-    const dialogRef = this.dialog.open(DiagloComponent);
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-  test(e: any) {
-    console.log(e);
-  }
 }
