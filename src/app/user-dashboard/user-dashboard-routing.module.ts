@@ -6,6 +6,8 @@ import { MiningDevicesComponent } from './mining-devices/mining-devices.componen
 import { OverviewComponent } from './overview/overview.component';
 import { ChoosePlanComponent } from './plans/choose-plan/choose-plan.component';
 import { PlansComponent } from './plans/plans.component';
+import { WithdrawComponent } from './withdraw/withdraw.component';
+import { DepositeComponent } from './deposite/deposite.component';
 
 const routes: Routes = [
   {
@@ -23,6 +25,14 @@ const routes: Routes = [
       {
         path: 'choose-miner',
         component: ChooseMinerComponent,
+      },
+      {
+        path: 'withdraw',
+        component: WithdrawComponent,
+      },
+      {
+        path: 'deposite',
+        component: DepositeComponent,
       },
     ],
   },

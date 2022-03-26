@@ -1,0 +1,58 @@
+<header class="dash-heading">
+  <h2 class="dash-heading__title">Withdraw</h2>
+  <p class="dash-heading__para">Withdraw your funds to your crypto wallet</p>
+</header>
+<div class="dashboard-container">
+  <div class="wallet">
+    <div class="wallet__balance">
+      <h3 class="wallet__balance__title">Select desired plan</h3>
+      <div class="row g-1">
+        <div class="col-12 col-md-6 col-xl-3" *ngFor="let balance of balances">
+          <div class="wallet__balance__box">
+            <div class="wallet__balance__box__icon">
+              <i class="fab fa-btc lg"></i>
+            </div>
+            <div>
+              <h4 class="wallet__balance__box__name">
+                {{ balance.name }} Balance
+              </h4>
+              <p class="wallet__balance__box__value">
+                {{ balance.value }} {{ balance.name }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wallet__funds">
+      <h4 class="wallet__funds__title">Withdraw your funds</h4>
+      <div class="wallet__funds__heading">
+        <button
+          class="btn btn--disabled"
+          (click)="crypto = true"
+          [ngClass]="{ 'btn--darker--2': crypto }"
+        >
+          <div class="wallet__funds__heading__icon">
+            <i class="fas fa-wallet"></i>
+          </div>
+          <div class="wallet__funds__heading__title-1">
+            <span> Crypto Wallet</span>
+          </div>
+        </button>
+        <button
+          class="btn btn--disabled"
+          (click)="crypto = false"
+          [ngClass]="{ 'btn--darker--2': !crypto }"
+        >
+          <div class="wallet__funds__heading__icon">
+            <i class="fas fa-university"></i>
+          </div>
+          <div class="wallet__funds__heading__title-2">
+            <span>Coming soon!</span> <span>Bank Transfer</span>
+          </div>
+        </button>
+      </div>
+      <div class="wallet__funds__body"></div>
+    </div>
+  </div>
+</div>

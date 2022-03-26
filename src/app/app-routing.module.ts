@@ -31,6 +31,15 @@ const routes: Routes = [
       { path: 'reset-your-password', component: ResetPasswordComponent },
     ],
   },
+  {
+    path: 'admin',
+    component: UserComponent,
+    children: [
+      { path: 'signin', component: SigninComponent },
+      { path: 'signup', component: SignupComponent },
+      { path: 'reset-your-password', component: ResetPasswordComponent },
+    ],
+  },
   { path: '', redirectTo: 'user/signin', pathMatch: 'full' },
   { path: '**', redirectTo: 'user/signin' },
 ];

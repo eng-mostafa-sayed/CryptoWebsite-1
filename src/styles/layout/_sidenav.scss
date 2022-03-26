@@ -35,12 +35,14 @@
       align-items: center;
       min-height: 5.2rem;
       padding: 1rem;
-
       a {
         text-decoration: none;
       }
       i {
         margin-right: 1.2rem;
+      }
+      i.arrow {
+        margin-left: auto;
       }
       &:hover,
       &--highlight {
@@ -51,6 +53,21 @@
         i {
           color: #fff;
           transition: all ease-out 0.3s;
+        }
+      }
+      &--collapsed {
+        color: $color-white-2;
+        &:hover,
+        &--highlight {
+          background-color: transparent;
+          color: $color-white;
+          border-radius: 0.8rem;
+          cursor: pointer;
+          a,
+          i {
+            color: #fff;
+            transition: all ease-out 0.3s;
+          }
         }
       }
     }

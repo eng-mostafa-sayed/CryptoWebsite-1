@@ -26,6 +26,33 @@
         <i class="fas fa-server"></i> <a>Mining devices</a>
         <a routerLink="choose-miner" style="visibility: hidden"></a>
       </li>
+      <li
+        routerLinkActive="side-nav__content__item--highlight"
+        class="side-nav__content__item"
+        (click)="collapsed = !collapsed"
+      >
+        <i class="fas fa-wallet"></i> <a> Wallet</a>
+        <i class="fas fa-angle-down arrow" *ngIf="!collapsed"></i>
+        <i class="fas fa-angle-up arrow" *ngIf="collapsed"></i>
+        <a routerLink="withdraw" style="visibility: hidden"></a>
+        <a routerLink="deposite" style="visibility: hidden"></a>
+      </li>
+      <li
+        routerLink="withdraw"
+        routerLinkActive="side-nav__content__item--collapsed--highlight"
+        class="side-nav__content__item side-nav__content__item--collapsed"
+        *ngIf="collapsed"
+      >
+        <a>Withdraw</a>
+      </li>
+      <li
+        routerLink="deposite"
+        routerLinkActive="side-nav__content__item--collapsed--highlight"
+        class="side-nav__content__item side-nav__content__item--collapsed"
+        *ngIf="collapsed"
+      >
+        <a>Deposite</a>
+      </li>
     </ul>
   </div>
 </div>

@@ -31,6 +31,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSelectModule } from '@angular/material/select';
 import { ChartModule } from 'primeng/chart';
 import { TableModule } from 'primeng/table';
+import { WithdrawComponent } from './withdraw/withdraw.component';
+import { DepositeComponent } from './deposite/deposite.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { TableModule } from 'primeng/table';
     ChoosePlanComponent,
     ChooseMinerComponent,
     DiagloComponent,
+    WithdrawComponent,
+    DepositeComponent,
   ],
   imports: [
     CommonModule,
