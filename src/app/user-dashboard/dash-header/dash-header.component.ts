@@ -1,8 +1,6 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { DiagloComponent } from '../diaglo/diaglo.component';
 
 @Component({
   selector: 'app-dash-header',
@@ -12,32 +10,8 @@ import { DiagloComponent } from '../diaglo/diaglo.component';
 export class DashHeaderComponent implements OnInit {
   currentRoute: string = 'Overview';
   collapse = false;
-  displayFiat = true;
-  coins: { crypto: string; value: string; fiatValue: number }[] = [
-    {
-      crypto: 'BTC',
-      value: '0.100000',
-      fiatValue: 52,
-    },
-    {
-      crypto: 'RVN',
-      value: '0.560000',
-      fiatValue: 62,
-    },
-    {
-      crypto: 'STX',
-      value: '0.000550',
-      fiatValue: 5,
-    },
-    {
-      crypto: 'ETH',
-      value: '0.000000',
-      fiatValue: 10,
-    },
-  ];
-  selected = this.coins[0].value;
 
-  constructor(private router: Router, public dialog: MatDialog) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     //to survive a reload

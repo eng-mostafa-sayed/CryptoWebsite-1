@@ -1,0 +1,14 @@
+.home {
+  height: 100vh;
+  width: 100vw;
+  background-image: url("https://wallpaper.dog/large/20525405.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.side-nav__content {
+  display: flex;
+  flex-direction: row;
+  background-color: rgba(51, 51, 51, 0.507);
+  padding-top: 1rem;
+  justify-content: space-around;
+}

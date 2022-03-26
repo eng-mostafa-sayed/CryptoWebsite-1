@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ResetPasswordComponent } from './Auth/reset-password/reset-password.component';
 import { SigninComponent } from './Auth/signin/signin.component';
-import { SignupOrsigninComponent } from './Auth/signup-orsignin/signup-orsignin.component';
 import { SignupComponent } from './Auth/signup/signup.component';
 import { UserComponent } from './Auth/user/user.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
+  },
   {
     path: 'user/dashboard',
     loadChildren: () =>
@@ -40,8 +43,8 @@ const routes: Routes = [
       { path: 'reset-your-password', component: ResetPasswordComponent },
     ],
   },
-  { path: '', redirectTo: 'user/signin', pathMatch: 'full' },
-  { path: '**', redirectTo: 'user/signin' },
+  // { path: '', redirectTo: 'user/signin', pathMatch: 'full' },
+  // { path: '**', redirectTo: 'user/signin' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
