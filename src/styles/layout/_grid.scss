@@ -27,6 +27,9 @@
   @include respond(xl) {
     padding-left: calc($sidenav-width-collapsed + 3rem);
   }
+  @include respond(sm) {
+    padding-left: 3.2rem;
+  }
   &__title {
     margin-bottom: 0.4rem;
     font-size: 3.2rem;
@@ -68,5 +71,8 @@
   width: $sidenav-width;
   @include respond(xl) {
     width: $sidenav-width-collapsed;
+  }
+  @include respond(sm) {
+    height: 88px;
   }
 }

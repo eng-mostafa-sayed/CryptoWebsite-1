@@ -90,7 +90,7 @@
       }
     }
     &:hover {
-      position: fixed;
+      position: absolute;
       top: 7.2rem;
       height: 100vh;
       z-index: 9;
@@ -111,5 +111,9 @@
         }
       }
     }
+  }
+  @include respond(sm) {
+    display: none;
+    width: $sidenav-width-collapsed;
   }
 }

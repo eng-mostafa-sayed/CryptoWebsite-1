@@ -13,6 +13,9 @@ html {
     font-size: 50%; //1 rem = 8px, 8/16 = 50%
   }
 
+  @include respond(sm) {
+    font-size: 40%;
+  }
   @include respond(xxl) {
     // font-size: 75%; //1rem = 12, 12/16
   }

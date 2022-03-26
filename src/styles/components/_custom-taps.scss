@@ -58,6 +58,10 @@
     &--chart {
       height: 31.8rem;
       overflow: hidden;
+      @include respond(sm) {
+        height: auto;
+        overflow: auto;
+      }
     }
     &--small {
       max-width: 55rem;

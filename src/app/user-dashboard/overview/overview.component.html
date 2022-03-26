@@ -9,7 +9,7 @@
       <div class="col-7 col-md-6 col-xl-3" *ngFor="let balance of balances">
         <div class="balance-overview__boxes__box">
           <div class="row">
-            <div class="col-3">
+            <div class="col-12 col-md-3">
               <i
                 class="fab fa-btc lg"
                 *ngIf="balance.currency == 'BTC' || balance.currency == 'RVN'"
@@ -19,7 +19,7 @@
                 *ngIf="balance.currency == 'ETH' || balance.currency == 'STX'"
               ></i>
             </div>
-            <div class="col-9">
+            <div class="col-12 col-md-9">
               <span
                 style="
                   font-weight: bold;
