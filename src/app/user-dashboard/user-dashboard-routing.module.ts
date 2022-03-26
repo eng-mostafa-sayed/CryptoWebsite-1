@@ -31,7 +31,7 @@ const routes: Routes = [
         component: WithdrawComponent,
       },
       {
-        path: 'deposite',
+        path: 'deposit',
         component: DepositeComponent,
       },
     ],

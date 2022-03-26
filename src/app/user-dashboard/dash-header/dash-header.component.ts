@@ -41,40 +41,40 @@ export class DashHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     //to survive a reload
-    if (this.router.url == '/dashboard/overview') {
+    if (this.router.url == '/user-dashboard/overview') {
       this.currentRoute = 'Overview';
     }
-    if (this.router.url == '/dashboard/hashrate-plans') {
+    if (this.router.url == '/user-dashboard/hashrate-plans') {
       this.currentRoute = 'Hashrate plans';
     }
-    if (this.router.url == '/dashboard/mining-devices') {
+    if (this.router.url == '/user-dashboard/mining-devices') {
       this.currentRoute = 'Mining devices';
     }
-    if (this.router.url == '/dashboard/withdraw') {
+    if (this.router.url == '/user-dashboard/withdraw') {
       this.currentRoute = 'Withdraw';
     }
-    if (this.router.url == '/dashboard/referral-program') {
-      this.currentRoute = 'Referral Program';
+    if (this.router.url == '/user-dashboard/deposit') {
+      this.currentRoute = 'Deposit';
     }
 
     //to update whenever the user navigate to another route
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: any) => {
-        if (event.url == '/dashboard/overview') {
+        if (event.url == '/user-dashboard/overview') {
           this.currentRoute = 'Overview';
         }
-        if (event.url == '/dashboard/hashrate-plans') {
+        if (event.url == '/user-dashboard/hashrate-plans') {
           this.currentRoute = 'Hashrate plans';
         }
-        if (event.url == '/dashboard/mining-devices') {
+        if (event.url == '/user-dashboard/mining-devices') {
           this.currentRoute = 'Mining devices';
         }
-        if (event.url == '/dashboard/withdraw') {
+        if (event.url == '/user-dashboard/withdraw') {
           this.currentRoute = 'Withdraw';
         }
-        if (event.url == '/dashboard/referral-program') {
-          this.currentRoute = 'Referral Program';
+        if (event.url == '/user-dashboard/deposit') {
+          this.currentRoute = 'Deposit';
         }
       });
   }
