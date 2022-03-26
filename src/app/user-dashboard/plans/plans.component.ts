@@ -2,6 +2,8 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { Customer, Representative } from './customer';
+import { CustomerService } from './customerservice';
 
 export interface Plan {
   date: Date;
@@ -149,19 +151,23 @@ const activeHashPower = [
   styleUrls: ['./plans.component.scss'],
 })
 export class PlansComponent implements AfterViewInit, OnInit {
+  ////////////////////////////////////////////////////////////////
+  data = activePlanData;
+
+  /////////////////////////////////////////////////////////////////
   minedChartTapOpend = 'tap1';
   tap1Data: any;
   tap2Data: any;
   tap3Data: any;
   tap4Data: any;
   basicOptions: any;
-  displayedColumns: string[] = [
-    'date',
-    'name',
-    'total',
-    'current',
-    'average',
-    'expire',
+  displayedColumns = [
+    { name: 'date', field: 'date' },
+    { name: 'name', field: 'name' },
+    { name: 'total', field: 'total' },
+    { name: 'current', field: 'current' },
+    { name: 'average', field: 'average' },
+    { name: 'expire', field: 'expire' },
   ];
   activeHash: { crypto: string; plans: string; speed: string }[];
   activePlanDataLength: number = activePlanData.length;
@@ -175,7 +181,10 @@ export class PlansComponent implements AfterViewInit, OnInit {
   @ViewChild('activeSort') activeSort: MatSort;
   @ViewChild('expiredSort') expiredSort: MatSort;
 
-  constructor() {}
+  constructor(private customerService: CustomerService) {
+    /////////////////////////////
+    ///////////////////////////
+  }
   ngOnInit(): void {
     this.dataSourceActive.filterPredicate = function (
       data,
@@ -281,6 +290,7 @@ export class PlansComponent implements AfterViewInit, OnInit {
       },
     };
   }
+
   minedChartTap1() {
     this.minedChartTapOpend = 'tap1';
   }
