@@ -41,23 +41,23 @@ export class SignupOrsigninComponent implements OnInit {
     this.statusValue = false;
   }
   onSignup() {
-    this.authService.addNewUser(
-      this.signupForm.value.name,
-      this.signupForm.value.email,
-      this.signupForm.value.phone,
-      this.signupForm.value.password
-    );
+    // this.authService.addNewUser(
+    //   this.signupForm.value.name,
+    //   this.signupForm.value.email,
+    //   this.signupForm.value.phone,
+    //   this.signupForm.value.password
+    // );
     // this.authService.statusObs.next(false);
     this.statusValue = false;
     this.signupForm.reset();
   }
   onSignin() {
-    if (this.signinForm.value.email && this.signinForm.value.password)
-      this.authService.login(
-        this.signinForm.value.email,
-        this.signinForm.value.password
-      );
-    this.loading = true;
+    // if (this.signinForm.value.email && this.signinForm.value.password)
+    //   this.authService.login(
+    //     this.signinForm.value.email,
+    //     this.signinForm.value.password
+    //   );
+    // this.loading = true;
   }
   changeToSignup() {
     this.statusValue = true;

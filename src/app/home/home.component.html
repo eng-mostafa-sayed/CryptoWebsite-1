@@ -1,23 +1,27 @@
 <div class="home">
   <div class="home__navbar">
-    <div class="side-nav">
-      <ul class="side-nav__content">
-        <li
-          routerLink="user/dashboard/overview"
-          class="side-nav__content__item"
-        >
-          <a>User Dashboard</a>
-        </li>
+    <ul class="row g-5 justify-content-between">
+      <div class="col-12 col-lg-4">
         <li
           routerLink="admin/dashboard/overview"
-          class="side-nav__content__item"
+          class="btn btn--light btn--animated"
         >
           <a>Admin Dashboard</a>
         </li>
-        <li routerLink="user/signin" class="side-nav__content__item">
+      </div>
+      <div class="col-12 col-lg-4">
+        <li
+          routerLink="user/dashboard/overview"
+          class="btn btn--light btn--animated"
+        >
+          <a>User Dashboard</a>
+        </li>
+      </div>
+      <div class="col-12 col-lg-4">
+        <li routerLink="user/signin" class="btn btn--light btn--animated">
           <a>User sign in</a>
         </li>
-      </ul>
-    </div>
+      </div>
+    </ul>
   </div>
 </div>

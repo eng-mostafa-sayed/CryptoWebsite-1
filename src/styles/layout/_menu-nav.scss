@@ -7,7 +7,7 @@
     padding: 1rem;
     position: absolute;
     right: 1rem;
-    top: 7.6rem;
+    top: 9rem;
     background-color: rgba($color-background, 0.9);
     border-radius: 8px;
     backdrop-filter: blur(3px);
@@ -21,8 +21,8 @@
       transform: rotate(-135deg);
       -webkit-transform: rotate(-135deg);
       position: absolute;
-      top: -4px;
-      left: 71%;
+      top: -3px;
+      left: 75px;
     }
     &__item {
       display: flex;

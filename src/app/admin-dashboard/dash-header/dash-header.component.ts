@@ -9,7 +9,9 @@ import { filter } from 'rxjs/operators';
 })
 export class DashHeaderComponent implements OnInit {
   currentRoute: string = 'Overview';
-  collapse = false;
+  dropdownCollapsed = false;
+  collapsed = false;
+  toggleMenu = false;
   constructor(private router: Router) {}
 
   ngOnInit(): void {

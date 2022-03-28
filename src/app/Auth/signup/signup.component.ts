@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -10,10 +11,14 @@ import { Router } from '@angular/router';
 export class SignupComponent implements OnInit {
   loading = false;
   signupForm!: FormGroup;
-  constructor(private router: Router) {}
+  passwordShown = false;
+  constructor(private router: Router, public authService: AuthService) {}
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
+      name: new FormControl(null, {
+        validators: [Validators.required],
+      }),
       email: new FormControl(null, {
         validators: [Validators.required, Validators.email],
       }),
@@ -29,10 +34,32 @@ export class SignupComponent implements OnInit {
     });
   }
   onSignup() {
-    if (this.signupForm.invalid) {
-      return;
-    } else {
-      this.router.navigate(['signup/confirmation']);
+    if (
+      this.signupForm.value.name &&
+      this.signupForm.value.email &&
+      this.signupForm.value.phone &&
+      this.signupForm.value.password
+    ) {
+      this.authService
+        .signup(
+          this.signupForm.value.name,
+          this.signupForm.value.email,
+          this.signupForm.value.phone,
+          this.signupForm.value.password
+        )
+        .subscribe({
+          next: (res) => {
+            this.signupForm.reset();
+            this.router.navigate(['signin']);
+          },
+          error: (err) => {
+            console.log(err);
+          },
+        });
     }
+  }
+  changeInput(input: any): any {
+    input.type = input.type === 'password' ? 'text' : 'password';
+    this.passwordShown = !this.passwordShown;
   }
 }

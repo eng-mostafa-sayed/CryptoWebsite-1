@@ -4,11 +4,19 @@
   background-image: url("https://wallpaper.dog/large/20525405.jpg");
   background-size: cover;
   background-position: center;
-}
-.side-nav__content {
-  display: flex;
-  flex-direction: row;
-  background-color: rgb(1 8 27 / 73%);
-  padding-top: 1rem;
-  justify-content: space-around;
+  &__navbar {
+    background-color: rgb(1 8 27 / 73%);
+    padding: 2rem 8rem;
+    margin: 0 auto;
+    li {
+      cursor: pointer;
+      background-color: #ddd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 80px;
+      padding: 1rem;
+      min-width: 300px;
+    }
+  }
 }

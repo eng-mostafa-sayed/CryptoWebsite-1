@@ -13,7 +13,6 @@ import { ChoosePlanComponent } from './plans/choose-plan/choose-plan.component';
 import { ChooseMinerComponent } from './mining-devices/choose-miner/choose-miner.component';
 import { DiagloComponent } from './diaglo/diaglo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -81,7 +80,6 @@ import { DepositeComponent } from './deposite/deposite.component';
     MatSlideToggleModule,
     MatSelectModule,
     ChartModule,
-    TableModule,
     TableModule,
     CalendarModule,
     SliderModule,

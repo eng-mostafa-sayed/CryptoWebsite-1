@@ -7,79 +7,66 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private token: string | null;
-  private userId: string | null;
-  private email: string | null;
   authStatusListner = new BehaviorSubject<boolean>(false);
   saveTimeout: any;
   constructor(private http: HttpClient, private router: Router) {}
 
-  getToken() {
-    return this.token;
-  }
-  getUserId() {
-    return this.userId;
-  }
-  getCurrentUserEmail() {
-    return this.email;
-  }
-
-  addNewUser(name: String, email: String, phone: number, password: String) {
-    this.http
-      .post<any>('https://expertminer.herokuapp.com/api/signup', {
+  signup(name: String, email: String, phone: number, password: String) {
+    return this.http.post<any>(
+      'https://cominer.herokuapp.com/api/user/register?key=c3fe929c35dd0cbcc8f062bb60e9d2ce7d14be21513d07c53e370d81ba9de4a4',
+      {
         name,
         email,
         phone,
         password,
-      })
-      .subscribe(
-        (res) => {
-          console.log(res);
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+      }
+    );
   }
-  login(email: String, password: String) {
+  signin(email: String, password: String) {
     this.http
       .post(
-        'https://cominer.herokuapp.com/api/login?key=c3fe929c35dd0cbcc8f062bb60e9d2ce7d14be21513d07c53e370d81ba9de4a4 ',
+        'https://cominer.herokuapp.com/api/login?key=c3fe929c35dd0cbcc8f062bb60e9d2ce7d14be21513d07c53e370d81ba9de4a4',
         {
           email: email,
           password: password,
         }
       )
-      .subscribe(
-        (res) => {
-          //log me out after the expire date
-
-          // this.token = res.token;
-          // this.userId = res.user.userId;
-          // this.email = res.user.email;
-          // const newExpirDate = Date.now() + res.expiresIn * 60 * 1000;
-          // //save data to local storage
-          // this.saveAuthData(
-          //   res.token,
-          //   newExpirDate,
-          //   res.user.email,
-          //   res.user.userId
-          // );
-          console.log(res);
-          this.authStatusListner.next(true);
-          this.router.navigate(['/dashboard/overview']);
-        },
-        (err) => {
+      .subscribe({
+        next: (res) => {},
+        error: (err) => {
           console.log(err);
-        }
-      );
+        },
+      });
+    // .subscribe(
+    //   (res) => {
+    //     //log me out after the expire date
+
+    //     // this.token = res.token;
+    //     // this.userId = res.user.userId;
+    //     // this.email = res.user.email;
+    //     // const newExpirDate = Date.now() + res.expiresIn * 60 * 1000;
+    //     // //save data to local storage
+    //     // this.saveAuthData(
+    //     //   res.token,
+    //     //   newExpirDate,
+    //     //   res.user.email,
+    //     //   res.user.userId
+    //     // );
+    //     console.log(res);
+    //     this.authStatusListner.next(true);
+    //     this.router.navigate(['/dashboard/overview']);
+    //   },
+    //   (err) => {
+    //     console.log(err);
+    //   }
+    // );
   }
   logout() {
     clearTimeout(this.saveTimeout);
     this.clearAuthData();
-    this.token = '';
-    this.userId = '';
-    this.email = '';
+    // this.token = '';
+    // this.userId = '';
+    // this.email = '';
     this.authStatusListner.next(false);
     this.router.navigate(['/']);
   }
@@ -94,9 +81,9 @@ export class AuthService {
         this.logout();
       }, newExpirDate);
       this.authStatusListner.next(true);
-      this.token = authInfo.token;
-      this.userId = authInfo.userId;
-      this.email = authInfo.email;
+      // this.token = authInfo.token;
+      // this.userId = authInfo.userId;
+      // this.email = authInfo.email;
     }
   }
 

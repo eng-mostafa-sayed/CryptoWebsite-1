@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { AdminDashboardRoutingModule } from './admin-dashboard-routing.module';
 import { AdminDashboardComponent } from './admin-dashboard.component';
 import { DashHeaderComponent } from './dash-header/dash-header.component';
@@ -10,7 +9,18 @@ import { PlansComponent } from './plans/plans.component';
 import { SubUsersComponent } from './sub-users/sub-users.component';
 import { MinersComponent } from './miners/miners.component';
 import { RequestComponent } from './request/request.component';
-
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { CalendarModule } from 'primeng/calendar';
+import { SliderModule } from 'primeng/slider';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ContextMenuModule } from 'primeng/contextmenu';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { InputTextModule } from 'primeng/inputtext';
+import { SubUserComponent } from './sub-user/sub-user.component';
 @NgModule({
   declarations: [
     AdminDashboardComponent,
@@ -21,7 +31,22 @@ import { RequestComponent } from './request/request.component';
     SubUsersComponent,
     MinersComponent,
     RequestComponent,
+    SubUserComponent,
   ],
-  imports: [CommonModule, AdminDashboardRoutingModule],
+  imports: [
+    CommonModule,
+    AdminDashboardRoutingModule,
+    TableModule,
+    CalendarModule,
+    SliderModule,
+    DialogModule,
+    MultiSelectModule,
+    ContextMenuModule,
+    DropdownModule,
+    ButtonModule,
+    ToastModule,
+    InputTextModule,
+    ProgressBarModule,
+  ],
 })
 export class AdminDashboardModule {}

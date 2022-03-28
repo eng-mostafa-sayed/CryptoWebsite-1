@@ -11,6 +11,9 @@
   @include respond(sm) {
     padding: 4rem;
   }
+  &--admin {
+    padding-top: calc($top-nav-height + 3.2rem);
+  }
 }
 .dash-heading {
   display: flex;

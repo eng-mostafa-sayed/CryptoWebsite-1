@@ -3,6 +3,7 @@
   background-color: $color-background-dark;
   font-weight: 700;
   font-size: 1.4rem;
+  border-radius: 8px;
 }
 .p-paginator {
   background-color: $color-background-dark;
@@ -44,6 +45,15 @@
   background-color: $color-background-dark;
   color: $color-white;
 }
+.p-datatable .p-datatable-header {
+  background: #302c3f;
+  box-shadow: inset 0px -1px 0px #302c3f;
+  border: none;
+  color: $color-white-2;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
 // .table {
 //   width: 1128px;
 //   // button {

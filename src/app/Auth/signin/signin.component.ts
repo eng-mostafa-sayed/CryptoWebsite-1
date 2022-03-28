@@ -25,11 +25,10 @@ export class SigninComponent implements OnInit {
   }
   onSignin() {
     if (this.signinForm.value.email && this.signinForm.value.password)
-      this.authService.login(
+      this.authService.signin(
         this.signinForm.value.email,
         this.signinForm.value.password
       );
-    this.loading = true;
   }
   changeInput(input: any): any {
     input.type = input.type === 'password' ? 'text' : 'password';

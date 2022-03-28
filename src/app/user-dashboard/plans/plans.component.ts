@@ -152,7 +152,8 @@ const activeHashPower = [
 })
 export class PlansComponent implements AfterViewInit, OnInit {
   ////////////////////////////////////////////////////////////////
-  data = activePlanData;
+  activePlanData = activePlanData;
+  expiredPlanData = expiredPlanData;
 
   /////////////////////////////////////////////////////////////////
   minedChartTapOpend = 'tap1';
