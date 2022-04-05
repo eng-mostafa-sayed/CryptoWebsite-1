@@ -16,12 +16,12 @@ export interface Plan {
 
 let expiredPlanData: Plan[] = [
   {
-    date: 'Loading...',
-    name: 'Loading...',
+    date: '',
+    name: '',
     total: 0,
     current: 0,
     average: 0,
-    expire: 'Loading...',
+    expire: '',
   },
 ];
 
@@ -61,12 +61,12 @@ export class PlansComponent implements AfterViewInit, OnInit {
   ///////////////////////////////////////////////////////////////////
   activePlanData = [
     {
-      date: 'Loading...',
-      name: 'Loading...',
+      date: '',
+      name: '',
       total: 0,
       current: 0,
       average: 0,
-      expire: 'Loading...',
+      expire: '',
     },
   ];
   expiredPlanData = expiredPlanData;

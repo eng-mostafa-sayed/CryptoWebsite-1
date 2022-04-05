@@ -11,6 +11,7 @@ export class DashHeaderComponent implements OnInit {
   currentRoute: string = 'Overview';
   collapsed = false;
   toggleMenu = false;
+  _name: any = sessionStorage.getItem('name');
 
   constructor(private router: Router) {}
 
