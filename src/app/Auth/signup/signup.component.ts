@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class SignupComponent implements OnInit {
   loading = false;
   signupForm!: FormGroup;
   passwordShown = false;
+  errorMesg = false;
   constructor(private router: Router, public authService: AuthService) {}
 
   ngOnInit(): void {
@@ -48,12 +50,18 @@ export class SignupComponent implements OnInit {
           this.signupForm.value.password
         )
         .subscribe({
-          next: (res) => {
-            this.signupForm.reset();
-            this.router.navigate(['signin']);
+          next: (res: any) => {
+            console.log('working');
+            this.router.navigate(['/user/signin']);
           },
-          error: (err) => {
-            console.log(err);
+          error: (err: any) => {
+            if (err.status == 201) {
+              console.log('working');
+              console.log(err);
+              this.router.navigate(['/user/signin']);
+            } else {
+              this.errorMesg = true;
+            }
           },
         });
     }

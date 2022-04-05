@@ -93,8 +93,8 @@
     <button type="submit" class="login-box__btn btn btn--light btn--animated">
       Signup
     </button>
-    <!-- <span class="login-box__error" *ngIf="signupForm.invalid"
-      >The email or password you entered is incorrect. Please try again</span
-    > -->
+    <span class="login-box__error" *ngIf="errorMesg"
+      >Invalid email or phone. Please try again</span
+    >
   </form>
 </div>
