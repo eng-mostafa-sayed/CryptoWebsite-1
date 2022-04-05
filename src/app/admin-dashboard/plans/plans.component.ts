@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-plans',
@@ -8,6 +9,18 @@ import { Component, OnInit } from '@angular/core';
 export class PlansComponent implements OnInit {
   dropCollapsed = false;
   selected = 'all';
+  newPlanForm: FormGroup;
+  newFormOpend = false;
+  editFormOpend = false;
+  cities: any[] = [
+    { name: 'New York', code: 'NY' },
+    { name: 'Rome', code: 'RM' },
+    { name: 'London', code: 'LDN' },
+    { name: 'Istanbul', code: 'IST' },
+    { name: 'Paris', code: 'PRS' },
+  ];
+  selectedMiner = '';
+  selectedMinerEdit = '';
   miners = [
     {
       name: 'Antminer L7 9500Mh ',
@@ -58,5 +71,29 @@ export class PlansComponent implements OnInit {
     } else if (this.selected == 'all') {
       return true;
     }
+
+    this.newPlanForm = new FormGroup({
+      name: new FormControl(null),
+      currency: new FormControl(null),
+      power: new FormControl(null),
+      profitability: new FormControl(null),
+      price: new FormControl(null),
+    });
+  }
+  checkSelected(minerName: string) {
+    if (this.selectedMiner != minerName) {
+      this.selectedMiner = minerName;
+      this.selectedMinerEdit = minerName;
+    } else this.selectedMiner = '';
+  }
+  onSave() {
+    if (
+      this.newPlanForm.value.name &&
+      this.newPlanForm.value.currency &&
+      this.newPlanForm.value.power &&
+      this.newPlanForm.value.profitability &&
+      this.newPlanForm.value.price
+    ) {
+    } else return;
   }
 }

@@ -161,7 +161,7 @@
                   <span>Today Mined </span>
                 </div>
                 <div class="summery__item__value">
-                  <h4>{{ BTC.mined }} BTC</h4>
+                  <span>{{ BTC.mined }} BTC</span>
                 </div>
               </div>
               <div class="summery__item col-12 col-lg-4">
@@ -170,7 +170,7 @@
                   <span>Running plans </span>
                 </div>
                 <div class="summery__item__value">
-                  <h4>{{ BTC.plans }} active plans</h4>
+                  <span>{{ BTC.plans }} active plans</span>
                 </div>
               </div>
             </div>
@@ -205,7 +205,7 @@
                   <span>Today Mined </span>
                 </div>
                 <div class="summery__item__value">
-                  <h4>{{ ETH.mined }} ETH</h4>
+                  <span>{{ ETH.mined }} ETH</span>
                 </div>
               </div>
               <div class="summery__item col-12 col-md-4">
@@ -214,7 +214,7 @@
                   <span>Running plans </span>
                 </div>
                 <div class="summery__item__value">
-                  <h4>{{ ETH.plans }} active plans</h4>
+                  <span>{{ ETH.plans }} active plans</span>
                 </div>
               </div>
             </div>
@@ -249,7 +249,7 @@
                   <span>Today Mined </span>
                 </div>
                 <div class="summery__item__value">
-                  <h4>{{ RVN.mined }} RVN</h4>
+                  <span>{{ RVN.mined }} RVN</span>
                 </div>
               </div>
               <div class="summery__item col-12 col-md-4">
@@ -258,7 +258,7 @@
                   <span>Running plans </span>
                 </div>
                 <div class="summery__item__value">
-                  <h4>{{ RVN.plans }} active plans</h4>
+                  <span>{{ RVN.plans }} active plans</span>
                 </div>
               </div>
             </div>
@@ -293,7 +293,7 @@
                   <span>Today Mined </span>
                 </div>
                 <div class="summery__item__value">
-                  <h4>{{ STX.mined }} STX</h4>
+                  <span>{{ STX.mined }} STX</span>
                 </div>
               </div>
               <div class="summery__item col-12 col-lg-4">
@@ -302,7 +302,7 @@
                   <span>Running plans </span>
                 </div>
                 <div class="summery__item__value">
-                  <h4>{{ STX.plans }} active plans</h4>
+                  <span>{{ STX.plans }} active plans</span>
                 </div>
               </div>
             </div>
@@ -327,7 +327,7 @@
             <h4
               class="custom-taps__heading__title col-12 col-lg-5 text-sm-start mb-sm-3 mb-md-0"
             >
-              Currency Mining Details
+              Daily mined
             </h4>
             <div
               class="custom-taps__heading__taps d-flex justify-content-end col-12 col-lg-7"
@@ -435,7 +435,7 @@
           <span>Learn more</span> <i class="fas fa-external-link-alt"></i>
         </button>
       </div>
-      <!-- <div class="gains-chart mt-5">
+      <div class="gains-chart mt-5">
         <div class="custom-taps">
           <div class="custom-taps__heading">
             <h4 class="custom-taps__heading__title mb-3">Daily Gains</h4>
@@ -484,7 +484,7 @@
           </div>
           <div class="custom-taps__body" *ngIf="minedChartTapOpend == 'tap1'">
             <p-chart
-              height="300px"
+              height="225px"
               type="line"
               [data]="tap1Data"
               [options]="basicOptions"
@@ -492,6 +492,7 @@
           </div>
           <div class="custom-taps__body" *ngIf="minedChartTapOpend == 'tap2'">
             <p-chart
+              height="225px"
               type="line"
               [data]="tap2Data"
               [options]="basicOptions"
@@ -499,6 +500,7 @@
           </div>
           <div class="custom-taps__body" *ngIf="minedChartTapOpend == 'tap3'">
             <p-chart
+              height="225px"
               type="line"
               [data]="tap3Data"
               [options]="basicOptions"
@@ -506,13 +508,14 @@
           </div>
           <div class="custom-taps__body" *ngIf="minedChartTapOpend == 'tap4'">
             <p-chart
+              height="225px"
               type="line"
               [data]="tap4Data"
               [options]="basicOptions"
             ></p-chart>
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
 </div>

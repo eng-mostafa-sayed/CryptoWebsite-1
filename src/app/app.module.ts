@@ -25,7 +25,6 @@ import { SigninComponent } from './Auth/signin/signin.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { ConfirmationComponent } from './Auth/confirmation/confirmation.component';
 import { SliderComponent } from './Auth/slider/slider.component';
-import { OverviewComponent } from './user-dashboard/overview/overview.component';
 import { SidenavComponent } from './user-dashboard/sidenav/sidenav.component';
 import { PlansComponent } from './user-dashboard/plans/plans.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
@@ -33,7 +32,6 @@ import { MiningDevicesComponent } from './user-dashboard/mining-devices/mining-d
 import { SignupOrsigninComponent } from './Auth/signup-orsignin/signup-orsignin.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { DashHeaderComponent } from './user-dashboard/dash-header/dash-header.component';
-import { MiningDetailsComponent } from './user-dashboard/overview/mining-details/mining-details.component';
 import { TabsComponent } from './shared/tabs/tabs.component';
 import { CommonModule } from '@angular/common';
 import { MatSortModule } from '@angular/material/sort';

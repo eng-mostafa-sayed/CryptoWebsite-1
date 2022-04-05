@@ -6,8 +6,8 @@
     <div class="col-4">
       <button
         class="btn btn--animated btn--light d-block ml-auto"
-        [routerLink]="['../choose-plan']"
         style="margin: 0 0 2.4rem auto; padding: 1.8rem 2.4rem"
+        (click)="newFormOpend = true"
       >
         <i class="fas fa-plus mr-4"></i>
         <span style="font-weight: 700; font-size: 1.6rem"> New Plan</span>
@@ -97,8 +97,19 @@
             <h3 class="miner__title">{{ miner.name }}</h3>
             <span class="miner__sub">Added on: {{ miner.date }}</span>
           </div>
-          <div class="miner__menu col-2">
-            <i class="fas fa-ellipsis-v"></i>
+          <div class="miner__menu col-1">
+            <div class="miner__menu__btn" (click)="checkSelected(miner.name)">
+              <i class="fas fa-ellipsis-v"></i>
+            </div>
+            <div class="miner__menu__body" *ngIf="selectedMiner == miner.name">
+              <div
+                class="miner__menu__body__item"
+                (click)="editFormOpend = true; checkSelected(miner.name)"
+              >
+                Edit
+              </div>
+              <div class="miner__menu__body__item">Delete</div>
+            </div>
           </div>
         </div>
         <img
@@ -139,6 +150,246 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <!-- the new plan form -->
+  <div class="new-plan" *ngIf="newFormOpend == true">
+    <div class="plan-form">
+      <div class="row">
+        <div class="col-10">
+          <h3 class="plan-form__title">Add new plan</h3>
+          <p class="plan-form__sub">Added on: 12 Jan 2022 - 12:00PM</p>
+        </div>
+        <div class="col-2">
+          <div class="plan-form__close" (click)="newFormOpend = false">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+      </div>
+      <div class="divider my-5"></div>
+      <form (ngSubmit)="onSave()" [formGroup]="newPlanForm">
+        <div class="input-field-group">
+          <label class="input-field-group__label" for="name">Plan Name</label>
+          <input
+            class="input-field-group__input"
+            placeholder=""
+            type="text"
+            id="name"
+            formControlName="name"
+            [ngClass]="{
+              'input-field-group__input--invalid':
+                newPlanForm.get('name')?.invalid &&
+                newPlanForm.get('name')?.dirty
+            }"
+            #input
+          />
+          <div class="input-field-group__icon">%</div>
+        </div>
+        <div class="input-field-group">
+          <label class="input-field-group__label" for="currency"
+            >Mining Currency</label
+          >
+          <input
+            class="input-field-group__input"
+            placeholder=""
+            type="text"
+            id="currency"
+            formControlName="currency"
+            [ngClass]="{
+              'input-field-group__input--invalid':
+                newPlanForm.get('currency')?.invalid &&
+                newPlanForm.get('currency')?.dirty
+            }"
+            #input
+          />
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="input-field-group">
+              <label class="input-field-group__label" for="power">Power</label>
+              <input
+                class="input-field-group__input"
+                placeholder=""
+                type="text"
+                id="power"
+                formControlName="power"
+                [ngClass]="{
+                  'input-field-group__input--invalid':
+                    newPlanForm.get('power')?.invalid &&
+                    newPlanForm.get('power')?.dirty
+                }"
+                #input
+              />
+              <div class="input-field-group__icon">GH/S</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="input-field-group">
+              <label class="input-field-group__label" for="profitability"
+                >Profitability</label
+              >
+              <input
+                class="input-field-group__input"
+                placeholder=""
+                type="text"
+                id="profitability"
+                formControlName="profitability"
+                [ngClass]="{
+                  'input-field-group__input--invalid':
+                    newPlanForm.get('profitability')?.invalid &&
+                    newPlanForm.get('profitability')?.dirty
+                }"
+                #input
+              />
+              <div class="input-field-group__icon">%</div>
+            </div>
+          </div>
+        </div>
+        <div class="input-field-group">
+          <label class="input-field-group__label" for="price">Price</label>
+          <input
+            class="input-field-group__input"
+            placeholder=""
+            type="text"
+            id="price"
+            formControlName="price"
+            [ngClass]="{
+              'input-field-group__input--invalid':
+                newPlanForm.get('price')?.invalid &&
+                newPlanForm.get('price')?.dirty
+            }"
+            #input
+          />
+          <div class="input-field-group__icon">$</div>
+        </div>
+        <button
+          type="submit"
+          class="login-box__btn btn btn--light btn--animated"
+          style="margin-top: 12rem"
+        >
+          Save
+        </button>
+      </form>
+    </div>
+  </div>
+  <!-- the edit plan form -->
+  <div class="new-plan" *ngIf="editFormOpend == true">
+    <div class="plan-form">
+      <div class="row">
+        <div class="col-10">
+          <h3 class="plan-form__title">Edit ‘{{ selectedMinerEdit }}’ plan</h3>
+          <p class="plan-form__sub">Added on: 12 Jan 2022 - 12:00PM</p>
+        </div>
+        <div class="col-2">
+          <div class="plan-form__close" (click)="editFormOpend = false">
+            <i class="fas fa-times"></i>
+          </div>
+        </div>
+      </div>
+      <div class="divider my-5"></div>
+      <form (ngSubmit)="onSave()" [formGroup]="newPlanForm">
+        <div class="input-field-group">
+          <label class="input-field-group__label" for="name">Plan Name</label>
+          <input
+            class="input-field-group__input"
+            placeholder=""
+            type="text"
+            id="name"
+            formControlName="name"
+            [ngClass]="{
+              'input-field-group__input--invalid':
+                newPlanForm.get('name')?.invalid &&
+                newPlanForm.get('name')?.dirty
+            }"
+            #input
+          />
+          <div class="input-field-group__icon">%</div>
+        </div>
+        <div class="input-field-group">
+          <label class="input-field-group__label" for="currency"
+            >Mining Currency</label
+          >
+          <input
+            class="input-field-group__input"
+            placeholder=""
+            type="text"
+            id="currency"
+            formControlName="currency"
+            [ngClass]="{
+              'input-field-group__input--invalid':
+                newPlanForm.get('currency')?.invalid &&
+                newPlanForm.get('currency')?.dirty
+            }"
+            #input
+          />
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <div class="input-field-group">
+              <label class="input-field-group__label" for="power">Power</label>
+              <input
+                class="input-field-group__input"
+                placeholder=""
+                type="text"
+                id="power"
+                formControlName="power"
+                [ngClass]="{
+                  'input-field-group__input--invalid':
+                    newPlanForm.get('power')?.invalid &&
+                    newPlanForm.get('power')?.dirty
+                }"
+                #input
+              />
+              <div class="input-field-group__icon">GH/S</div>
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <div class="input-field-group">
+              <label class="input-field-group__label" for="profitability"
+                >Profitability</label
+              >
+              <input
+                class="input-field-group__input"
+                placeholder=""
+                type="text"
+                id="profitability"
+                formControlName="profitability"
+                [ngClass]="{
+                  'input-field-group__input--invalid':
+                    newPlanForm.get('profitability')?.invalid &&
+                    newPlanForm.get('profitability')?.dirty
+                }"
+                #input
+              />
+              <div class="input-field-group__icon">%</div>
+            </div>
+          </div>
+        </div>
+        <div class="input-field-group">
+          <label class="input-field-group__label" for="price">Price</label>
+          <input
+            class="input-field-group__input"
+            placeholder=""
+            type="text"
+            id="price"
+            formControlName="price"
+            [ngClass]="{
+              'input-field-group__input--invalid':
+                newPlanForm.get('price')?.invalid &&
+                newPlanForm.get('price')?.dirty
+            }"
+            #input
+          />
+          <div class="input-field-group__icon">$</div>
+        </div>
+        <button
+          type="submit"
+          class="login-box__btn btn btn--light btn--animated"
+          style="margin-top: 12rem"
+        >
+          Save
+        </button>
+      </form>
     </div>
   </div>
 </div>

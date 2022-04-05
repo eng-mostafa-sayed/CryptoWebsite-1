@@ -3,6 +3,276 @@
     class="btn btn--animated btn--dark d-flex align-items-center"
     [routerLink]="['../subscribed-users']"
   >
-    <i class="fas fa-angle-left mx-3"></i> View all customers</button
-  >jm
+    <i class="fas fa-angle-left mx-3"></i> View all customers
+  </button>
+  <div class="profile">
+    <div class="d-flex justify-content-between">
+      <div class="d-flex align-items-center">
+        <div>
+          <img src="../../../assets/person.png" alt="" />
+        </div>
+        <div class="profile__name">Nadeen Mohamed</div>
+        <div class="profile__edit">
+          <i class="far fa-edit"></i>Edit Customer
+        </div>
+      </div>
+      <div class="profile__action miner__menu__btn">
+        <i class="fas fa-ellipsis-v"></i>
+      </div>
+    </div>
+    <div class="profile__details">
+      <div>
+        <div class="profile__details__title">Email</div>
+        <div class="profile__details__value">ahmedkhalil@example.com</div>
+      </div>
+      <div>
+        <div class="profile__details__title">Phone</div>
+        <div class="profile__details__value">+20 1029349 284</div>
+      </div>
+    </div>
+  </div>
+  <div class="wallet__balance">
+    <div class="row g-1">
+      <div class="col-12 col-md-6 col-xl-3" *ngFor="let balance of balances">
+        <div class="wallet__balance__box">
+          <div class="wallet__balance__box__icon">
+            <i class="fab fa-btc lg"></i>
+          </div>
+          <div>
+            <h4 class="wallet__balance__box__name">
+              {{ balance.name }} Balance
+            </h4>
+            <p class="wallet__balance__box__value">
+              {{ balance.value }} {{ balance.name }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="user-info">
+    <div class="user-info__heading">
+      <span
+        class="user-info__heading__item"
+        (click)="selectedTap = 'tap1'"
+        [ngClass]="{
+          'user-info__heading__item--active': selectedTap == 'tap1'
+        }"
+        >Hashrate plans</span
+      >
+      <span
+        class="user-info__heading__item"
+        (click)="selectedTap = 'tap2'"
+        [ngClass]="{
+          'user-info__heading__item--active': selectedTap == 'tap2'
+        }"
+        >Mining devices</span
+      >
+      <span
+        class="user-info__heading__item"
+        (click)="selectedTap = 'tap3'"
+        [ngClass]="{
+          'user-info__heading__item--active': selectedTap == 'tap3'
+        }"
+        >Transactions logs</span
+      >
+    </div>
+    <div class="user-info__body" *ngIf="selectedTap == 'tap1'">
+      <div class="user-info__body__title">
+        Hashrate Plans ({{ totalPlansLength }})
+      </div>
+      <!-- Active plans table -->
+      <div class="table">
+        <p-table
+          [value]="activePlanData"
+          responsiveLayout="stack"
+          [paginator]="true"
+          [rows]="4"
+          [rowsPerPageOptions]="[4, 8, 12]"
+        >
+          <ng-template pTemplate="caption">
+            Active plans ({{ activePlanDataLength }})
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th pSortableColumn="date">
+                Booking Date
+                <p-columnFilter
+                  type="date"
+                  field="date"
+                  display="menu"
+                ></p-columnFilter>
+                <p-sortIcon field="date"></p-sortIcon>
+              </th>
+              <th pSortableColumn="name">
+                Plan name
+                <p-columnFilter
+                  type="text"
+                  field="name"
+                  display="menu"
+                ></p-columnFilter>
+                <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th pSortableColumn="total">
+                Total Mined
+                <p-sortIcon field="total"></p-sortIcon>
+              </th>
+              <th pSortableColumn="current">
+                Current Hashpower
+                <p-sortIcon field="current"></p-sortIcon>
+              </th>
+              <th pSortableColumn="expire">
+                Expired on
+                <p-columnFilter
+                  type="date"
+                  field="expire"
+                  display="menu"
+                ></p-columnFilter>
+                <p-sortIcon [field]="'expire'"></p-sortIcon>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-plan>
+            <tr>
+              <td>
+                <span class="p-column-title">Date</span
+                >{{ plan.date | date: "dd MMM yyyy" }}
+              </td>
+              <td><span class="p-column-title">Name</span>{{ plan.name }}</td>
+              <td><span class="p-column-title">Total</span>{{ plan.total }}</td>
+              <td>
+                <span class="p-column-title">Current</span>{{ plan.current }}
+              </td>
+
+              <td>
+                <span class="p-column-title">Expire</span
+                >{{ plan.expire | date: "dd MMM yyyy" }}
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+
+      <!-- Expired plans table  -->
+      <div class="table">
+        <p-table
+          [value]="expiredPlanData"
+          responsiveLayout="stack"
+          [paginator]="true"
+          [rows]="4"
+          [rowsPerPageOptions]="[4, 8, 12]"
+        >
+          <ng-template pTemplate="caption">
+            Expired plans ({{ expiredPlanDataLength }})
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th pSortableColumn="date">
+                Booking Date
+                <p-columnFilter
+                  type="date"
+                  field="date"
+                  display="menu"
+                ></p-columnFilter>
+                <p-sortIcon field="date"></p-sortIcon>
+              </th>
+              <th pSortableColumn="name">
+                Plan name
+                <p-columnFilter
+                  type="text"
+                  field="name"
+                  display="menu"
+                ></p-columnFilter>
+                <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th pSortableColumn="total">
+                Total Mined
+                <p-sortIcon field="total"></p-sortIcon>
+              </th>
+              <th pSortableColumn="current">
+                Current Hashpower
+                <p-sortIcon field="current"></p-sortIcon>
+              </th>
+              <th pSortableColumn="expire">
+                Expired on
+                <p-columnFilter
+                  type="date"
+                  field="expire"
+                  display="menu"
+                ></p-columnFilter>
+                <p-sortIcon [field]="'expire'"></p-sortIcon>
+              </th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-plan>
+            <tr>
+              <td>
+                <span class="p-column-title">Date</span
+                >{{ plan.date | date: "dd MMM yyyy" }}
+              </td>
+              <td><span class="p-column-title">Name</span>{{ plan.name }}</td>
+              <td><span class="p-column-title">Total</span>{{ plan.total }}</td>
+              <td>
+                <span class="p-column-title">Current</span>{{ plan.current }}
+              </td>
+
+              <td>
+                <span class="p-column-title">Expire</span
+                >{{ plan.expire | date: "dd MMM yyyy" }}
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+    <div class="user-info__body" *ngIf="selectedTap == 'tap2'">
+      <div class="user-info__body__title">
+        Mining devices ({{ minersLength }})
+      </div>
+      <div class="row g-5">
+        <div class="col-12 col-lg-6 col-xl-4" *ngFor="let miner of miners">
+          <ng-container *ngIf="checkLength()">
+            <div
+              class="miner"
+              [ngClass]="{
+                'miner--offline': miner.status == false,
+                'miner--online': miner.status == true
+              }"
+            >
+              <span class="miner__offline" *ngIf="miner.status == false"
+                >Offline</span
+              >
+              <span class="miner__online" *ngIf="miner.status == true"
+                >Online</span
+              >
+              <h3 class="miner__title">{{ miner.name }}</h3>
+              <div class="miner__sub">
+                <i class="fab fa-btc md" style="margin-right: 8px"></i>
+                Bitcoin — SHA-256
+              </div>
+              <img class="miner__img" src="../../../assets/miner.svg" alt="" />
+              <div class="miner__details row g-3">
+                <div class="col-6">
+                  <span class="miner__details__title">Contract Start</span>
+                  <span class="miner__details__sub">18 Jan 2022</span>
+                </div>
+                <div class="col-6">
+                  <span class="miner__details__title">Contract End</span>
+                  <span class="miner__details__sub">18 Jan 2023</span>
+                </div>
+                <div class="col-6">
+                  <span class="miner__details__title">Maintenance Price</span>
+                  <span class="miner__details__sub">$112.69 /month</span>
+                </div>
+                <div class="col-6">
+                  <span class="miner__details__title">Profit</span>
+                  <span class="miner__details__sub">$112.69/day</span>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

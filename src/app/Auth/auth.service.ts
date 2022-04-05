@@ -37,6 +37,7 @@ export class AuthService {
           console.log(err);
         },
       });
+
     // .subscribe(
     //   (res) => {
     //     //log me out after the expire date
@@ -61,6 +62,7 @@ export class AuthService {
     //   }
     // );
   }
+
   logout() {
     clearTimeout(this.saveTimeout);
     this.clearAuthData();

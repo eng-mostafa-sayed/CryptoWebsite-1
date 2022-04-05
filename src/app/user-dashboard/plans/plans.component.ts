@@ -2,8 +2,6 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { Customer, Representative } from './customer';
-import { CustomerService } from './customerservice';
 
 export interface Plan {
   date: Date;
@@ -150,114 +148,50 @@ const activeHashPower = [
   templateUrl: './plans.component.html',
   styleUrls: ['./plans.component.scss'],
 })
-export class PlansComponent implements AfterViewInit, OnInit {
-  ////////////////////////////////////////////////////////////////
+export class PlansComponent implements OnInit {
+  ////////////////////////The table data//////////////////////////
   activePlanData = activePlanData;
   expiredPlanData = expiredPlanData;
-
-  /////////////////////////////////////////////////////////////////
+  activePlanDataLength: number = activePlanData.length;
+  expiredPlanDataLength: number = expiredPlanData.length;
+  //////////////////////////The chart data//////////////////////////
   minedChartTapOpend = 'tap1';
   tap1Data: any;
   tap2Data: any;
   tap3Data: any;
   tap4Data: any;
   basicOptions: any;
-  displayedColumns = [
-    { name: 'date', field: 'date' },
-    { name: 'name', field: 'name' },
-    { name: 'total', field: 'total' },
-    { name: 'current', field: 'current' },
-    { name: 'average', field: 'average' },
-    { name: 'expire', field: 'expire' },
-  ];
+  /////////////////////////Active hash data/////////////////////////////////
   activeHash: { crypto: string; plans: string; speed: string }[];
-  activePlanDataLength: number = activePlanData.length;
-  expiredPlanDataLength: number = expiredPlanData.length;
-
-  dataSourceActive = new MatTableDataSource(activePlanData);
-  dataSourceExpired = new MatTableDataSource(expiredPlanData);
-
-  @ViewChild('activePaginator') activePaginator: MatPaginator;
-  @ViewChild('expiredPaginator') expiredPaginator: MatPaginator;
-  @ViewChild('activeSort') activeSort: MatSort;
-  @ViewChild('expiredSort') expiredSort: MatSort;
-
-  constructor(private customerService: CustomerService) {
-    /////////////////////////////
-    ///////////////////////////
-  }
+  constructor() {}
   ngOnInit(): void {
-    this.dataSourceActive.filterPredicate = function (
-      data,
-      filter: string
-    ): boolean {
-      return data.name.toLowerCase().includes(filter);
-    };
-    this.dataSourceExpired.filterPredicate = function (
-      data,
-      filter: string
-    ): boolean {
-      return data.name.toLowerCase().includes(filter);
-    };
-
-    // this.dataSourceActive.paginator = this.activePaginator;
-    // this.dataSourceActive.sort = this.activeSort;
-    // this.dataSourceExpired.paginator = this.expiredPaginator;
-    // this.dataSourceExpired.sort = this.expiredSort;
     this.activeHash = activeHashPower;
-
-    this.tap1Data = {
-      labels: ['Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7'],
-      datasets: [
+    ////////////this is for the chart data////////////////
+    this.tap1Data =
+      this.tap2Data =
+      this.tap3Data =
+      this.tap4Data =
         {
-          label: '',
-          data: [12, 51, 62, 33, 21, 62, 45],
-          fill: true,
-          borderColor: 'rgba(255, 73, 128, 1)',
-          tension: 0.4,
-          backgroundColor: 'rgba(255, 73, 128, 0.2)',
-        },
-      ],
-    };
-    this.tap2Data = {
-      labels: ['Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7'],
-      datasets: [
-        {
-          label: '',
-          data: [10, 20, 20, 20, 50, 10, 40],
-          fill: true,
-          borderColor: 'rgba(255, 73, 128, 1)',
-          tension: 0.4,
-          backgroundColor: 'rgba(255, 73, 128, 0.2)',
-        },
-      ],
-    };
-    this.tap3Data = {
-      labels: ['Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7'],
-      datasets: [
-        {
-          label: '',
-          data: [15, 15, 15, 20, 40, 62, 45],
-          fill: true,
-          borderColor: 'rgba(255, 73, 128, 1)',
-          tension: 0.4,
-          backgroundColor: 'rgba(255, 73, 128, 0.2)',
-        },
-      ],
-    };
-    this.tap4Data = {
-      labels: ['Mar 1', 'Mar 2', 'Mar 3', 'Mar 4', 'Mar 5', 'Mar 6', 'Mar 7'],
-      datasets: [
-        {
-          label: '',
-          data: [80, 70, 50, 30, 80, 50, 30],
-          fill: true,
-          borderColor: 'rgba(255, 73, 128, 1)',
-          tension: 0.4,
-          backgroundColor: 'rgba(255, 73, 128, 0.2)',
-        },
-      ],
-    };
+          labels: [
+            'Mar 1',
+            'Mar 2',
+            'Mar 3',
+            'Mar 4',
+            'Mar 5',
+            'Mar 6',
+            'Mar 7',
+          ],
+          datasets: [
+            {
+              label: '',
+              data: [12, 51, 62, 33, 21, 62, 45],
+              fill: true,
+              borderColor: 'rgba(255, 73, 128, 1)',
+              tension: 0.4,
+              backgroundColor: 'rgba(255, 73, 128, 0.2)',
+            },
+          ],
+        };
     this.basicOptions = {
       plugins: {
         tooltip: {
@@ -290,6 +224,7 @@ export class PlansComponent implements AfterViewInit, OnInit {
         },
       },
     };
+    ///////////////////////////
   }
 
   minedChartTap1() {
@@ -303,45 +238,5 @@ export class PlansComponent implements AfterViewInit, OnInit {
   }
   minedChartTap4() {
     this.minedChartTapOpend = 'tap4';
-  }
-
-  ngAfterViewInit() {
-    this.dataSourceActive.sortingDataAccessor = (item: any, property: any) => {
-      switch (property) {
-        case 'date':
-          return new Date(item.date);
-        default:
-          return item[property];
-      }
-    };
-    this.dataSourceActive.paginator = this.activePaginator;
-    this.dataSourceActive.sort = this.activeSort;
-    this.dataSourceExpired.paginator = this.expiredPaginator;
-    this.dataSourceExpired.sort = this.expiredSort;
-    this.dataSourceActive.sortingDataAccessor = (item: any, property: any) => {
-      switch (property) {
-        case 'fromDate':
-          return new Date(item.fromDate);
-        default:
-          return item[property];
-      }
-    };
-  }
-
-  applyFilterOnActive(event: Event) {
-    const activeFilterValue = (event.target as HTMLInputElement).value;
-    this.dataSourceActive.filter = activeFilterValue.trim().toLowerCase();
-
-    if (this.dataSourceActive.paginator) {
-      this.dataSourceActive.paginator.firstPage();
-    }
-  }
-  applyFilterOnExpired(event: Event) {
-    const expiredFilterValue = (event.target as HTMLInputElement).value;
-    this.dataSourceExpired.filter = expiredFilterValue.trim().toLowerCase();
-
-    if (this.dataSourceExpired.paginator) {
-      this.dataSourceExpired.paginator.firstPage();
-    }
   }
 }
