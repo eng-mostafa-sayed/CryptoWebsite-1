@@ -50,35 +50,35 @@
       </div>
     </div>
   </div>
-  <div class="user-info">
-    <div class="user-info__heading">
+  <div class="horizontal-taps">
+    <div class="horizontal-taps__heading">
       <span
-        class="user-info__heading__item"
+        class="horizontal-taps__heading__item"
         (click)="selectedTap = 'tap1'"
         [ngClass]="{
-          'user-info__heading__item--active': selectedTap == 'tap1'
+          'horizontal-taps__heading__item--active': selectedTap == 'tap1'
         }"
         >Hashrate plans</span
       >
       <span
-        class="user-info__heading__item"
+        class="horizontal-taps__heading__item"
         (click)="selectedTap = 'tap2'"
         [ngClass]="{
-          'user-info__heading__item--active': selectedTap == 'tap2'
+          'horizontal-taps__heading__item--active': selectedTap == 'tap2'
         }"
         >Mining devices</span
       >
       <span
-        class="user-info__heading__item"
+        class="horizontal-taps__heading__item"
         (click)="selectedTap = 'tap3'"
         [ngClass]="{
-          'user-info__heading__item--active': selectedTap == 'tap3'
+          'horizontal-taps__heading__item--active': selectedTap == 'tap3'
         }"
         >Transactions logs</span
       >
     </div>
-    <div class="user-info__body" *ngIf="selectedTap == 'tap1'">
-      <div class="user-info__body__title">
+    <div class="horizontal-taps__body" *ngIf="selectedTap == 'tap1'">
+      <div class="horizontal-taps__body__title">
         Hashrate Plans ({{ totalPlansLength }})
       </div>
       <!-- Active plans table -->

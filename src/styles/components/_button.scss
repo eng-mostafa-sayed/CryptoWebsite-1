@@ -70,7 +70,15 @@
       background-color: $color-secondary;
     }
   }
-
+  &--red {
+    border: 1px solid red;
+    color: red;
+    padding: 1rem 3rem;
+    &:hover {
+      color: rgb(179, 2, 2);
+      border: 1px solid rgb(179, 2, 2);
+    }
+  }
   &--disabled {
     background: #302c3f;
     color: #b7b4c7;

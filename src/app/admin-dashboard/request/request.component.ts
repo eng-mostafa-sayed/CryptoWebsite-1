@@ -6,44 +6,87 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./request.component.scss'],
 })
 export class RequestComponent implements OnInit {
-  dropCollapsed = false;
-  selected = 'all';
-  miners = [
+  selectedTap = 'tap1';
+  requests = [
     {
-      name: 'Antminer L7 9500Mh ',
-      date: '12 Jan 2022 - 12:00PM',
-      icon: '',
-      crypto: 'BTC (Bitcoin)',
-      crypto2: 'ETH (Ethereum)',
-      algorithm: 'SHA-256',
-      power: '23 580',
-      profitability: 143,
-      unitPrice: '12,000',
-      price: 112.69,
+      date: '30 Jan 2022,02:00 pm',
+      info: {
+        name: 'Ahmed Khalil',
+        email: 'Ahmed@example.com',
+      },
+      miner: 'Antminer E9',
     },
     {
-      name: 'Antminer E9',
-      date: '12 Jan 2022 - 12:00PM',
-      icon: '',
-      crypto: 'BTC (Bitcoin)',
-      crypto2: 'ETH (Ethereum)',
-      algorithm: 'SHA-256',
-      power: '23 580 GH/S',
-      unitPrice: '12,000',
-      profitability: 143,
-      price: 1112.69,
+      date: '30 Jan 2022,02:00 pm',
+      info: {
+        name: 'Ahmed Khalil',
+        email: 'Ahmed@example.com',
+      },
+      miner: 'Antminer E9',
     },
     {
-      name: 'Antminer S19 Pro',
-      date: '12 Jan 2022 - 12:00PM',
-      icon: '',
-      crypto: 'BTC (Bitcoin)',
-      crypto2: 'ETH (Ethereum)',
-      algorithm: 'SHA-256',
-      power: '23 580 GH/S      ',
-      unitPrice: '12,000',
-      profitability: 143,
-      price: 1122.69,
+      date: '30 Jan 2022,02:00 pm',
+      info: {
+        name: 'Ahmed Khalil',
+        email: 'Ahmed@example.com',
+      },
+      miner: 'Antminer E9',
+    },
+    {
+      date: '30 Jan 2022,02:00 pm',
+      info: {
+        name: 'Ahmed Khalil',
+        email: 'Ahmed@example.com',
+      },
+      miner: 'Antminer E9',
+    },
+    {
+      date: '30 Jan 2022,02:00 pm',
+      info: {
+        name: 'Ahmed Khalil',
+        email: 'Ahmed@example.com',
+      },
+      miner: 'Antminer E9',
+    },
+    {
+      date: '30 Jan 2022,02:00 pm',
+      info: {
+        name: 'Ahmed Khalil',
+        email: 'Ahmed@example.com',
+      },
+      miner: 'Antminer E9',
+    },
+    {
+      date: '30 Jan 2022,02:00 pm',
+      info: {
+        name: 'Ahmed Khalil',
+        email: 'Ahmed@example.com',
+      },
+      miner: 'Antminer E9',
+    },
+    {
+      date: '30 Jan 2022,02:00 pm',
+      info: {
+        name: 'Ahmed Khalil',
+        email: 'Ahmed@example.com',
+      },
+      miner: 'Antminer E9',
+    },
+    {
+      date: '30 Jan 2022,02:00 pm',
+      info: {
+        name: 'Ahmed Khalil',
+        email: 'Ahmed@example.com',
+      },
+      miner: 'Antminer E9',
+    },
+    {
+      date: '30 Jan 2022,02:00 pm',
+      info: {
+        name: 'Ahmed Khalil',
+        email: 'Ahmed@example.com',
+      },
+      miner: 'Antminer E9',
     },
   ];
   constructor() {}
