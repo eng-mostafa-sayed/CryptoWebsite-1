@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from './Auth/admin/admin.component';
 import { ResetPasswordComponent } from './Auth/reset-password/reset-password.component';
 import { SigninComponent } from './Auth/signin/signin.component';
 import { SignupComponent } from './Auth/signup/signup.component';
@@ -37,11 +38,7 @@ const routes: Routes = [
   {
     path: 'admin',
     component: UserComponent,
-    children: [
-      { path: 'signin', component: SigninComponent },
-      { path: 'signup', component: SignupComponent },
-      { path: 'reset-your-password', component: ResetPasswordComponent },
-    ],
+    children: [{ path: 'signin', component: AdminComponent }],
   },
   // { path: '', redirectTo: 'user/signin', pathMatch: 'full' },
   // { path: '**', redirectTo: 'user/signin' },
