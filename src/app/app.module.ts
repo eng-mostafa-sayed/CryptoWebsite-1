@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
@@ -47,6 +47,7 @@ import { UserComponent } from './Auth/user/user.component';
 import { AdminComponent } from './Auth/admin/admin.component';
 import { RecoveryMessageComponent } from './Auth/reset-password/recovery-message/recovery-message.component';
 import { NewPasswordComponent } from './Auth/reset-password/new-password/new-password.component';
+import { AdminAuthInterceptor } from './Auth/admin-auth-interceptor';
 
 ///////////////////////////////
 
@@ -91,7 +92,10 @@ import { NewPasswordComponent } from './Auth/reset-password/new-password/new-pas
     ChartModule,
   ],
 
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AdminAuthInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: MySecondInterceptor, multi: true }],
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
