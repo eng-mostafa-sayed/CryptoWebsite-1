@@ -8,7 +8,7 @@
         [ngClass]="{
           'horizontal-taps__heading__item--active': selectedTap == 'tap1'
         }"
-        >Hashrate plans</span
+        >New Requests</span
       >
       <span
         class="horizontal-taps__heading__item"
@@ -16,20 +16,12 @@
         [ngClass]="{
           'horizontal-taps__heading__item--active': selectedTap == 'tap2'
         }"
-        >Mining devices</span
-      >
-      <span
-        class="horizontal-taps__heading__item"
-        (click)="selectedTap = 'tap3'"
-        [ngClass]="{
-          'horizontal-taps__heading__item--active': selectedTap == 'tap3'
-        }"
-        >Transactions logs</span
+        >Approved Requests</span
       >
     </div>
     <div class="horizontal-taps__body" *ngIf="selectedTap == 'tap1'">
       <div class="horizontal-taps__body__title">
-        Hashrate Plans ({{ requests.length }})
+        New Requests ({{ requestsLength }})
       </div>
       <div class="table">
         <p-table
@@ -45,61 +37,60 @@
                 Request date
                 <p-columnFilter
                   type="date"
-                  field="date"
+                  field="createdAt"
                   display="menu"
                 ></p-columnFilter>
-                <p-sortIcon field="date"></p-sortIcon>
+                <p-sortIcon field="createdAt"></p-sortIcon>
               </th>
-              <th pSortableColumn="name">
+              <th pSortableColumn="userID">
                 User info
                 <p-columnFilter
                   type="text"
-                  field="info"
+                  field="userID"
                   display="menu"
                 ></p-columnFilter>
-                <p-sortIcon field="info"></p-sortIcon>
+                <p-sortIcon field="userID"></p-sortIcon>
               </th>
-              <th pSortableColumn="miner">
+              <th pSortableColumn="asicName">
                 Requested device
-                <p-sortIcon field="miner"></p-sortIcon>
+                <p-sortIcon field="asicName"></p-sortIcon>
               </th>
               <th>Action</th>
             </tr>
           </ng-template>
-          <ng-template pTemplate="body" let-user>
+          <ng-template pTemplate="body" let-request>
             <tr>
               <td>
                 <span class="p-column-title"> Request date </span
-                >{{ user.date | date: "dd MMM yyyy" }}
+                >{{ request.createdAt | date }}
               </td>
               <td>
                 <span class="p-column-title"> User info</span>
-                <p>{{ user.info.name }}</p>
-                <p>{{ user.info.email }}</p>
+                <p>{{ request.userID }}</p>
+                <!-- <p>{{ request.info.email }}</p> -->
               </td>
               <td>
                 <span class="p-column-title"> Requested device</span>
-
                 <img
                   src="../../../assets/miner.svg"
                   alt=""
                   style="height: 64px"
                 />
 
-                {{ user.miner }}
+                {{ request.asicName }}
               </td>
 
-              <td class="d-flex gap-3">
+              <td>
                 <span class="p-column-title">Action</span>
-                <button
+                <!-- <button
                   class="btn btn--red btn--animated"
                   [routerLink]="['../profile']"
                 >
                   Reject
-                </button>
+                </button> -->
                 <button
                   class="btn btn--darker btn--animated"
-                  [routerLink]="['../profile']"
+                  (click)="getAddress(request)"
                 >
                   Accept request
                 </button>
@@ -112,5 +103,69 @@
     <div class="user-info__body" *ngIf="selectedTap == 'tap2'">
       <div class="user-info__body__title">Mining devices ()</div>
     </div>
+  </div>
+</div>
+
+<!--------------- Accept form ------------------->
+<div class="accept-form" *ngIf="acceptFormOpend">
+  <div class="accept-form__heading">
+    <div class="row">
+      <div class="col-10">
+        <h3 class="plan-form__title">Activate asic</h3>
+      </div>
+      <div class="col-2">
+        <div class="plan-form__close" (click)="acceptFormOpend = false">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="accept-form__body">
+    <form (ngSubmit)="onAcceptReq()" [formGroup]="acceptForm">
+      <div class="input-field-group">
+        <label class="input-field-group__label" for="address"
+          >Deposit address</label
+        >
+        <input
+          id="address"
+          name="address"
+          type="text"
+          [readonly]="true"
+          class="input-field-group__input"
+          formControlName="address"
+          [ngClass]="{
+            'input-field-group__input--invalid':
+              acceptForm.get('address')?.invalid
+          }"
+        />
+        <div class="input-field-group__icon"><i class="far fa-copy"></i></div>
+      </div>
+      <div class="input-field-group">
+        <label class="input-field-group__label" for="workerID">Worker ID</label>
+        <input
+          class="input-field-group__input"
+          id="workerID"
+          name="workerID"
+          type="text"
+          formControlName="workerID"
+          [ngClass]="{
+            'input-field-group__input--invalid':
+              acceptForm.get('workerID')?.invalid &&
+              acceptForm.get('workerID')?.dirty
+          }"
+        />
+      </div>
+      <div class="accept-form__body__footer">
+        <div
+          class="btn btn--darker btn--animated"
+          (click)="acceptFormOpend = false"
+        >
+          Cancel
+        </div>
+        <button type="submit" class="btn btn--light btn--animated">
+          Accept
+        </button>
+      </div>
+    </form>
   </div>
 </div>

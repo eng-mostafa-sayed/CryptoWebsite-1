@@ -8,6 +8,9 @@ import { SharedService } from '../shared/shared.service';
   providedIn: 'root',
 })
 export class AdminAuthService {
+  private rootURL = 'https://cominer.herokuapp.com';
+  private key =
+    'c3fe929c35dd0cbcc8f062bb60e9d2ce7d14be21513d07c53e370d81ba9de4a4';
   authStatusListener$ = new BehaviorSubject<boolean>(false);
   private isAuthenticated = false;
   private token: string;
@@ -30,19 +33,15 @@ export class AdminAuthService {
   }
 
   public signinFF(password: String) {
-    return this.http.post(
-      'https://cominer.herokuapp.com/admin/FFAuth?key=c3fe929c35dd0cbcc8f062bb60e9d2ce7d14be21513d07c53e370d81ba9de4a4',
-      { password: password }
-    );
+    return this.http.post(`${this.rootURL}/admin/FFAuth?key=${this.key}`, {
+      password: password,
+    });
   }
   public getOTP(otp: String) {
     return this.http
-      .post(
-        'https://cominer.herokuapp.com/admin/2FAuth?key=c3fe929c35dd0cbcc8f062bb60e9d2ce7d14be21513d07c53e370d81ba9de4a4',
-        {
-          otp: otp,
-        }
-      )
+      .post(`${this.rootURL}/admin/2FAuth?key=${this.key}`, {
+        otp: otp,
+      })
       .subscribe({
         next: (res: any) => {
           this.token = res.jwt.accessToken;
@@ -74,7 +73,7 @@ export class AdminAuthService {
   public logout() {
     this.http
       .post(
-        'https://cominer.herokuapp.com/admin/logout?key=c3fe929c35dd0cbcc8f062bb60e9d2ce7d14be21513d07c53e370d81ba9de4a4',
+        `${this.rootURL}/admin/logout?key=${this.key}`,
         {
           token: this.getRefersh(),
         },
