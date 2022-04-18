@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: '',
     component: AdminDashboardComponent,
-    // canActivate: [AdminAuthGuard],
+    canActivate: [AdminAuthGuard],
     children: [
       { path: 'overview', component: OverviewComponent },
       { path: 'hashrate-plans', component: PlansComponent },
