@@ -53,6 +53,20 @@
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
+.table {
+  &__header {
+    color: $color-white;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
+  &__sub {
+    color: $color-white-2;
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+  }
+}
 
 // .table {
 //   width: 1128px;

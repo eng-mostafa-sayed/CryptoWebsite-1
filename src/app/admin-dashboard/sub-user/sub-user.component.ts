@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { SharedService } from 'src/app/shared/shared.service';
+import { AdminDashboardService } from '../admin-dashboard.service';
+import { UserPlan } from '../models/user-plan.model';
+import { User } from '../models/user.model';
+import { UserAsic } from '../models/userAsic.model';
 
 export interface Plan {
   date: Date;
@@ -112,89 +119,76 @@ const expiredPlanData: Plan[] = [
   styleUrls: ['./sub-user.component.scss'],
 })
 export class SubUserComponent implements OnInit {
-  balances = [
-    {
-      name: 'BTC',
-      value: '0.000002130',
-    },
-    {
-      name: 'ETH',
-      value: '0.000002130',
-    },
-    {
-      name: 'RVN',
-      value: '0.000002130',
-    },
-    {
-      name: 'STX',
-      value: '0.000002130',
-    },
-  ];
+  userData: User = new User();
+  sub: Subscription;
+  userID: string;
+  userBalances: { cryptoName: string; value: string }[];
   selectedTap = 'tap1';
+  userPlans: UserPlan[];
   ////////////////////////The table data//////////////////////////
-  activePlanData = activePlanData;
-  expiredPlanData = expiredPlanData;
-  activePlanDataLength: number = activePlanData.length;
-  expiredPlanDataLength: number = expiredPlanData.length;
+  activeUserPlans: UserPlan[] = [];
+  expiredUserPlans: UserPlan[] = [];
+  activePlansLength: number = activePlanData.length;
+  expiredPlansLength: number = expiredPlanData.length;
   totalPlansLength: number = activePlanData.length + expiredPlanData.length;
-
   ////////////////////miners data ////////////////////
-  miners: {
-    name: string;
-    encrypt: string;
-    img: string;
-    start: string;
-    end: string;
-    price: string;
-    profit: string;
-    status: boolean;
-  }[] = [
-    {
-      name: 'Antminer S19 Pro ',
-      encrypt: 'Bitcoin — SHA-256',
-      img: '',
-      start: '',
-      end: '',
-      price: '',
-      profit: '',
-      status: true,
-    },
-    {
-      name: 'Antminer T9+',
-      encrypt: 'Bitcoin — SHA-256',
-      img: '',
-      start: '',
-      end: '',
-      price: '',
-      profit: '',
-      status: false,
-    },
-    {
-      name: 'WhatsMiner M32-62T',
-      encrypt: 'Bitcoin — SHA-256',
-      img: '',
-      start: '',
-      end: '',
-      price: '',
-      profit: '',
-      status: false,
-    },
-    {
-      name: 'PangolinMiner M3X',
-      encrypt: 'Bitcoin — SHA-256',
-      img: '',
-      start: '',
-      end: '',
-      price: '',
-      profit: '',
-      status: false,
-    },
-  ];
-  minersLength = this.miners.length;
-  constructor() {}
+  userAsics: UserAsic[];
+  // minersLength = this.miners.length;
+  constructor(
+    private dashboardService: AdminDashboardService,
+    private activatedRoute: ActivatedRoute,
+    private sharedSerivce: SharedService
+  ) {}
 
-  ngOnInit(): void {}
-  checkLength(): boolean {
-    return this.miners.length >= 1;
+  ngOnInit(): void {
+    this.sharedSerivce.isLoading.next(true);
+    this.sub = this.activatedRoute.paramMap.subscribe((params) => {
+      this.userID = params.get('userID')!;
+      this.dashboardService.getUserData(this.userID).subscribe({
+        next: (res) => {
+          this.userData = res;
+          this.userBalances = [
+            {
+              cryptoName: 'BTC',
+              value: res.balance.btc,
+            },
+            {
+              cryptoName: 'ETH',
+              value: res.balance.eth,
+            },
+            {
+              cryptoName: 'LTCT',
+              value: res.balance.ltct,
+            },
+            {
+              cryptoName: 'RVN',
+              value: res.balance.rvn,
+            },
+          ];
+          this.sharedSerivce.isLoading.next(false);
+        },
+      });
+      this.dashboardService.getUserPlans(this.userID).subscribe({
+        next: (res) => {
+          this.activeUserPlans = res.filter((e) => {
+            return e.planStatus === true;
+          });
+          this.expiredUserPlans = res.filter((e) => {
+            return e.planStatus === false;
+          });
+          this.totalPlansLength = res.length;
+          this.activePlansLength = this.activeUserPlans.length;
+          this.expiredPlansLength = this.expiredUserPlans.length;
+        },
+      });
+      this.dashboardService.getUserAsics(this.userID).subscribe({
+        next: (res) => {
+          this.userAsics = res;
+        },
+      });
+    });
   }
+  // checkLength(): boolean {
+  //   return this.miners.length >= 1;
+  // }
 }

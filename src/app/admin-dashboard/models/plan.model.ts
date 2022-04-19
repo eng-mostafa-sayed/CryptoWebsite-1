@@ -10,17 +10,4 @@ export class Plan {
   availability: boolean;
   createdAt?: string;
   updatedAt?: string;
-  // constructor(ظ
-  //   private _id?: string,
-  //   private planType: string,
-  //   private planName: string,
-  //   private cryptoName: string,
-  //   private algorithm: string,
-  //   private planDuration: number,
-  //   private profitability: number,
-  //   private price: number,
-  //   private availability: boolean,
-  //   private createdAt?: string,
-  //   private updatedAt?: string
-  // ) {}
 }

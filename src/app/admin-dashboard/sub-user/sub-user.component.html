@@ -1,55 +1,70 @@
 <div class="dashboard-container dashboard-container--admin">
   <button
     class="btn btn--animated btn--dark d-flex align-items-center"
-    [routerLink]="['../subscribed-users']"
+    [routerLink]="['../../subscribed-users']"
   >
     <i class="fas fa-angle-left mx-3"></i> View all customers
   </button>
   <div class="profile">
     <div class="d-flex justify-content-between">
       <div class="d-flex align-items-center">
-        <div>
-          <img src="../../../assets/person.png" alt="" />
+        <div class="profile__user-icon">
+          <i class="fas fa-user"></i>
         </div>
-        <div class="profile__name">Nadeen Mohamed</div>
-        <div class="profile__edit">
+        <div class="profile__name">{{ userData.userName }}</div>
+        <!-- <div class="profile__edit">
           <i class="far fa-edit"></i>Edit Customer
-        </div>
+        </div> -->
       </div>
-      <div class="profile__action miner__menu__btn">
+      <!-- <div class="profile__action miner__menu__btn">
         <i class="fas fa-ellipsis-v"></i>
-      </div>
+      </div> -->
     </div>
     <div class="profile__details">
       <div>
         <div class="profile__details__title">Email</div>
-        <div class="profile__details__value">ahmedkhalil@example.com</div>
+        <div class="profile__details__value">{{ userData.email }}</div>
       </div>
       <div>
         <div class="profile__details__title">Phone</div>
-        <div class="profile__details__value">+20 1029349 284</div>
+        <div class="profile__details__value">{{ userData.phone }}</div>
       </div>
     </div>
   </div>
   <div class="wallet__balance">
     <div class="row g-1">
-      <div class="col-12 col-md-6 col-xl-3" *ngFor="let balance of balances">
+      <div
+        class="col-12 col-md-6 col-xl-3"
+        *ngFor="let balance of userBalances"
+      >
         <div class="wallet__balance__box">
           <div class="wallet__balance__box__icon">
-            <i class="fab fa-btc lg"></i>
+            <i
+              class="fab fa-btc lg"
+              *ngIf="
+                balance.cryptoName === 'BTC' || balance.cryptoName === 'LTCT'
+              "
+            ></i>
+            <i
+              class="fab fa-ethereum lg"
+              *ngIf="
+                balance.cryptoName === 'ETH' || balance.cryptoName === 'RVN'
+              "
+            ></i>
           </div>
           <div>
             <h4 class="wallet__balance__box__name">
-              {{ balance.name }} Balance
+              {{ balance.cryptoName }} Balance
             </h4>
             <p class="wallet__balance__box__value">
-              {{ balance.value }} {{ balance.name }}
+              {{ balance.value }} {{ balance.cryptoName }}
             </p>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <div class="horizontal-taps">
     <div class="horizontal-taps__heading">
       <span
@@ -84,69 +99,76 @@
       <!-- Active plans table -->
       <div class="table">
         <p-table
-          [value]="activePlanData"
+          [value]="activeUserPlans"
           responsiveLayout="stack"
           [paginator]="true"
           [rows]="4"
           [rowsPerPageOptions]="[4, 8, 12]"
         >
           <ng-template pTemplate="caption">
-            Active plans ({{ activePlanDataLength }})
+            Active plans ({{ activePlansLength }})
           </ng-template>
-          <ng-template pTemplate="header" let-columns>
+          <ng-template pTemplate="header">
             <tr>
-              <th pSortableColumn="date">
+              <th pSortableColumn="startDate">
                 Booking Date
                 <p-columnFilter
                   type="date"
-                  field="date"
+                  field="startDate"
                   display="menu"
                 ></p-columnFilter>
-                <p-sortIcon field="date"></p-sortIcon>
+                <p-sortIcon field="startDate"></p-sortIcon>
               </th>
-              <th pSortableColumn="name">
-                Plan name
+              <th pSortableColumn="_id">
+                Contract ID
                 <p-columnFilter
                   type="text"
-                  field="name"
+                  field="_id"
                   display="menu"
                 ></p-columnFilter>
-                <p-sortIcon field="name"></p-sortIcon>
+                <p-sortIcon field="_id"></p-sortIcon>
               </th>
-              <th pSortableColumn="total">
+              <th pSortableColumn="totalMined">
                 Total Mined
-                <p-sortIcon field="total"></p-sortIcon>
+                <p-sortIcon field="totalMined"></p-sortIcon>
               </th>
-              <th pSortableColumn="current">
+              <th pSortableColumn="hashPower">
                 Current Hashpower
-                <p-sortIcon field="current"></p-sortIcon>
+                <p-sortIcon field="hashPower"></p-sortIcon>
               </th>
-              <th pSortableColumn="expire">
-                Expired on
+              <th pSortableColumn="endDate">
+                Expires on
                 <p-columnFilter
                   type="date"
-                  field="expire"
+                  field="endDate"
                   display="menu"
                 ></p-columnFilter>
-                <p-sortIcon [field]="'expire'"></p-sortIcon>
+                <p-sortIcon field="endDate"></p-sortIcon>
               </th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-plan>
             <tr>
               <td>
-                <span class="p-column-title">Date</span
-                >{{ plan.date | date: "dd MMM yyyy" }}
+                <span class="p-column-title">Booking Date</span>
+                <span class="table__sub">{{ plan.startDate | date }}</span>
               </td>
-              <td><span class="p-column-title">Name</span>{{ plan.name }}</td>
-              <td><span class="p-column-title">Total</span>{{ plan.total }}</td>
               <td>
-                <span class="p-column-title">Current</span>{{ plan.current }}
+                <span class="p-column-title">Contract ID</span>
+                <span class="table__header">{{ plan._id }} </span>
+              </td>
+              <td>
+                <span class="p-column-title">Total Mined</span>
+                <span class="table__header">{{ plan.totalMined }}</span>
+              </td>
+              <td>
+                <span class="p-column-title">Hash power</span>
+                <span class="table__header">{{ plan.hashPower }}</span>
               </td>
 
               <td>
-                <span class="p-column-title">Expire</span
-                >{{ plan.expire | date: "dd MMM yyyy" }}
+                <span class="p-column-title">Expired on</span>
+                <span class="table__sub">{{ plan.endDate | date }}</span>
               </td>
             </tr>
           </ng-template>
@@ -156,69 +178,76 @@
       <!-- Expired plans table  -->
       <div class="table">
         <p-table
-          [value]="expiredPlanData"
+          [value]="expiredUserPlans"
           responsiveLayout="stack"
           [paginator]="true"
           [rows]="4"
           [rowsPerPageOptions]="[4, 8, 12]"
         >
           <ng-template pTemplate="caption">
-            Expired plans ({{ expiredPlanDataLength }})
+            Expired plans ({{ expiredPlansLength }})
           </ng-template>
-          <ng-template pTemplate="header" let-columns>
+          <ng-template pTemplate="header">
             <tr>
-              <th pSortableColumn="date">
+              <th pSortableColumn="startDate">
                 Booking Date
                 <p-columnFilter
                   type="date"
-                  field="date"
+                  field="startDate"
                   display="menu"
                 ></p-columnFilter>
-                <p-sortIcon field="date"></p-sortIcon>
+                <p-sortIcon field="startDate"></p-sortIcon>
               </th>
-              <th pSortableColumn="name">
-                Plan name
+              <th pSortableColumn="_id">
+                Contract ID
                 <p-columnFilter
                   type="text"
-                  field="name"
+                  field="_id"
                   display="menu"
                 ></p-columnFilter>
-                <p-sortIcon field="name"></p-sortIcon>
+                <p-sortIcon field="_id"></p-sortIcon>
               </th>
-              <th pSortableColumn="total">
+              <th pSortableColumn="totalMined">
                 Total Mined
-                <p-sortIcon field="total"></p-sortIcon>
+                <p-sortIcon field="totalMined"></p-sortIcon>
               </th>
-              <th pSortableColumn="current">
+              <th pSortableColumn="hashPower">
                 Current Hashpower
-                <p-sortIcon field="current"></p-sortIcon>
+                <p-sortIcon field="hashPower"></p-sortIcon>
               </th>
-              <th pSortableColumn="expire">
-                Expired on
+              <th pSortableColumn="endDate">
+                Expires on
                 <p-columnFilter
                   type="date"
-                  field="expire"
+                  field="endDate"
                   display="menu"
                 ></p-columnFilter>
-                <p-sortIcon [field]="'expire'"></p-sortIcon>
+                <p-sortIcon field="endDate"></p-sortIcon>
               </th>
             </tr>
           </ng-template>
           <ng-template pTemplate="body" let-plan>
             <tr>
               <td>
-                <span class="p-column-title">Date</span
-                >{{ plan.date | date: "dd MMM yyyy" }}
+                <span class="p-column-title">Booking Date</span>
+                <span class="table__sub">{{ plan.startDate | date }}</span>
               </td>
-              <td><span class="p-column-title">Name</span>{{ plan.name }}</td>
-              <td><span class="p-column-title">Total</span>{{ plan.total }}</td>
               <td>
-                <span class="p-column-title">Current</span>{{ plan.current }}
+                <span class="p-column-title">Contract ID</span>
+                <span class="table__header">{{ plan._id }} </span>
+              </td>
+              <td>
+                <span class="p-column-title">Total Mined</span>
+                <span class="table__header">{{ plan.totalMined }}</span>
+              </td>
+              <td>
+                <span class="p-column-title">Hash power</span>
+                <span class="table__header">{{ plan.hashPower }}</span>
               </td>
 
               <td>
-                <span class="p-column-title">Expire</span
-                >{{ plan.expire | date: "dd MMM yyyy" }}
+                <span class="p-column-title">Expired on</span>
+                <span class="table__sub">{{ plan.endDate | date }}</span>
               </td>
             </tr>
           </ng-template>
@@ -226,12 +255,13 @@
       </div>
     </div>
     <div class="user-info__body" *ngIf="selectedTap == 'tap2'">
-      <div class="user-info__body__title">
+      <!-- <div class="user-info__body__title">
         Mining devices ({{ minersLength }})
-      </div>
+      </div> -->
+      <div class="horizontal-taps__body__title">Mining devices ()</div>
       <div class="row g-5">
-        <div class="col-12 col-lg-6 col-xl-4" *ngFor="let miner of miners">
-          <ng-container *ngIf="checkLength()">
+        <div class="col-12 col-lg-6 col-xl-4" *ngFor="let miner of userAsics">
+          <ng-container *ngIf="'true'">
             <div
               class="miner"
               [ngClass]="{

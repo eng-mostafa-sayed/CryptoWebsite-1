@@ -18,7 +18,7 @@ const routes: Routes = [
       { path: 'overview', component: OverviewComponent },
       { path: 'hashrate-plans', component: PlansComponent },
       { path: 'subscribed-users', component: SubUsersComponent },
-      { path: 'profile', component: SubUserComponent },
+      { path: 'profile/:userID', component: SubUserComponent },
       { path: 'miners', component: MinersComponent },
       { path: 'request', component: RequestComponent },
     ],

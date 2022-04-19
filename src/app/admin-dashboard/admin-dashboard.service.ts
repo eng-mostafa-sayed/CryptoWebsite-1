@@ -2,8 +2,11 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Plan } from './models/plan.model';
 import { Miner } from './models/miner.model';
-import { Request } from './models/buy-request.model';
-
+import { RequestNew } from './models/req-new.model';
+import { RequestApproved } from './models/req-approved.model';
+import { User } from './models/user.model';
+import { UserPlan } from './models/user-plan.model';
+import { UserAsic } from './models/userAsic.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -105,7 +108,7 @@ export class AdminDashboardService {
   ////////////////////             Buy requests               ////////////////////////
 
   getRequests() {
-    return this.http.get<Request[]>(
+    return this.http.get<RequestNew[]>(
       `${this.rootURL}/api/asic/x/contract/ondemand?key=${this.key}`
     );
   }
@@ -121,7 +124,51 @@ export class AdminDashboardService {
       {
         address,
         workerID,
-      }
+      },
+      { responseType: 'text' }
     );
+  }
+  getApprovedRequests() {
+    return this.http.get<RequestApproved[]>(
+      `${this.rootURL}/api/asic/x/contract/activeContracts?key=${this.key} `
+    );
+  }
+  endContract(contractID: string) {
+    return this.http.put(
+      `${this.rootURL}/api/asic/x/contract/expire/${contractID}?key=${this.key}`,
+      {},
+      { responseType: 'text' }
+    );
+  }
+  ////////////////////////////// subscribed users ////////////////////////
+  getSubscribedUsers() {
+    return this.http.get<User[]>(
+      `${this.rootURL}/api/admin/getUsers?key=${this.key}`
+    );
+  }
+  getUserData(userID: string) {
+    return this.http.get<User>(
+      `${this.rootURL}/api/admin/getUserData/${userID}?key=${this.key}`
+    );
+  }
+  getUserPlans(userID: string) {
+    return this.http.get<UserPlan[]>(
+      `${this.rootURL}/api/plan/admin/getUserContracts/${userID}?key=${this.key}`
+    );
+  }
+  getUserAsics(userID: string) {
+    return this.http.get<UserAsic[]>(
+      `${this.rootURL}/api/asic/${userID}?key=${this.key}`
+    );
+  }
+  getUserDepositsLogs(userID: string) {
+    return this.http
+      .get(`${this.rootURL}/api/transaction/admin/${userID}/getUserdeposits
+    `);
+  }
+  getUserWithdrawsLogs(userID: string) {
+    return this.http
+      .get(`${this.rootURL}/api/transaction/admin/${userID}/getUserwithdraws
+    `);
   }
 }

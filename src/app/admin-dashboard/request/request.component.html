@@ -19,13 +19,15 @@
         >Approved Requests</span
       >
     </div>
+
+    <!------------------- Buying requests  ------------------>
     <div class="horizontal-taps__body" *ngIf="selectedTap == 'tap1'">
       <div class="horizontal-taps__body__title">
-        New Requests ({{ requestsLength }})
+        New Requests ({{ newRequestsLength }})
       </div>
       <div class="table">
         <p-table
-          [value]="requests"
+          [value]="newRequests"
           responsiveLayout="stack"
           [paginator]="true"
           [rows]="10"
@@ -61,12 +63,12 @@
           <ng-template pTemplate="body" let-request>
             <tr>
               <td>
-                <span class="p-column-title"> Request date </span
-                >{{ request.createdAt | date }}
+                <span class="p-column-title"> Request date </span>
+                <span class="table__sub">{{ request.createdAt | date }}</span>
               </td>
               <td>
-                <span class="p-column-title"> User info</span>
-                <p>{{ request.userID }}</p>
+                <span class="p-column-title"> User ID</span>
+                <span class="table__header">{{ request.userID }}</span>
                 <!-- <p>{{ request.info.email }}</p> -->
               </td>
               <td>
@@ -77,7 +79,7 @@
                   style="height: 64px"
                 />
 
-                {{ request.asicName }}
+                <span class="table__header"> {{ request.asicName }}</span>
               </td>
 
               <td>
@@ -90,7 +92,7 @@
                 </button> -->
                 <button
                   class="btn btn--darker btn--animated"
-                  (click)="getAddress(request)"
+                  (click)="selectReqNew(request)"
                 >
                   Accept request
                 </button>
@@ -100,8 +102,123 @@
         </p-table>
       </div>
     </div>
-    <div class="user-info__body" *ngIf="selectedTap == 'tap2'">
-      <div class="user-info__body__title">Mining devices ()</div>
+    <!------------------- Approved requests  ------------------>
+
+    <div class="horizontal-taps__body" *ngIf="selectedTap == 'tap2'">
+      <div class="horizontal-taps__body__title">
+        Approved Requests ({{ approvedRequestsLength }})
+      </div>
+      <div class="table">
+        <p-table
+          [value]="approvedRequests"
+          responsiveLayout="stack"
+          [paginator]="true"
+          [rows]="10"
+          [rowsPerPageOptions]="[10, 15, 20]"
+        >
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th pSortableColumn="date">
+                Request date
+                <p-columnFilter
+                  type="date"
+                  field="createdAt"
+                  display="menu"
+                ></p-columnFilter>
+                <p-sortIcon field="createdAt"></p-sortIcon>
+              </th>
+              <th pSortableColumn="userID">
+                User ID
+                <p-columnFilter
+                  type="text"
+                  field="userID"
+                  display="menu"
+                ></p-columnFilter>
+              </th>
+              <th pSortableColumn="asicName">
+                Requested device
+                <p-columnFilter
+                  type="text"
+                  field="asicName"
+                  display="menu"
+                ></p-columnFilter>
+                <p-sortIcon field="asicName"></p-sortIcon>
+              </th>
+              <th pSortableColumn="workerID">
+                Worker ID
+                <p-columnFilter
+                  type="text"
+                  field="workerID"
+                  display="menu"
+                ></p-columnFilter>
+                <p-sortIcon field="workerID"></p-sortIcon>
+              </th>
+              <th pSortableColumn="startDate">
+                Aprroved date
+                <p-columnFilter
+                  type="date"
+                  field="startDate"
+                  display="menu"
+                ></p-columnFilter>
+                <p-sortIcon field="startDate"></p-sortIcon>
+              </th>
+              <th>Action</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-request>
+            <tr>
+              <td>
+                <span class="p-column-title"> Request date </span>
+                <span class="table__sub">{{ request.createdAt | date }}</span>
+              </td>
+              <td>
+                <span class="p-column-title"> User ID</span>
+                <span class="table__header">{{ request.userID }}</span>
+              </td>
+              <td>
+                <span class="p-column-title"> Requested device</span>
+                <img
+                  src="../../../assets/miner.svg"
+                  alt=""
+                  style="height: 64px"
+                />
+
+                <span class="table__header">{{ request.asicName }}</span>
+                <!-- <span>Maintenance plan: 12 months</span> -->
+              </td>
+              <td>
+                <span class="p-column-title">Worker ID</span>
+                <span class="table__header"> {{ request.workerID }}</span>
+              </td>
+              <td>
+                <span class="p-column-title">Approved Date</span>
+                <div class="row align-items-center">
+                  <div class="col-2">
+                    <div class="notification__check">
+                      <i class="fas fa-check"></i>
+                    </div>
+                  </div>
+                  <div class="col-8">
+                    <div class="table__header">Approved On</div>
+                    <div class="table__sub">
+                      {{ request.startDate | date }}
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <span class="p-column-title">Action</span>
+                <button
+                  class="btn btn--darker btn--animated"
+                  (click)="selectReqApproved(request)"
+                >
+                  End Contact
+                </button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
     </div>
   </div>
 </div>
@@ -167,5 +284,41 @@
         </button>
       </div>
     </form>
+  </div>
+</div>
+<div class="confirmation confirmation--lighter" *ngIf="endConfirmOpend">
+  <div class="confirmation__heading">
+    <div class="row">
+      <div class="col-10">
+        <h3 class="plan-form__title">Confirm to continue</h3>
+      </div>
+      <div class="col-2">
+        <div class="plan-form__close" (click)="endConfirmOpend = false">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="confirmation__body">
+    <div class="confirmation__body__warning">
+      <i class="fas fa-exclamation-triangle"></i>
+    </div>
+    <div class="confirmation__body__title">
+      Are you sure you want to end this contract!?
+    </div>
+    <!-- <div class="confirmation__body__sub">
+      You will not be able to recover this plan details
+    </div> -->
+  </div>
+  <div class="confirmation__footer">
+    <div
+      class="btn btn--darker btn--animated"
+      (click)="endConfirmOpend = false"
+    >
+      Cancel
+    </div>
+    <div class="btn btn--light btn--animated" (click)="onEndContract()">
+      Continue
+    </div>
   </div>
 </div>
