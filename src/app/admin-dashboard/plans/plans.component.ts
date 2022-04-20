@@ -30,7 +30,9 @@ export class PlansComponent implements OnInit {
   plans: Plan[] = [];
   plansLength: number;
   BTCNum: number;
-
+  // error messages
+  newFormError = '';
+  updateFormError = '';
   constructor(
     private dashboardService: AdminDashboardService,
     private sharedSerivce: SharedService
@@ -84,6 +86,20 @@ export class PlansComponent implements OnInit {
       createdAt: new FormControl(null, [Validators.required]),
     });
   }
+  //to check what plans to show on the page by the dropdown menu
+  checkDisplayedPlans(plan: Plan) {
+    if (plan.cryptoName.includes('BTC') && this.selected == 'tap1') {
+      return true;
+    } else if (plan.cryptoName.includes('ETH') && this.selected == 'tap2') {
+      return true;
+    } else if (plan.cryptoName.includes('RVN') && this.selected == 'tap3') {
+      return true;
+    } else if (plan.cryptoName.includes('STX') && this.selected == 'tap4') {
+      return true;
+    } else if (this.selected == 'all') {
+      return true;
+    }
+  }
   //Check the plan name to open the menu corrsponding to that plan
   checkSelected(plan: Plan) {
     // assign the plan name to the selected plan and editplan
@@ -108,37 +124,31 @@ export class PlansComponent implements OnInit {
       this.selectedPlan = new Plan();
     }
   }
-  //to check what plans to show on the page by the dropdown menu
-  checkDisplayedPlans(plan: Plan) {
-    if (plan.cryptoName.includes('BTC') && this.selected == 'tap1') {
-      return true;
-    } else if (plan.cryptoName.includes('ETH') && this.selected == 'tap2') {
-      return true;
-    } else if (plan.cryptoName.includes('RVN') && this.selected == 'tap3') {
-      return true;
-    } else if (plan.cryptoName.includes('STX') && this.selected == 'tap4') {
-      return true;
-    } else if (this.selected == 'all') {
-      return true;
-    }
-  }
+
   onNew() {
     if (this.newPlanForm.valid) {
       const plan = this.newPlanForm.value;
       this.dashboardService.addNewPlan(plan).subscribe({
         next: () => {
-          const message = `'${this.newPlanForm.value.planName}' has been added `;
-          this.newPlanForm.reset();
-          this.newFormOpend = false;
-          this.sharedSerivce.sentMessage.next(message);
-          this.selectedPlan = new Plan();
-          const fullPlan = {
-            ...plan,
-            _id: '',
-            availability: true,
-            createdAt: Date.now(),
-          };
-          this.plans.push(fullPlan);
+          //the problem with the commented code is that the _id of the new plan is empty..
+          // and i select the plans based on the _id.. the solution is to select based on a created id by me
+          // const message = `'${this.newPlanForm.value.planName}' has been added `;
+          // this.newPlanForm.reset();
+          // this.newFormOpend = false;
+          // this.sharedSerivce.sentMessage.next(message);
+          // this.selectedPlan = new Plan();
+          // const fullPlan = {
+          //   ...plan,
+          //   _id: '',
+          //   availability: true,
+          //   createdAt: Date.now(),
+          // };
+          // this.plans.push(fullPlan);
+          // this.plansLength = this.plans.length;
+          window.location.reload();
+        },
+        error: (err) => {
+          this.newFormError = 'Some error occured, try again!';
         },
       });
     } else return;
@@ -161,7 +171,7 @@ export class PlansComponent implements OnInit {
           this.sharedSerivce.sentMessage.next(message);
         },
         error: (err) => {
-          console.log(err);
+          this.updateFormError = 'Some error occured, try again!';
         },
       });
     } else return;
@@ -178,6 +188,7 @@ export class PlansComponent implements OnInit {
           this.plans.splice(updatedInedx, 1);
           this.plansLength = this.plans.length;
         }
+
         this.deleteConfirmOpend = false;
         //to send message to the notification component
         this.sharedSerivce.sentMessage.next(message);

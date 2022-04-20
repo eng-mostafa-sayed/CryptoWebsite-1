@@ -30,6 +30,9 @@ export class MinersComponent implements OnInit {
   miners: Miner[] = [];
   minersLength: number;
   BTCNum: number;
+  // error messages
+  newFormError = '';
+  updateFormError = '';
 
   constructor(
     private dashboardService: AdminDashboardService,
@@ -116,18 +119,23 @@ export class MinersComponent implements OnInit {
       const miner = this.newMinerForm.value;
       this.dashboardService.addNewMiner(miner).subscribe({
         next: () => {
-          const message = `'${this.newMinerForm.value.asicName}' has been added `;
-          this.newMinerForm.reset();
-          this.newFormOpend = false;
-          this.sharedSerivce.sentMessage.next(message);
-          this.selectedMiner = new Miner();
-          const fullMiner = {
-            ...miner,
-            _id: '',
-            availability: true,
-            createdAt: Date.now(),
-          };
-          this.miners.push(fullMiner);
+          //the problem with the commented code is that the _id of the new plan is empty..
+          // and i select the plans based on the _id.. the solution is to select based on a created id by me          // const message = `'${this.newMinerForm.value.asicName}' has been added `;
+          // this.newMinerForm.reset();
+          // this.newFormOpend = false;
+          // this.sharedSerivce.sentMessage.next(message);
+          // this.selectedMiner = new Miner();
+          // const fullMiner = {
+          //   ...miner,
+          //   _id: '',
+          //   availability: true,
+          //   createdAt: Date.now(),
+          // };
+          // this.miners.push(fullMiner);
+          window.location.reload();
+        },
+        error: (err) => {
+          this.newFormError = 'Some error occured, try again!';
         },
       });
     } else return;
@@ -172,7 +180,7 @@ export class MinersComponent implements OnInit {
         this.sharedSerivce.sentMessage.next(message);
       },
       error: (err) => {
-        console.log(err);
+        this.updateFormError = 'Some error occured, try again!';
       },
     });
   }

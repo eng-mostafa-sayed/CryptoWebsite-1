@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SharedService } from 'src/app/shared/shared.service';
 import { AdminDashboardService } from '../admin-dashboard.service';
+import { Log } from '../models/log.model';
 import { UserPlan } from '../models/user-plan.model';
 import { User } from '../models/user.model';
 import { UserAsic } from '../models/userAsic.model';
@@ -27,7 +28,6 @@ export class SubUserComponent implements OnInit {
   userBalances: { cryptoName: string; value: string }[];
   selectedTap = 'tap1';
   selectedTap3 = 'tap3-1';
-
   userPlans: UserPlan[];
   ////////////////////////The table data//////////////////////////
   activeUserPlans: UserPlan[] = [];
@@ -38,7 +38,11 @@ export class SubUserComponent implements OnInit {
   ////////////////////miners data ////////////////////
   userAsics: UserAsic[];
   userAsicsLength: number;
-  // minersLength = this.miners.length;
+  //////////////////// Transaction Logs ////////////////////
+  depositLogs: Log[];
+  withdrawLogs: Log[];
+  depositLogsLength: number;
+  withdrawLogsLength: number;
   constructor(
     private dashboardService: AdminDashboardService,
     private activatedRoute: ActivatedRoute,
@@ -93,6 +97,18 @@ export class SubUserComponent implements OnInit {
           console.log(res);
         },
       });
+      this.dashboardService.getUserDepositLogs(this.userID).subscribe({
+        next: (res) => {
+          this.depositLogs = res;
+          this.depositLogsLength = res.length;
+        },
+      });
+    });
+    this.dashboardService.getUserWithdrawLogs(this.userID).subscribe({
+      next: (res) => {
+        this.withdrawLogs = res;
+        this.withdrawLogsLength = res.length;
+      },
     });
   }
   // checkLength(): boolean {

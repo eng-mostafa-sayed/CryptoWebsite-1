@@ -59,6 +59,11 @@
     font-weight: 400;
     font-size: 1.4rem;
     line-height: 1.8rem;
+    i {
+      color: $color-primary;
+      margin-left: 2px;
+      cursor: pointer;
+    }
   }
   &__sub {
     color: $color-white-2;

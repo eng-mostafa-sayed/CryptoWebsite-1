@@ -159,7 +159,7 @@
           </div>
           <div class="miner__box">
             <h6 class="miner__box__title">Price</h6>
-            <p class="miner__box__sub--large">${{ plan.price }}/mth</p>
+            <p class="miner__box__sub--large">{{ plan.price }}$</p>
             <div class="miner__box__active row justify-content-between">
               <div class="col-2 d-flex flex-column">
                 <span class="miner__box__active__name">Status</span>
@@ -180,6 +180,12 @@
         </div>
       </div>
     </ng-container>
+    <div style="margin: 0 auto" *ngIf="plansLength == 0">
+      <div class="miner--add" (click)="newFormOpend = true">
+        <img class="miner--add__img" src="../../../assets/plus.svg" alt="" />
+        <span class="miner--add__title">Add New Plan </span>
+      </div>
+    </div>
   </div>
   <!-- <div class="input-field-group__icon">GH/S</div> -->
 
@@ -332,6 +338,9 @@
           </div>
         </div>
         <div>
+          <span class="input-field-group__error" *ngIf="newFormError != ''">{{
+            newFormError
+          }}</span>
           <button
             type="submit"
             class="login-box__btn btn btn--light btn--animated"
@@ -497,6 +506,11 @@
           </div>
         </div>
         <div>
+          <span
+            class="input-field-group__error"
+            *ngIf="updateFormError != ''"
+            >{{ updateFormError }}</span
+          >
           <button
             type="submit"
             class="login-box__btn btn btn--light btn--animated"

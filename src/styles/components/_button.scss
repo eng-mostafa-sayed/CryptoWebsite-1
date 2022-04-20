@@ -110,6 +110,26 @@
       }
     }
   }
+  &--success,
+  &--failed,
+  &--pending {
+    max-width: 10.5rem;
+    height: 32px;
+    border-radius: 3.2rem;
+    font-family: Nunito Sans;
+    font-weight: 700;
+    font-size: 1.4rem;
+    line-height: 1.9rem;
+  }
+  &--success {
+    background: #38c172;
+  }
+  &--failed {
+    background: #f03d3e;
+  }
+  &--pending {
+    background: $color-secondary;
+  }
 }
 button.mat-paginator-navigation-next {
   padding: 0px;

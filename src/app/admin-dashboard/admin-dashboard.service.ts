@@ -7,6 +7,7 @@ import { RequestApproved } from './models/req-approved.model';
 import { User } from './models/user.model';
 import { UserPlan } from './models/user-plan.model';
 import { UserAsic } from './models/userAsic.model';
+import { Log } from './models/log.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -161,14 +162,20 @@ export class AdminDashboardService {
       `${this.rootURL}/api/asic/admin/getUserContracts/${userID}?key=${this.key}`
     );
   }
-  getUserDepositsLogs(userID: string) {
-    return this.http
-      .get(`${this.rootURL}/api/transaction/admin/${userID}/getUserdeposits
+  getUserDepositLogs(userID: string) {
+    return this.http.get<
+      Log[]
+    >(`${this.rootURL}/api/transaction/admin/${userID}/getUserdeposits
     `);
   }
-  getUserWithdrawsLogs(userID: string) {
-    return this.http
-      .get(`${this.rootURL}/api/transaction/admin/${userID}/getUserwithdraws
+  getUserWithdrawLogs(userID: string) {
+    return this.http.get<
+      Log[]
+    >(`${this.rootURL}/api/transaction/admin/${userID}/getUserwithdraws
     `);
+  }
+  //////////////////// Overview page /////////////////////////
+  getOverviewData() {
+    return this.http.get<any>(`${this.rootURL}/admin/OVERVIEW?key=${this.key}`);
   }
 }

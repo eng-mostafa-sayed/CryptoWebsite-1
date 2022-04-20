@@ -68,7 +68,13 @@
               </td>
               <td>
                 <span class="p-column-title"> User ID</span>
-                <span class="table__header">{{ request.userID }}</span>
+                <span class="table__header"
+                  >{{ request.userID }}
+                  <i
+                    class="fas fa-external-link-alt"
+                    routerLink="../profile/{{ request.userID }}"
+                  ></i
+                ></span>
                 <!-- <p>{{ request.info.email }}</p> -->
               </td>
               <td>
