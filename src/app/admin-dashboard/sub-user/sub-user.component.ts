@@ -15,104 +15,6 @@ export interface Plan {
   expire: Date;
 }
 
-const activePlanData: Plan[] = [
-  {
-    date: new Date('30 Dec 2021'),
-    name: 'Bitcoin — Starter  ',
-    total: 4.0026,
-    current: 4.0026,
-    expire: new Date('30 Dec 2022'),
-  },
-  {
-    date: new Date('14 March 2021'),
-    name: 'Ethereum — Starter  ',
-    total: 6.941,
-    current: 6.941,
-    expire: new Date('14 March 2022'),
-  },
-  {
-    date: new Date('5 Nov 2021'),
-    name: 'Ethereum — Starter',
-    total: 9.0122,
-    current: 9.0122,
-    expire: new Date('5 Nov 2022'),
-  },
-  {
-    date: new Date('5 Sep 2021'),
-    name: 'Ethereum — Starter',
-    total: 10.811,
-    current: 10.811,
-    expire: new Date('5 Sep 2022'),
-  },
-  {
-    date: new Date('1 Oct 2021'),
-    name: 'Ethereum — Starter',
-    total: 12.0107,
-    current: 12.0107,
-
-    expire: new Date('1 Oct 2022'),
-  },
-  {
-    date: new Date('6 Feb 2021'),
-    name: 'Bitcoin — Starter',
-    total: 14.0067,
-    current: 14.0067,
-
-    expire: new Date('6 Feb 2022'),
-  },
-  {
-    date: new Date('8 Jul 2021'),
-    name: 'Ethereum — Starter',
-    total: 15.9994,
-    current: 15.9994,
-    expire: new Date('8 Jul 2022'),
-  },
-  {
-    date: new Date('18 Oct 2021'),
-    name: 'Bitcoin — Starter',
-    total: 18.9984,
-    current: 18.9984,
-    expire: new Date('12 Jan 2022'),
-  },
-];
-
-const expiredPlanData: Plan[] = [
-  {
-    date: new Date('10 Jan 2021'),
-    name: 'Bitcoin — Starter',
-    total: 1.0079,
-    current: 1.0079,
-    expire: new Date('10 Jan 2022'),
-  },
-  {
-    date: new Date('30 Dec 2021'),
-    name: 'Bitcoin — Starter  ',
-    total: 4.0026,
-    current: 4.0026,
-    expire: new Date('30 Dec 2022'),
-  },
-  {
-    date: new Date('14 March 2021'),
-    name: 'Ethereum — Starter  ',
-    total: 6.941,
-    current: 6.941,
-    expire: new Date('14 March 2022'),
-  },
-  {
-    date: new Date('5 Nov 2021'),
-    name: 'Ethereum — Starter',
-    total: 9.0122,
-    current: 9.0122,
-    expire: new Date('5 Nov 2022'),
-  },
-  {
-    date: new Date('5 Sep 2021'),
-    name: 'Ethereum — Starter',
-    total: 10.811,
-    current: 10.811,
-    expire: new Date('5 Sep 2022'),
-  },
-];
 @Component({
   selector: 'app-sub-user',
   templateUrl: './sub-user.component.html',
@@ -124,15 +26,18 @@ export class SubUserComponent implements OnInit {
   userID: string;
   userBalances: { cryptoName: string; value: string }[];
   selectedTap = 'tap1';
+  selectedTap3 = 'tap3-1';
+
   userPlans: UserPlan[];
   ////////////////////////The table data//////////////////////////
   activeUserPlans: UserPlan[] = [];
   expiredUserPlans: UserPlan[] = [];
-  activePlansLength: number = activePlanData.length;
-  expiredPlansLength: number = expiredPlanData.length;
-  totalPlansLength: number = activePlanData.length + expiredPlanData.length;
+  activePlansLength: number = this.activeUserPlans.length;
+  expiredPlansLength: number = this.expiredUserPlans.length;
+  totalPlansLength: number = this.activePlansLength + this.expiredPlansLength;
   ////////////////////miners data ////////////////////
   userAsics: UserAsic[];
+  userAsicsLength: number;
   // minersLength = this.miners.length;
   constructor(
     private dashboardService: AdminDashboardService,
@@ -184,6 +89,8 @@ export class SubUserComponent implements OnInit {
       this.dashboardService.getUserAsics(this.userID).subscribe({
         next: (res) => {
           this.userAsics = res;
+          this.userAsicsLength = res.length;
+          console.log(res);
         },
       });
     });

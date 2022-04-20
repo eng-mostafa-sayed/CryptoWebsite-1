@@ -216,7 +216,7 @@
                 <p-sortIcon field="hashPower"></p-sortIcon>
               </th>
               <th pSortableColumn="endDate">
-                Expires on
+                Expired on
                 <p-columnFilter
                   type="date"
                   field="endDate"
@@ -258,50 +258,109 @@
       <!-- <div class="user-info__body__title">
         Mining devices ({{ minersLength }})
       </div> -->
-      <div class="horizontal-taps__body__title">Mining devices ()</div>
-      <div class="row g-5">
+      <div class="horizontal-taps__body__title">
+        Mining devices ({{ userAsicsLength }})
+      </div>
+      <div class="row p-3 gy-5">
         <div class="col-12 col-lg-6 col-xl-4" *ngFor="let miner of userAsics">
-          <ng-container *ngIf="'true'">
+          <ng-container>
             <div
               class="miner"
               [ngClass]="{
-                'miner--offline': miner.status == false,
-                'miner--online': miner.status == true
+                'miner--online': miner.asicStatus == true,
+                'miner--offline':
+                  miner.asicStatus == false && miner.expired == true,
+                'miner--demand':
+                  miner.asicStatus == false && miner.expired == false
               }"
             >
-              <span class="miner__offline" *ngIf="miner.status == false"
-                >Offline</span
-              >
-              <span class="miner__online" *ngIf="miner.status == true"
+              <span class="miner__online" *ngIf="miner.asicStatus == true"
                 >Online</span
               >
-              <h3 class="miner__title">{{ miner.name }}</h3>
-              <div class="miner__sub">
+              <span
+                class="miner__offline"
+                *ngIf="miner.asicStatus == false && miner.expired == true"
+                >Offline</span
+              >
+              <span
+                class="miner__demand"
+                *ngIf="miner.asicStatus == false && miner.expired == false"
+                >On Demand</span
+              >
+              <h3 class="miner__title">{{ miner.asicName }}</h3>
+              <!-- <div class="miner__sub">
                 <i class="fab fa-btc md" style="margin-right: 8px"></i>
                 Bitcoin — SHA-256
-              </div>
+              </div> -->
               <img class="miner__img" src="../../../assets/miner.svg" alt="" />
               <div class="miner__details row g-3">
-                <div class="col-6">
-                  <span class="miner__details__title">Contract Start</span>
-                  <span class="miner__details__sub">18 Jan 2022</span>
+                <div
+                  class="col-12"
+                  style="
+                    font-weight: 400;
+                    font-size: 1.4re;
+                    color: #b7b4c7;
+                    margin-bottom: 1rem;
+                  "
+                >
+                  Device Bought on: {{ miner.createdAt | date }}
                 </div>
                 <div class="col-6">
-                  <span class="miner__details__title">Contract End</span>
-                  <span class="miner__details__sub">18 Jan 2023</span>
+                  <span class="miner__details__title">Host Fees</span>
+                  <span class="miner__details__sub">{{ miner.hostFees }}%</span>
                 </div>
                 <div class="col-6">
-                  <span class="miner__details__title">Maintenance Price</span>
-                  <span class="miner__details__sub">$112.69 /month</span>
+                  <span class="miner__details__title">Worker ID</span>
+                  <span class="miner__details__sub">{{ miner.workerID }}</span>
                 </div>
                 <div class="col-6">
-                  <span class="miner__details__title">Profit</span>
-                  <span class="miner__details__sub">$112.69/day</span>
+                  <span class="miner__details__title">Total Mined</span>
+                  <span class="miner__details__sub">{{
+                    miner.totalMined
+                  }}</span>
+                </div>
+                <div class="col-12">
+                  <span class="miner__details__title">Address</span>
+                  <span
+                    class="miner__details__sub"
+                    style="overflow-wrap: anywhere"
+                    >{{ miner.address }}</span
+                  >
                 </div>
               </div>
             </div>
           </ng-container>
         </div>
+      </div>
+    </div>
+    <div class="horizontal-taps__body" *ngIf="selectedTap == 'tap3'">
+      <div class="horizontal-taps">
+        <div class="horizontal-taps__heading">
+          <span
+            class="horizontal-taps__heading__item"
+            (click)="selectedTap3 = 'tap3-1'"
+            [ngClass]="{
+              'horizontal-taps__heading__item--active': selectedTap3 == 'tap2'
+            }"
+            >Deposit logs</span
+          >
+          <span
+            class="horizontal-taps__heading__item"
+            (click)="selectedTap3 = 'tap3-2'"
+            [ngClass]="{
+              'horizontal-taps__heading__item--active': selectedTap3 == 'tap3'
+            }"
+            >Withdraws logs</span
+          >
+        </div>
+        <div
+          class="horizontal-taps__body"
+          *ngIf="selectedTap3 == 'tap3-1'"
+        ></div>
+        <div
+          class="horizontal-taps__body"
+          *ngIf="selectedTap3 == 'tap3-2'"
+        ></div>
       </div>
     </div>
   </div>

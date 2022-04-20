@@ -158,7 +158,7 @@ export class AdminDashboardService {
   }
   getUserAsics(userID: string) {
     return this.http.get<UserAsic[]>(
-      `${this.rootURL}/api/asic/${userID}?key=${this.key}`
+      `${this.rootURL}/api/asic/admin/getUserContracts/${userID}?key=${this.key}`
     );
   }
   getUserDepositsLogs(userID: string) {

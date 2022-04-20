@@ -1,10 +1,15 @@
 export class UserAsic {
   '_id': string;
-  'asicName': string;
-  'cryptoName': string;
-  'algorithm': string;
-  'hashPower': number;
-  'price': number;
   'hostFees': number;
-  'availability': boolean;
+  'asicName': string;
+  'asicStatus': boolean;
+  'expired': boolean;
+  'totalMined': number;
+  'startDate': Date;
+  'userID': string;
+  'asicID': string;
+  'createdAt': Date;
+  'updatedAt': Date;
+  'address': string;
+  'workerID': string;
 }
